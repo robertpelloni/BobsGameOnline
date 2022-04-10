@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project BobsGameOnline with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="C:/Users/Administrator/Desktop/Client/bobsgame.jar">
+            <manifest>
+                <attribute name="Main-Class" value="com.bobsgame.ClientMain"/>
+                <attribute name="Class-Path" value=". bobsgame_lib/TWL.jar bobsgame_lib/TWLEffects.jar bobsgame_lib/xpp3-1.1.4c.jar bobsgame_lib/gson-2.2.3.jar bobsgame_lib/jorbis-0.0.17.jar bobsgame_lib/slf4j-api-1.7.5.jar bobsgame_lib/logback-core-1.0.12.jar bobsgame_lib/logback-classic-1.0.12.jar bobsgame_lib/commons-net-3.2.jar bobsgame_lib/netty-3.6.5.Final.jar bobsgame_lib/restfb-1.6.12.jar bobsgame_lib/commons-codec-1.7.jar bobsgame_lib/commons-io-2.4.jar bobsgame_lib/commons-compress-1.5.jar bobsgame_lib/xz-1.2.jar bobsgame_lib/jinput.jar bobsgame_lib/lwjgl.jar bobsgame_lib/lwjgl_test.jar bobsgame_lib/lwjgl_util.jar bobsgame_lib/lwjgl_util_applet.jar bobsgame_lib/lwjgl-debug.jar bobsgame_lib/lzma.jar bobsgame_lib/ibxm77.jar bobsgame_lib/plugin.jar bobsgame_lib/hq2x.jar bobsgame_lib/easing.jar"/>
+            </manifest>
+            <fileset dir="C:/Users/Administrator/workspace/BobsGameOnline/bin"/>
+            <fileset dir="C:/Users/Administrator/workspace/BobNetLibs/bin"/>
+        </jar>
+        <delete dir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <mkdir dir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/twl/twl/TWL.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/twl/twl/TWLEffects.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/twl/twl/external-libs/xpp3-1.1.4c.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/com.google.code.gson/gson/jars/gson-2.2.3.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/org.jcraft/jorbis/jars/jorbis-0.0.17.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.5.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.0.12.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.0.12.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/commons-net/commons-net/jars/commons-net-3.2.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/io.netty/netty/bundles/netty-3.6.5.Final.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/com.restfb/restfb/jars/restfb-1.6.12.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.7.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/org.apache.commons/commons-compress/jars/commons-compress-1.5.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Users/Administrator/.ivy2/cache/org.tukaani/xz/jars/xz-1.2.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/jinput.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/lwjgl.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/lwjgl_test.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/lwjgl_util.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/lwjgl_util_applet.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/lwjgl-debug.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/lwjgl/jar/lzma.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/ibxm77.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Program Files (x86)/Java/jre7/lib/plugin.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/hq2x.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+        <copy file="C:/Java/libs/easing.jar" todir="C:/Users/Administrator/Desktop/Client/bobsgame_lib"/>
+    </target>
+</project>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="resignall" name="re-sign all jars in current dir"> <!-- xmlns:ac="antlib:net.sf.antcontrib">  -->
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+	<macrodef name="unsignjar">
+			
+		<attribute name="jar"/>
+				
+		<sequential>
+			<!-- Remove any existing signatures from a JAR file. -->
+			<tempfile prefix="usignjar-" destdir="${java.io.tmpdir}" property="temp.file"/>
+			<echo message="Removing signatures from JAR: @{jar}"/>
+			<mkdir dir="${temp.file}"/>
+					
+			<unjar src="@{jar}" dest="${temp.file}">
+				<patternset>
+					<include name="**"/>
+					<exclude name="META-INF/*.SF"/>
+					<exclude name="META-INF/*.DSA"/>
+					<exclude name="META-INF/*.RSA"/>
+				</patternset>
+			</unjar>
+					
+			<delete file="@{jar}" failonerror="true"/>
+					
+			<!-- Touch it in case the file didn't have a manifest.
+				 Otherwise the JAR task below will fail if the manifest 
+				 file doesn't exist. -->
+			<mkdir dir="${temp.file}/META-INF"/>
+			<touch file="${temp.file}/META-INF/MANIFEST.MF"/>
+					
+			<jar destfile="@{jar}" 
+				basedir="${temp.file}" 
+				includes="**" 
+				manifest="${temp.file}/META-INF/MANIFEST.MF"/>
+					
+			<delete dir="${temp.file}" failonerror="true"/>
+		</sequential>
+	</macrodef>
+	
+<!-- usage: <unsignjar jar="/some/location/file.jar"/> -->
+
+
+	<target name="resignall">
+	
+		
+		<!-- ac:for -->
+		<for param="file">
+		
+			<path>
+				<fileset dir="." includes="*.jar"/>
+			</path>
+			
+			<sequential>
+			
+				<unsignjar jar="@{file}"/>
+				<!--
+				<antcall target="unsignjar">
+					<param name="jar" value="@{file}"/>
+				</antcall>
+				
+				-->
+				<signjar
+					jar="@{file}"
+					alias="bobComodo"
+					storepass="wh0isy0u"
+					keypass="wh0isy0uth1s1sg0d"
+					keystore="C:\Users\Administrator\.keystore"/>
+			</sequential>
+		</for>
+		<!-- /ac:for -->
+		
+	</target>
+
+
+</project>

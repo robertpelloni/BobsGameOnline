@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/TWL"/>
+	<classpathentry exported="true" kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=BobsGameOnline&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/LWJGL">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Java/libs/lwjgl/native/windows"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/BobNetLibs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HQ2X"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Easing"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bgEditor"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/IBXM"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BobSharedLibs"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre/lib/plugin.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Easing"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/HQ2X"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
