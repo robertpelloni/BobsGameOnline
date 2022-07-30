@@ -2,23 +2,8 @@ package com.bobsgame.client.engine.game.gui.statusbar.buttons;
 
 
 
-import java.io.File;
-
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
-
 import com.bobsgame.GLUtils;
-import com.bobsgame.client.ControlsManager;
-import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.gui.GUIManager;
-import com.bobsgame.client.engine.game.gui.PlayerEditMenu;
-import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
-import com.bobsgame.shared.Utils;
-
-
 
 
 //=========================================================================================================================

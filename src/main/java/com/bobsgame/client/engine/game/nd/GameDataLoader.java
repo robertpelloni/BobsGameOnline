@@ -179,17 +179,17 @@ public class GameDataLoader extends EnginePart
 							if(s.length()>0)
 							{
 								s = s.substring(s.indexOf(":")+1);
-								SoundData data = new SoundData();
-								data.initFromString(s);
+								//SoundData data = new SoundData();
+								//data.initFromString(s);
 
-								Sound sound = new Sound(Engine(),data);
+								//Sound sound = new Sound(Engine(),data);
 
 
 								s = stringList.get(++i);//tileData base64 GZipped intArray
-								sound.byteData = Utils.unzipStringToByteArray(Utils.decodeBase64String(s));
+								//sound.byteData = Utils.unzipStringToByteArray(Utils.decodeBase64String(s));
 
 
-								if(debug)log.debug("Loaded Sound: "+data.name());
+								//if(debug)log.debug("Loaded Sound: "+data.name());
 
 								s = stringList.get(++i);//blank line or another soundData
 							}
@@ -206,17 +206,17 @@ public class GameDataLoader extends EnginePart
 							if(s.length()>0)
 							{
 								s = s.substring(s.indexOf(":")+1);
-								MusicData data = new MusicData();
-								data.initFromString(s);
+								//MusicData data = new MusicData();
+								//data.initFromString(s);
 
-								Music music = new Music(Engine(),data);
+								//Music music = new Music(Engine(),data);
 
 
 								s = stringList.get(++i);//tileData base64 GZipped intArray
-								music.byteData = Utils.unzipStringToByteArray(Utils.decodeBase64String(s));
+								//music.byteData = Utils.unzipStringToByteArray(Utils.decodeBase64String(s));
 
 
-								if(debug)log.debug("Loaded Music: "+data.name());
+								//if(debug)log.debug("Loaded Music: "+data.name());
 
 								s = stringList.get(++i);//blank line or another soundData
 							}

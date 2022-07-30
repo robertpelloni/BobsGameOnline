@@ -1,6 +1,5 @@
 package com.bobsgame.client.engine.entity;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
@@ -8,21 +7,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import slick.Texture;
 
 
-import com.bobsgame.ClientMain;
 import com.bobsgame.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.client.engine.game.FriendCharacter;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.Player;
-import com.bobsgame.client.engine.map.Area;
-import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
-import com.bobsgame.shared.EntityData;
-import com.bobsgame.shared.MapData;
-import com.bobsgame.shared.SpriteAnimationSequence;
 import com.bobsgame.shared.SpriteData;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 
 

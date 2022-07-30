@@ -50,7 +50,7 @@ public class FriendManager extends EnginePart
 
 			//write back with timesrun+1
 
-			File sessionFile = new File("C:\\simulator.txt");
+			File sessionFile = new File("F:\\source\\games\\bobsgame\\workspace\\simulator.txt");
 
 			if(sessionFile.exists()==false)
 			{

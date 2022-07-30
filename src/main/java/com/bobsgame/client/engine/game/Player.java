@@ -114,7 +114,6 @@ public class Player extends Character
 	@Override
 	public void update()
 	{//=========================================================================================================================
-
 		if(ClientGameEngine().playerExistsInMap==false)return;
 
 		super.update();
@@ -322,7 +321,7 @@ public class Player extends Character
 	//=========================================================================================================================
 	public void handlePlayerControls()
 	{//=========================================================================================================================
-
+        System.out.println("Handling player controls...");
 
 			if(
 
@@ -337,12 +336,15 @@ public class Player extends Character
 
 			)
 			{
+				if (ClientGameEngine().controlsEnabled == false) System.out.println("controlsEnabled is somehow false");
+				if (ClientGameEngine().areAnyMenusOpen()) System.out.println("A menu is currently open for a reason");
 				noInput=true;
 				running=false;
 				forceX=0;
 				forceY=0;
 				return;
 			}
+			System.out.println("Time to handle movement");
 
 			//TODO: move all the input stuff into the controlsManager and have it send in a direction pressed
 
@@ -359,21 +361,21 @@ public class Player extends Character
 
 
 
-			if(ControlsManager().BUTTON_RIGHT_HELD==true&&ControlsManager().BUTTON_DOWN_HELD==true){direction=DOWNRIGHT;}
+			if(ControlsManager().BUTTON_RIGHT_HELD==true&&ControlsManager().BUTTON_DOWN_HELD==true){System.out.println("MOVING RIGHT DOWN");direction=DOWNRIGHT;}
 			else
-			if(ControlsManager().BUTTON_RIGHT_HELD==true&&ControlsManager().BUTTON_UP_HELD==true){direction=UPRIGHT;}
+			if(ControlsManager().BUTTON_RIGHT_HELD==true&&ControlsManager().BUTTON_UP_HELD==true){System.out.println("MOVING RIGHT UP");direction=UPRIGHT;}
 			else
-			if(ControlsManager().BUTTON_LEFT_HELD==true&&ControlsManager().BUTTON_DOWN_HELD==true){direction=DOWNLEFT;}
+			if(ControlsManager().BUTTON_LEFT_HELD==true&&ControlsManager().BUTTON_DOWN_HELD==true){System.out.println("MOVING LEFT DOWN");direction=DOWNLEFT;}
 			else
-			if(ControlsManager().BUTTON_LEFT_HELD==true&&ControlsManager().BUTTON_UP_HELD==true){direction=UPLEFT;}
+			if(ControlsManager().BUTTON_LEFT_HELD==true&&ControlsManager().BUTTON_UP_HELD==true){System.out.println("MOVING LEFT UP");direction=UPLEFT;}
 			else
-			if(ControlsManager().BUTTON_RIGHT_HELD==true){direction=RIGHT;}
+			if(ControlsManager().BUTTON_RIGHT_HELD==true){System.out.println("MOVING RIGHT");direction=RIGHT;}
 			else
-			if(ControlsManager().BUTTON_LEFT_HELD==true){direction=LEFT;}
+			if(ControlsManager().BUTTON_LEFT_HELD==true){System.out.println("MOVING LEFT");direction=LEFT;}
 			else
-			if(ControlsManager().BUTTON_UP_HELD==true){direction=UP;}
+			if(ControlsManager().BUTTON_UP_HELD==true){System.out.println("MOVING UP");direction=UP;}
 			else
-			if(ControlsManager().BUTTON_DOWN_HELD==true){direction=DOWN;}
+			if(ControlsManager().BUTTON_DOWN_HELD==true){System.out.println("MOVING DOWN");direction=DOWN;}
 			else
 			noInput=true;
 

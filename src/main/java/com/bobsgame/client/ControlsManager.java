@@ -396,19 +396,19 @@ public class ControlsManager
 			if(Mouse.isButtonDown(0))MOUSEBUTTON_0_HELD=true;else MOUSEBUTTON_0_HELD=false;
 
 			if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)
-					//||Keyboard.isKeyDown(Keyboard.KEY_D)
+					||Keyboard.isKeyDown(Keyboard.KEY_D)
 					)KEY_RIGHT_HELD=true;else KEY_RIGHT_HELD=false;
 
 			if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)
-					//||Keyboard.isKeyDown(Keyboard.KEY_A)
+					||Keyboard.isKeyDown(Keyboard.KEY_A)
 					)KEY_LEFT_HELD=true;else KEY_LEFT_HELD=false;
 
 			if(Keyboard.isKeyDown(Keyboard.KEY_UP)
-					//||Keyboard.isKeyDown(Keyboard.KEY_W)
+					||Keyboard.isKeyDown(Keyboard.KEY_W)
 					)KEY_UP_HELD=true;else KEY_UP_HELD=false;
 
 			if(Keyboard.isKeyDown(Keyboard.KEY_DOWN)
-					//||Keyboard.isKeyDown(Keyboard.KEY_S)
+					||Keyboard.isKeyDown(Keyboard.KEY_S)
 					)KEY_DOWN_HELD=true;else KEY_DOWN_HELD=false;
 
 			if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))KEY_SPACE_HELD=true;else KEY_SPACE_HELD=false;//was A

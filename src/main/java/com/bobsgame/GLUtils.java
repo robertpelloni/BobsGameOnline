@@ -2,12 +2,6 @@ package com.bobsgame;
 
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
-import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL14.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL21.*;
 //import static org.lwjgl.opengl.GL30.*;
 //import static org.lwjgl.opengl.GL31.*;
 //import static org.lwjgl.opengl.GL32.*;
@@ -18,23 +12,13 @@ import static org.lwjgl.opengl.GL21.*;
 //import static org.lwjgl.opengl.GL43.*;
 
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL14;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL21;
-
-import static org.lwjgl.opengl.ARBFramebufferObject.*;
-import static org.lwjgl.opengl.EXTFramebufferObject.*;
 
 import java.awt.Font;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 

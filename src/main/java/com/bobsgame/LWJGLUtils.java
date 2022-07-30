@@ -5,48 +5,30 @@ import static org.lwjgl.opengl.ARBFramebufferObject.*;
 import static org.lwjgl.opengl.EXTFramebufferObject.*;
 
 
-import static org.lwjgl.opengl.ARBProgram.*;
-import static org.lwjgl.opengl.ARBFragmentProgram.*;
 import static org.lwjgl.opengl.ARBFragmentShader.*;
-import static org.lwjgl.opengl.ARBGetProgramBinary.*;
-import static org.lwjgl.opengl.ARBGpuShader5.*;
-import static org.lwjgl.opengl.ARBProgramInterfaceQuery.*;
-import static org.lwjgl.opengl.ARBVertexProgram.*;
 import static org.lwjgl.opengl.ARBVertexShader.*;
 import static org.lwjgl.opengl.ARBShaderObjects.*;
-import static org.lwjgl.opengl.ARBShaderSubroutine.*;
-import static org.lwjgl.opengl.ARBSeparateShaderObjects.*;
 
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL21.*;
-
 
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.util.ArrayList;
 
-import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.LWJGLUtil;
-import org.lwjgl.Sys;
 import org.lwjgl.input.Controller;
 import org.lwjgl.input.Controllers;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.ContextAttribs;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
-import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.opengl.Util;
 import org.slf4j.LoggerFactory;
 

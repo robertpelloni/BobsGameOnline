@@ -1,6 +1,5 @@
 package com.bobsgame.client.state;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import org.lwjgl.opengl.Display;
@@ -9,7 +8,6 @@ import slick.Texture;
 
 import com.bobsgame.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.game.gui.MenuPanel;
 import com.bobsgame.shared.Utils;
 
@@ -87,7 +85,7 @@ public class GlowTileBackground extends MenuPanel
 
 		glowTileFramesTexture = new Texture[tileFrames];
 		for(int i=0;i<tileFrames;i++)
-		glowTileFramesTexture[i] = GLUtils.loadTexture("res/guiBackground/glowTileFrames/"+i+".png");
+		glowTileFramesTexture[i] = GLUtils.loadTexture("res/guiBackground/glowTileFrames/" +i+".png");
 
 		glowTiles.clear();
 

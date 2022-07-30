@@ -1,69 +1,26 @@
 package com.bobsgame.client.engine.game.stadium;
 
 
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
-
-
-
-
-import static org.lwjgl.opengl.ARBMultitexture.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL14.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL21.*;
 //import static org.lwjgl.opengl.GL30.*;
 //import static org.lwjgl.opengl.GL31.*;
 //import static org.lwjgl.opengl.GL32.*;
 //import static org.lwjgl.opengl.GL33.*;
 //import static org.lwjgl.opengl.GL40.*;
 
-import org.jboss.netty.channel.ChannelFuture;
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.MessageEvent;
 import org.slf4j.LoggerFactory;
-
-import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
 import com.bobsgame.GLUtils;
 import com.bobsgame.LWJGLUtils;
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.entity.Sprite;
-import com.bobsgame.client.engine.game.FriendCharacter;
-import com.bobsgame.client.engine.game.Item;
-import com.bobsgame.client.engine.game.nd.GameDataLoader;
 import com.bobsgame.client.engine.game.nd.ND;
-import com.bobsgame.client.engine.game.nd.NDGameEngine;
 import com.bobsgame.client.engine.game.nd.bobsgame.BobsGame;
-import com.bobsgame.client.engine.game.nd.bobsgame.game.Block;
 import com.bobsgame.client.engine.game.nd.bobsgame.game.GameLogic;
-import com.bobsgame.client.engine.game.nd.bobsgame.game.Piece;
 import com.bobsgame.client.engine.game.nd.bobsgame.game.Settings;
-import com.bobsgame.client.engine.game.nd.bobsgame.game.GameLogic.FrameState;
-import com.bobsgame.client.engine.game.nd.bobsgame.game.GameLogic.NetworkPacket;
-import com.bobsgame.client.engine.game.nd.bobsgame.game.Piece.RotationType;
 import com.bobsgame.client.engine.map.Area;
-import com.bobsgame.client.engine.text.BobFont;
-import com.bobsgame.client.engine.text.BobFont.BitmapFont;
-import com.bobsgame.client.engine.text.Caption;
-import com.bobsgame.client.network.UDPConnection;
 import com.bobsgame.net.BobNet;
-import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-import com.bobsgame.shared.MapData.RenderOrder;
-import com.bobsgame.GLUtils;
-import com.google.gson.Gson;
 
 
 //=========================================================================================================================
@@ -230,7 +187,7 @@ public class BobsGameStadium extends StadiumGameEngine
 		int len = num.length();
 		for(int n=0;n<4-len;n++)num = "0"+num;//pad to 4 zeros
 
-		titleScreenTexture = GLUtils.loadTexture("res/guiBackground/bobsGameLogoAnim/"+num+".png");
+		titleScreenTexture = GLUtils.loadTexture("res/guiBackground/bobsGameLogoAnim/" +num+".png");
 
 
 	}

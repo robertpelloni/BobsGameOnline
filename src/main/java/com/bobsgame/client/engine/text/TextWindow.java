@@ -2,9 +2,6 @@ package com.bobsgame.client.engine.text;
 
 
 
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
-
 //import static org.lwjgl.opengl.GL13.*;
 //import static org.lwjgl.opengl.GL14.*;
 //import static org.lwjgl.opengl.GL15.*;
@@ -18,21 +15,11 @@ import static org.lwjgl.opengl.GL12.*;
 //import static org.lwjgl.opengl.GL41.*;
 //import static org.lwjgl.opengl.GL42.*;
 
-import java.awt.MediaTracker;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.util.Scanner;
 
-import org.lwjgl.BufferUtils;
 //import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.Display;
-import org.slf4j.LoggerFactory;
+        import org.slf4j.LoggerFactory;
 
 import slick.Texture;
 
@@ -40,8 +27,7 @@ import ch.qos.logback.classic.Logger;
 
 import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-import com.bobsgame.GLUtils;
+        import com.bobsgame.GLUtils;
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;

@@ -1,13 +1,10 @@
 package com.bobsgame.client.engine.text;
 
-import java.io.File;
-
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
 import com.bobsgame.client.console.Console;
-import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.Utils;
 
 

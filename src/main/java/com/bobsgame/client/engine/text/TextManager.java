@@ -2,26 +2,12 @@ package com.bobsgame.client.engine.text;
 
 
 
-import static org.lwjgl.opengl.GL11.GL_NEAREST;
-import static org.lwjgl.opengl.GL11.GL_REPEAT;
-import static org.lwjgl.opengl.GL11.GL_RGBA;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_WRAP_S;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_WRAP_T;
-import static org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE;
-import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glTexImage2D;
-import static org.lwjgl.opengl.GL11.glTexParameteri;
 
 //import java.awt.Font;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 
-import org.lwjgl.opengl.Display;
 import org.slf4j.LoggerFactory;
 
 import slick.Texture;
@@ -30,7 +16,6 @@ import slick.TrueTypeFont;
 import ch.qos.logback.classic.Logger;
 
 import com.bobsgame.GLUtils;
-import com.bobsgame.client.ControlsManager;
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
@@ -38,13 +23,9 @@ import com.bobsgame.client.engine.entity.Entity;
 import com.bobsgame.client.engine.entity.ScreenSprite;
 import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.event.Dialogue;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.text.BobFont.BitmapFont;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.Utils;
-
-import easing.Easing;
-
 
 
 //=========================================================================================================================

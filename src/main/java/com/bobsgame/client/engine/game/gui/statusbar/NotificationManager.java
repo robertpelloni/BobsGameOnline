@@ -1,21 +1,13 @@
 package com.bobsgame.client.engine.game.gui.statusbar;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import slick.Texture;
 
 import com.bobsgame.GLUtils;
-import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.gui.statusbar.notification.Notification;
-import com.bobsgame.shared.Utils;
-
-
-
-
-
 
 
 //=========================================================================================================================
