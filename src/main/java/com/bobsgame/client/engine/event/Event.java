@@ -635,9 +635,9 @@ public class Event extends ServerObject
 		else if(currentCommand.commandString.equals(EventData.setPlayerToTempPlayerWithSprite_SPRITE.getCommand())){setPlayerToTempPlayerWithSprite_SPRITE();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerToNormalPlayer.getCommand())){setPlayerToNormalPlayer();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerExists_BOOL.getCommand())){setPlayerExists_BOOL();}
-		else if(currentCommand.commandString.equals(EventData.setPlayerControlsEnabled_BOOL.getCommand())){setPlayerControlsEnabled_BOOL();}
+		//else if(currentCommand.commandString.equals(EventData.setPlayerControlsEnabled_BOOL.getCommand())){setPlayerControlsEnabled_BOOL();}
 		else if(currentCommand.commandString.equals(EventData.enablePlayerControls.getCommand())){enablePlayerControls();}
-		else if(currentCommand.commandString.equals(EventData.disablePlayerControls.getCommand())){disablePlayerControls();}
+		//else if(currentCommand.commandString.equals(EventData.disablePlayerControls.getCommand())){disablePlayerControls();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerAutoPilot_BOOL.getCommand())){setPlayerAutoPilot_BOOL();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerShowNameCaption_BOOL.getCommand())){setPlayerShowNameCaption_BOOL();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerShowAccountTypeCaption_BOOL.getCommand())){setPlayerShowAccountTypeCaption_BOOL();}
@@ -760,7 +760,7 @@ public class Event extends ServerObject
 		else if(currentCommand.commandString.equals(EventData.stopAllMusic.getCommand())){stopAllMusic();}
 		else if(currentCommand.commandString.equals(EventData.fadeOutMusic_MUSIC_INT.getCommand())){fadeOutMusic_MUSIC_INT();}
 		else if(currentCommand.commandString.equals(EventData.fadeOutAllMusic_INT.getCommand())){fadeOutAllMusic_INT();}
-		else if(currentCommand.commandString.equals(EventData.blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC.getCommand())){blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC();}
+		//else if(currentCommand.commandString.equals(EventData.blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC.getCommand())){blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC();}
 		else if(currentCommand.commandString.equals(EventData.blockUntilMusicDone_MUSIC.getCommand())){blockUntilMusicDone_MUSIC();}
 		else if(currentCommand.commandString.equals(EventData.blockUntilAllMusicDone.getCommand())){blockUntilAllMusicDone();}
 
