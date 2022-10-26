@@ -131,14 +131,14 @@
             <artifactId>netlibs</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>F:/source/games/bobsgame/workspace/BobsNetLibs/target/netlibs-1.0.jar</systemPath>
+            <systemPath>${project.basedir}/../BobsNetLibs/target/netlibs-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.bobsgame</groupId>
             <artifactId>shared</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/shared-1.0.jar</systemPath>
+            <systemPath>${project.basedir}/../BobsSharedLibs/target/shared-1.0.jar</systemPath>
         </dependency>
     </dependencies>
 
