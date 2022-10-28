@@ -5,6 +5,7 @@ package com.bobsgame.client.engine.event;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -80,22 +81,23 @@ public class Event extends ServerObject
 		EventManager().eventList.add(this);//this tracks events created for areas and entities that don't exist after the map is unloaded, so they don't have to be loaded from the server and parsed again.
 	}
 
-	//=========================================================================================================================
-	public Event(Engine g, EventData eventData)
-	{//=========================================================================================================================
-
+	public Event(Engine g, EventData eventData) {
 		super(g);
 
 		this.data = eventData;
 		setInitialized_S(true);
 
-		for(int i=0;i<EventManager().eventList.size();i++){if(EventManager().eventList.get(i).id()==data.id()){log.error("Event already exists:"+data.name());return;}}
-		EventManager().eventList.add(this);//this tracks events created for areas and entities that don't exist after the map is unloaded, so they don't have to be loaded from the server and parsed again.
+		for (int i = 0; i < EventManager().eventList.size(); i++) {
+			if (EventManager().eventList.get(i).id() == data.id()) {
+				log.error("Event already exists:" + data.name());
+				return;
+			}
+		}
+
+		// this tracks events created for areas and entities that don't exist after the map is unloaded,
+		// so they don't have to be loaded from the server and parsed again.
+		EventManager().eventList.add(this);
 	}
-
-
-
-
 	public EventData getData(){return data;}
 
 	public int id(){return data.id();}
@@ -451,31 +453,31 @@ public class Event extends ServerObject
 
 	}
 
+	public void doCommand() {
+		if (currentCommand == null) {
+			return;
+		}
 
+		//if (!Objects.equals(currentCommand.commandString, "playerDoAnimationByNameLoop")) {
 
+			if (currentCommand.parameterList != null) {
+				StringBuilder argList = new StringBuilder();
+				for (int i = 0; i < currentCommand.parameterList.size(); i++) {
+					argList.append(" ").append(currentCommand.parameterList.get(i).parameterString);
+				}
+				log.debug("Current Command: " + currentCommand.commandString + " with args " + argList);
+			} else {
+				log.debug("Current Command: " + currentCommand.commandString);
+			}
+		//}
 
-
-	//=========================================================================================================================
-	public void doCommand()
-	{//=========================================================================================================================
-
-		//log.debug("Current Command: "+currentCommand.commandString);
-
-
-		if(currentCommand==null)return;
-
-		//qualifiers. check if TRUE or FALSE. skip children if false.
-
-		if(currentCommand.parameterList!=null)
-		{
-			for(int i=0;i<currentCommand.parameterList.size();i++)
-			{
+		// qualifiers. check if TRUE or FALSE. skip children if false.
+		if (currentCommand.parameterList != null) {
+			for (int i = 0; i < currentCommand.parameterList.size(); i++) {
 				EventParameter e = currentCommand.parameterList.get(i);
 				e.updateParameterVariablesFromString(this);
 			}
 		}
-
-
 
 		if(currentCommand.commandString.equals(EventData.isPlayerTouchingThisArea.getCommand())){isPlayerTouchingThisArea();}
 		else if(currentCommand.commandString.equals(EventData.isPlayerWalkingIntoThisDoor.getCommand())){isPlayerWalkingIntoThisDoor();}
@@ -635,9 +637,9 @@ public class Event extends ServerObject
 		else if(currentCommand.commandString.equals(EventData.setPlayerToTempPlayerWithSprite_SPRITE.getCommand())){setPlayerToTempPlayerWithSprite_SPRITE();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerToNormalPlayer.getCommand())){setPlayerToNormalPlayer();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerExists_BOOL.getCommand())){setPlayerExists_BOOL();}
-		//else if(currentCommand.commandString.equals(EventData.setPlayerControlsEnabled_BOOL.getCommand())){setPlayerControlsEnabled_BOOL();}
+		else if(currentCommand.commandString.equals(EventData.setPlayerControlsEnabled_BOOL.getCommand())){setPlayerControlsEnabled_BOOL();}
 		else if(currentCommand.commandString.equals(EventData.enablePlayerControls.getCommand())){enablePlayerControls();}
-		//else if(currentCommand.commandString.equals(EventData.disablePlayerControls.getCommand())){disablePlayerControls();}
+		else if(currentCommand.commandString.equals(EventData.disablePlayerControls.getCommand())){disablePlayerControls();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerAutoPilot_BOOL.getCommand())){setPlayerAutoPilot_BOOL();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerShowNameCaption_BOOL.getCommand())){setPlayerShowNameCaption_BOOL();}
 		else if(currentCommand.commandString.equals(EventData.setPlayerShowAccountTypeCaption_BOOL.getCommand())){setPlayerShowAccountTypeCaption_BOOL();}
@@ -760,7 +762,7 @@ public class Event extends ServerObject
 		else if(currentCommand.commandString.equals(EventData.stopAllMusic.getCommand())){stopAllMusic();}
 		else if(currentCommand.commandString.equals(EventData.fadeOutMusic_MUSIC_INT.getCommand())){fadeOutMusic_MUSIC_INT();}
 		else if(currentCommand.commandString.equals(EventData.fadeOutAllMusic_INT.getCommand())){fadeOutAllMusic_INT();}
-		//else if(currentCommand.commandString.equals(EventData.blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC.getCommand())){blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC();}
+		else if(currentCommand.commandString.equals(EventData.blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC.getCommand())){blockUntilLoopingMusicDoneWithLoopAndReplaceWith_MUSIC_MUSIC();}
 		else if(currentCommand.commandString.equals(EventData.blockUntilMusicDone_MUSIC.getCommand())){blockUntilMusicDone_MUSIC();}
 		else if(currentCommand.commandString.equals(EventData.blockUntilAllMusicDone.getCommand())){blockUntilAllMusicDone();}
 
@@ -2961,7 +2963,7 @@ public class Event extends ServerObject
 
 		//Entity e = (Entity) currentCommand.parameterList.get(p++).object;
 		GameString gs = (GameString)currentCommand.parameterList.get(p++).object;
-		if(gs.getInitialized_S()==false)return;
+		//if(gs.getInitialized_S()==false)return;
 
 		String dirString = gs.text();
 
@@ -3020,8 +3022,8 @@ public class Event extends ServerObject
 		if(Player()!=null&&Player().sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(Player().sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(Player().sprite.getInitialized_S()==false)return;
 
 			Player().setCurrentAnimationByName(gs.text());
 
@@ -3042,7 +3044,7 @@ public class Event extends ServerObject
 	//===============================================================================================
 	private void playerDoAnimationByNameLoop_STRINGanimationName_INTticksPerFrame_BOOLrandomUpToTicks_INTticksBetweenLoops_BOOLrandomUpToTicks()//(INTticksPerFrame)
 	{//===============================================================================================
-		int p=0;
+		int p = 0;
 		//Entity e = (Entity) currentCommand.parameterList.get(p++).object;
 		GameString gs = (GameString) currentCommand.parameterList.get(p++).object;
 		int ticksBetweenFrames = currentCommand.parameterList.get(p++).i;
@@ -3050,12 +3052,9 @@ public class Event extends ServerObject
 		int ticksBetweenLoop = currentCommand.parameterList.get(p++).i;
 		boolean randomUpToTicksBetweenLoop = currentCommand.parameterList.get(p++).b;
 
-
-		if(Player()!=null&&Player().sprite!=null&&gs!=null)
-		{
-
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(Player().sprite.getInitialized_S()==false)return;
+		if (Player() != null && Player().sprite != null && gs != null) {
+			//if(gs.getInitialized_S()==false) return; //wait for object to receive server data in its update() function
+			//if(Player().sprite.getInitialized_S()==false) return;
 
 			Player().setCurrentAnimationByName(gs.text());
 
@@ -3070,7 +3069,6 @@ public class Event extends ServerObject
 			Player().setRandomUpToTicksBetweenAnimationLoop(randomUpToTicksBetweenLoop);
 
 			getNextCommand();
-
 		}
 	}
 
@@ -3089,8 +3087,8 @@ public class Event extends ServerObject
 		if(Player()!=null&&Player().sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(Player().sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(Player().sprite.getInitialized_S()==false)return;
 
 			Player().setCurrentAnimationByName(gs.text());
 
@@ -3116,8 +3114,8 @@ public class Event extends ServerObject
 		if(Player()!=null&&Player().sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(Player().sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(Player().sprite.getInitialized_S()==false)return;
 
 			Player().setCurrentAnimationByName(gs.text());
 
@@ -3579,7 +3577,7 @@ public class Event extends ServerObject
 
 		Entity e = (Entity) currentCommand.parameterList.get(p++).object;
 		GameString gs = (GameString)currentCommand.parameterList.get(p++).object;
-		if(gs.getInitialized_S()==false)return;
+		//if(gs.getInitialized_S()==false)return;
 
 		String dirString = gs.text();
 
@@ -3735,8 +3733,8 @@ public class Event extends ServerObject
 		if(e!=null&&e.sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(e.sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(e.sprite.getInitialized_S()==false)return;
 
 			e.setCurrentAnimationByName(gs.text());
 
@@ -3760,8 +3758,8 @@ public class Event extends ServerObject
 		if(e!=null&&e.sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(e.sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(e.sprite.getInitialized_S()==false)return;
 
 			e.setCurrentAnimationByName(gs.text());
 
@@ -3787,8 +3785,8 @@ public class Event extends ServerObject
 		if(e!=null&&e.sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(e.sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(e.sprite.getInitialized_S()==false)return;
 
 			e.setCurrentAnimationByName(gs.text());
 
@@ -3819,8 +3817,8 @@ public class Event extends ServerObject
 		if(e!=null&&e.sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(e.sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(e.sprite.getInitialized_S()==false)return;
 
 			e.setCurrentAnimationByName(gs.text());
 
@@ -3853,8 +3851,8 @@ public class Event extends ServerObject
 		if(e!=null&&e.sprite!=null&&gs!=null)
 		{
 
-			if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
-			if(e.sprite.getInitialized_S()==false)return;
+			//if(gs.getInitialized_S()==false)return; //wait for object to receive server data in its update() function
+			//if(e.sprite.getInitialized_S()==false)return;
 
 			e.setCurrentAnimationByName(gs.text());
 

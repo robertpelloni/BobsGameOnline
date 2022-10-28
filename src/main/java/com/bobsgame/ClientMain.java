@@ -1301,68 +1301,45 @@ public class ThreadB extends Thread {
 	public static String serverAddress = BobNet.releaseServerAddress;
 	public static String STUNServerAddress = BobNet.releaseSTUNServerAddress;
 
-	//=========================================================================================================================
-	public void mainInit()
-	{//=========================================================================================================================
-
-
-
+	public void mainInit() {
 		boolean debugOnLiveServer = false;
 
-		if(BobNet.debugMode==true || debugOnLiveServer)
-		{
-
-			System.setProperty("org.lwjgl.util.Debug","true");
-			System.setProperty("org.lwjgl.util.NoChecks","false");
+		if (BobNet.debugMode == true || debugOnLiveServer) {
+			System.setProperty("org.lwjgl.util.Debug", "true");
+			System.setProperty("org.lwjgl.util.NoChecks", "false");
 
 			serverAddress = BobNet.debugServerAddress;
 			STUNServerAddress = BobNet.debugSTUNServerAddress;
 
-
 			initDebugLogger();
-
-		}
-		else
-		{
+		} else {
 			System.setProperty("org.lwjgl.util.Debug","false");
 			System.setProperty("org.lwjgl.util.NoChecks","true");
-
 
 			initReleaseLogger();
 		}
 
-
 		log.info("Main Init...");
-
 
 		lwjglUtils = new LWJGLUtils();
 
-		if(isApplet==false)
-		{
+		if (isApplet == false) {
 			LWJGLUtils.setDisplayMode();
-		}
-		else
-		if(isApplet==true)
-		{
-			try
-			{
+		} else if (isApplet == true) {
+			try {
 				Display.setParent(appletCanvas);
-			}
-			catch(LWJGLException e)
-			{
+			} catch (LWJGLException e) {
 				e.printStackTrace();
 			}
 		}
 
-		//this is done before init game so we can put debug stuff
+		// this is done before init game so we can put debug stuff
 		console = new Console();
 		utils = new Utils();
-
 
 		LWJGLUtils.initGL("Project 2");
 		LWJGLUtils.initTWL();
 		LWJGLUtils.initControllers();
-
 
 		audioUtils = new AudioUtils();
 
@@ -1371,24 +1348,13 @@ public class ThreadB extends Thread {
 
 		StatsUtils.initDebugInfo();
 
-
-
-
-		if(previewClientInEditor == false && BobNet.debugMode == false)
-		doLegalScreen();
-
-
-
-
+		if (previewClientInEditor == false && BobNet.debugMode == false) {
+			doLegalScreen();
+		}
 
 		cacheManager.initCache();
 
-
-
 		stateManager = new StateManager();
-
-
-
 
 		//-------------------
 		//init game
@@ -1396,13 +1362,13 @@ public class ThreadB extends Thread {
 		log.info("Init Client...");
 		makeNewClientEngine();
 
-
-
 		//-------------------
 		//init login GUI
 		//-------------------
 		log.info("Init GUIs...");
-		if(glowTileBackground==null)glowTileBackground = new GlowTileBackground();
+		if (glowTileBackground == null) {
+			glowTileBackground = new GlowTileBackground();
+		}
 
 		loginState = new LoginState();
 		loggedOutState = new LoggedOutState();
@@ -1411,21 +1377,14 @@ public class ThreadB extends Thread {
 		titleScreenState = new TitleScreenState();
 		youWillBeNotifiedState = new YouWillBeNotifiedState();
 
+		// TODO: check cookie exists
+		// TODO: check cache/intro
+		// TODO: check registry property
 
+		if (previewClientInEditor == false) {
+			boolean didIntro = false; //Cache.doesDidIntroFileExist();
 
-
-		//TODO:check cookie exists
-		//TODO:check cache/intro
-		//TODO:check registry property
-
-
-		if(previewClientInEditor==false)
-		{
-
-			boolean didIntro = false;//Cache.doesDidIntroFileExist();
-
-			if(didIntro==false)
-			{
+			if (didIntro == false) {
 				introMode = true;
 
 				log.info("Setup Intro...");
@@ -1439,32 +1398,24 @@ public class ThreadB extends Thread {
 				stateManager.setState(clientGameEngine);
 				clientGameEngine.cinematicsManager.fadeFromBlack(10000);
 
-
 				clientGameEngine.mapManager.changeMap("ALPHABobsApartment","atDesk");
 				//clientGameEngine.mapManager.changeMap("GENERIC1UpstairsBedroom1",12*8*2,17*8*2);
 				//clientGameEngine.textManager.text("Yep \"Yuu\" yay. <.><1>bob! yay, \"bob\" yay! <.><0>\"Yuu\" yay, nD. yay yay \"bob's game\" yay- bob's? yay \"bob's\" yay bob's game<1>yep");
-
-
-			}
-			else
-			{
-				if(BobNet.debugMode==false)showControlsImage();
-
+			} else {
+				if (BobNet.debugMode == false) {
+					showControlsImage();
+				}
 				stateManager.setState(loginState);
 			}
 		}
 
-
 		initTime();
-
 
 		//-------------------
 		//fill in the client session info to send to the server for debug/stats
 		//this must be done after everything is initialized.
 		//-------------------
 		initClientInfo();
-
-
 	}
 
 
