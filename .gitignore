@@ -1,7 +1,14 @@
-/target
-*.class
+.idea/
+
+target/
+bin/
+res/data/
+
 nullexitautosave.h.zip
 exitautosave.h.zip
 nullexitautosave.h.zip.temp
-/res/data
+
+dependency-reduced-pom.xml
+
+*.class
 *.bak
