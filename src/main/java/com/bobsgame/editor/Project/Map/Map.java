@@ -11,7 +11,7 @@ import java.awt.image.*;
 
 import javax.swing.Timer;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.HQ2X;
 import com.bobsgame.editor.MapCanvas.MapCanvas;
 import com.bobsgame.editor.Project.GameObject;

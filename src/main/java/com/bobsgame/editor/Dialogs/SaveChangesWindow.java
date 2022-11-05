@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.JDialog;
 import javax.swing.WindowConstants;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 
 public class SaveChangesWindow extends JDialog implements ActionListener
 {

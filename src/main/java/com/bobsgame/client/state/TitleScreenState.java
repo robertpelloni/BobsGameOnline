@@ -5,7 +5,7 @@ import org.lwjgl.opengl.Display;
 
 import slick.Texture;
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 import com.bobsgame.client.GLUtils;
 
 //=========================================================================================================================

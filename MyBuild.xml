@@ -19,7 +19,7 @@
 
 		<jar destfile="${dest}client.jar">
 			<manifest>
-				<attribute name="Main-Class" value="com.bobsgame.client.ClientMain"/>
+				<attribute name="Main-Class" value="com.bobsgame.ClientMain"/>
 				<attribute name="Class-Path" value=". client_lib/jinput.jar client_lib/lwjgl.jar client_lib/lwjgl_test.jar client_lib/lwjgl_util.jar client_lib/lwjgl_util_applet.jar client_lib/lwjgl-debug.jar client_lib/lzma.jar client_lib/TWL.jar client_lib/TWLEffects.jar client_lib/PNGDecoder.jar client_lib/xpp3-1.1.4c.jar client_lib/commons-io-2.1.jar client_lib/hiero.jar client_lib/ibxm.jar client_lib/jinput.jar client_lib/jnlp.jar client_lib/jogg-0.0.7.jar client_lib/jorbis-0.0.15.jar client_lib/lwjgl.jar client_lib/natives-linux.jar client_lib/natives-mac.jar client_lib/natives-win32.jar client_lib/packulike.jar client_lib/pedigree.jar client_lib/scalar.jar client_lib/slick.jar client_lib/slick-examples.jar client_lib/slick-sources.jar client_lib/slick-util.jar client_lib/tinylinepp.jar client_lib/netty-3.5.4.Final.jar client_lib/restfb-1.6.11.jar client_lib/icu4j-3.4.4.jar client_lib/jasypt-1.9.0.jar client_lib/plugin.jar"/>
 			</manifest>
 			<fileset dir="${workspace}BobsGameOnline/bin"/>

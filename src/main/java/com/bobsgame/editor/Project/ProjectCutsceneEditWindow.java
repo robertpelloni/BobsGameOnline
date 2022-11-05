@@ -33,7 +33,7 @@ import javax.swing.event.CaretListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Project.Event.Event;
 import com.bobsgame.editor.Project.Event.EventEditor;
 import com.bobsgame.shared.EventData;

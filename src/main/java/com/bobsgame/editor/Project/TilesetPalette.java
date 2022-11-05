@@ -4,7 +4,7 @@ import java.io.*;
 
 import java.awt.*;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Dialogs.NumberDialog;
 import com.bobsgame.editor.Dialogs.YesNoWindow;
 import com.bobsgame.shared.Utils;

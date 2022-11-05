@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.ControlPanel.PaletteCanvas;
 import com.bobsgame.editor.Dialogs.StringDialog;
 import com.bobsgame.editor.Project.Project;

@@ -17,7 +17,7 @@ import javax.swing.event.MenuListener;
 
 
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.InfoLabelPanel;
 //import com.bobsgame.editor.MultipleTileEditor.MTECanvas;
 import com.bobsgame.editor.Dialogs.NumberDialog;

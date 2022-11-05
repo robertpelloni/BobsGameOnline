@@ -1,1 +1,1 @@
-java.exe -Xmx16000m -XX:+UseParallelGC com.bobsgame.editor.EditorMain
+java.exe -Xmx16000m -XX:+UseParallelGC com.bobsgame.EditorMain

@@ -14,7 +14,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JComponent;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Project.Project;
 import com.bobsgame.editor.Project.TilesetPalette;
 //===============================================================================================

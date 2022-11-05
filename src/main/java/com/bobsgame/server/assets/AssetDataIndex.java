@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.server.ServerMain;
+import com.bobsgame.ServerMain;
 import com.bobsgame.shared.DialogueData;
 import com.bobsgame.shared.EventData;
 import com.bobsgame.shared.FlagData;
@@ -20,7 +20,6 @@ import com.bobsgame.shared.SoundData;
 import com.bobsgame.shared.MapData;
 import com.bobsgame.shared.MapStateData;
 import com.bobsgame.shared.SpriteData;
-import com.bobsgame.net.BobNet;
 
 public class AssetDataIndex
 {

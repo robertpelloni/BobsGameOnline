@@ -12,7 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Dialogs.StringDialog;
 import com.bobsgame.editor.Project.Project;
 import com.bobsgame.editor.Project.Map.Area;

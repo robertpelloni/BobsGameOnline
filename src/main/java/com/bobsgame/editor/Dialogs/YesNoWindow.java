@@ -7,7 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 //===============================================================================================
 public class YesNoWindow extends JDialog implements ActionListener
 {//===============================================================================================

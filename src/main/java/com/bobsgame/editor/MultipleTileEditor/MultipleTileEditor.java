@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.InfoLabelPanel;
 import com.bobsgame.editor.MapCanvas.MapCanvas;
 

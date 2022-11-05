@@ -1,4 +1,4 @@
-package com.bobsgame.client;
+package com.bobsgame;
 
 
 
@@ -43,6 +43,7 @@ import java.awt.image.BufferedImage;
 //import java.awt.Canvas;
 
 
+import com.bobsgame.client.*;
 import netscape.javascript.*;
 
 import org.lwjgl.*;

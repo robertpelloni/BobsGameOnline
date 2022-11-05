@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileFilter;
 import org.apache.commons.io.FileUtils;
 
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Project.Event.Music;
 import com.bobsgame.editor.Project.Event.Sound;
 import com.bobsgame.audio.AudioChannel;

@@ -3,7 +3,7 @@ package com.bobsgame.editor.Dialogs;
 import java.awt.*;
 import java.awt.event.*;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 //===============================================================================================
 public class NumberDialog extends WindowAdapter implements ActionListener
 {//===============================================================================================

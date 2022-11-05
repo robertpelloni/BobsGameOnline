@@ -27,6 +27,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 
+import com.bobsgame.ClientMain;
 import netscape.javascript.JSObject;
 
 import org.apache.commons.io.FileUtils;

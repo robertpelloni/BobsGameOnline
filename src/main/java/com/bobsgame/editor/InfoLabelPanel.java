@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.MapCanvas.MapCanvas;
 //===============================================================================================
 public class InfoLabelPanel extends JPanel

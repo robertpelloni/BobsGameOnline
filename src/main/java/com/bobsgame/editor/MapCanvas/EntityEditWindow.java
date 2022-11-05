@@ -31,7 +31,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 
 import com.bobsgame.editor.Project.GameObject;
 import com.bobsgame.editor.Project.Project;

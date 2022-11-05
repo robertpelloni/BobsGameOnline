@@ -1,4 +1,4 @@
-package com.bobsgame.server;
+package com.bobsgame;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,6 +8,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.bobsgame.server.GameServerTCP;
+import com.bobsgame.server.IndexClientTCP;
 import org.apache.commons.io.FileUtils;
 
 
@@ -25,8 +27,6 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.ConsoleAppender;
-import net.jpountz.lz4.LZ4Compressor;
-import net.jpountz.lz4.LZ4Factory;
 
 import com.bobsgame.net.*;
 

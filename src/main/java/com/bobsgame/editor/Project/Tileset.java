@@ -6,7 +6,7 @@ import java.awt.*;
 
 import java.awt.image.*;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Dialogs.NumberDialog;
 import com.bobsgame.editor.TileCanvas.TileCanvas;
 import com.bobsgame.shared.Utils;

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 import com.bobsgame.client.Cache;
 import com.bobsgame.client.console.Console;
 

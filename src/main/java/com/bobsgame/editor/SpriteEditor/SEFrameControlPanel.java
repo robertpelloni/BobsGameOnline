@@ -35,7 +35,7 @@ import javax.swing.Timer;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Project.Project;
 import com.bobsgame.editor.Project.Event.Event;
 import com.bobsgame.editor.Project.Sprite.Sprite;

@@ -1,5 +1,5 @@
 
-package com.bobsgame.editor;
+package com.bobsgame;
 
 
 import java.awt.*;
@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
+import com.bobsgame.editor.InfoLabelPanel;
 import org.lwjgl.openal.AL;
 
 

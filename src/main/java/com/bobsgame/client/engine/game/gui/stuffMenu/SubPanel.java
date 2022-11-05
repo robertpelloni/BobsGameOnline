@@ -1,6 +1,6 @@
 package com.bobsgame.client.engine.game.gui.stuffMenu;
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 import com.bobsgame.client.engine.game.Clock;
 import com.bobsgame.client.engine.game.FriendManager;
 import com.bobsgame.client.engine.game.ClientGameEngine;

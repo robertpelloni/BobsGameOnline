@@ -20,7 +20,7 @@
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer>
-                  <mainClass>com.bobsgame.editor.EditorMain</mainClass>
+                  <mainClass>com.bobsgame.EditorMain</mainClass>
                 </transformer>
               </transformers>
               <finalName>bgEditor-shaded-${project.version}</finalName>

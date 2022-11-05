@@ -3,7 +3,7 @@ package com.bobsgame.editor.MapCanvas;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.SelectionArea;
 import com.bobsgame.editor.Project.Project;
 import com.bobsgame.editor.Project.Map.Area;

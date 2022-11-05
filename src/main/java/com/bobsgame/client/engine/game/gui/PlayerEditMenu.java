@@ -26,7 +26,7 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.entity.Entity;
 import com.bobsgame.client.engine.game.Player;

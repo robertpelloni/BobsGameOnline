@@ -1,4 +1,4 @@
-package com.bobsgame.serverindex;
+package com.bobsgame;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,6 +11,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 
+import com.bobsgame.serverindex.IndexServerTCP;
 import org.apache.commons.io.FileUtils;
 
 

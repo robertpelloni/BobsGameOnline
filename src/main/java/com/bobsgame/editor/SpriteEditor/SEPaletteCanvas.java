@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.ControlPanel.PaletteCanvas;
 import com.bobsgame.editor.Project.Project;
 import com.bobsgame.editor.Project.Sprite.SpritePalette;

@@ -6,7 +6,7 @@ import java.awt.image.*;
 
 import javax.swing.JComponent;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.SelectionArea;
 import com.bobsgame.editor.Project.Project;
 

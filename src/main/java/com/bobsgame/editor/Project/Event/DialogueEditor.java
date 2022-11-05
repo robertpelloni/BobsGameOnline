@@ -29,7 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 
 
 

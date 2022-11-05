@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.bobsgame.editor.EditorMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Project.Project;
 import com.bobsgame.editor.Project.TilesetPalette;
 import com.bobsgame.shared.Utils;

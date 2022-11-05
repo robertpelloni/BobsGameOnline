@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 
 
 import javax.mail.*;
-import javax.mail.internet.*;
 
 import java.util.*;
 
@@ -15,6 +14,7 @@ import java.util.*;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 
+import com.bobsgame.ServerMain;
 import com.bobsgame.shared.Utils;
 import com.bobsgame.net.*;
 import com.bobsgame.net.BobsGameLeaderBoardAndHighScoreBoard.LeaderBoardScore;
@@ -22,12 +22,8 @@ import com.bobsgame.net.BobsGameLeaderBoardAndHighScoreBoard.LeaderBoardScore;
 
 import com.bobsgame.server.assets.AssetDataIndex;
 import com.maxmind.geoip2.DatabaseReader;
-import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
-import com.maxmind.geoip2.record.City;
 import com.maxmind.geoip2.record.Country;
-import com.maxmind.geoip2.record.Location;
-import com.maxmind.geoip2.record.Postal;
 import com.maxmind.geoip2.record.Subdivision;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.restfb.DefaultFacebookClient;
@@ -89,8 +85,6 @@ import org.slf4j.LoggerFactory;
 
 import net.jpountz.lz4.LZ4Compressor;
 import net.jpountz.lz4.LZ4Factory;
-import net.jpountz.lz4.LZ4FastDecompressor;
-import net.jpountz.lz4.LZ4SafeDecompressor;
 
 //===============================================================================================
 public class GameServerTCP

@@ -1,9 +1,10 @@
-package com.bobsgame.stunserver;
+package com.bobsgame;
 
 import java.io.File;
 import java.io.IOException;
 
 
+import com.bobsgame.stunserver.STUNServerUDP;
 import org.apache.commons.io.FileUtils;
 
 
@@ -19,8 +20,6 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.ConsoleAppender;
 import ch.qos.logback.core.FileAppender;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
-
-import com.bobsgame.net.*;
 
 
 //===============================================================================================

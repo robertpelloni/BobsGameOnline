@@ -4,7 +4,7 @@ package com.bobsgame.client.engine.game.gui;
 import org.lwjgl.opengl.Display;
 
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.game.Clock;

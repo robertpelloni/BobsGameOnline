@@ -4,7 +4,7 @@ package com.bobsgame.client.state;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 import com.bobsgame.client.GLUtils;
 import com.bobsgame.shared.BobColor;
 

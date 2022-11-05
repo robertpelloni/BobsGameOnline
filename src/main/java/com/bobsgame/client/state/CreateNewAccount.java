@@ -1,7 +1,7 @@
 package com.bobsgame.client.state;
 
 
-import com.bobsgame.client.ClientMain;
+import com.bobsgame.ClientMain;
 
 import com.bobsgame.client.engine.game.gui.GUIManager;
 import com.bobsgame.client.engine.game.gui.MenuPanel;

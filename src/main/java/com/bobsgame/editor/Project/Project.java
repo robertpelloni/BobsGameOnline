@@ -19,8 +19,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 
-//import com.bobsgame.client.ClientMain;
-import com.bobsgame.editor.EditorMain;
+//import com.bobsgame.ClientMain;
+import com.bobsgame.EditorMain;
 import com.bobsgame.editor.Dialogs.NumberDialog;
 import com.bobsgame.editor.Dialogs.YesNoWindow;
 import com.bobsgame.editor.Project.Event.GameString;
