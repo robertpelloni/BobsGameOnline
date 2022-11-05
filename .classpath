@@ -2,7 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="res"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="add-exports" value="java.desktop/com.sun.media.sound=ALL-UNNAMED:java.desktop/sun.font=ALL-UNNAMED:java.desktop/sun.swing=ALL-UNNAMED"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/TWL"/>
 	<classpathentry exported="true" kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=BobsGameOnline&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/LWJGL">
@@ -16,7 +21,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/bgEditor"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/IBXM"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/BobSharedLibs"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/jre/lib/plugin.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Easing"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HQ2X"/>
 	<classpathentry kind="output" path="bin"/>
