@@ -15,7 +15,7 @@ import slick.TrueTypeFont;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;

@@ -2,7 +2,7 @@ package com.bobsgame.client.engine.game.gui.statusbar.buttons;
 
 
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.game.ClientGameEngine;
 
 

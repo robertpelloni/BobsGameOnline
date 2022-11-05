@@ -16,24 +16,637 @@
 
 
 <!-- bgo -->
+<dependency org="org.lwjgl" name="lwjgl" rev="3.1.0"/>
+<dependency org="commons-net" name="commons-net" rev="latest.integration"/>
+
+
+<!-- server -->
+<dependency org="ch.qos.logback" name="logback-classic" rev="latest.integration" />
+<dependency org="ch.qos.logback" name="logback-core" rev="latest.integration" />
 <dependency org="com.google.code.gson" name="gson" rev="latest.integration" />
 <dependency org="com.googlecode.soundlibs" name="jorbis" rev="latest.integration" />
-<dependency org="org.slf4j" name="slf4j-api" rev="latest.integration" />
-<dependency org="org.slf4j" name="jcl-over-slf4j" rev="latest.integration" conf="default->runtime" />
-<dependency org="org.slf4j" name="log4j-over-slf4j" rev="latest.integration" conf="default->runtime" />
-<dependency org="ch.qos.logback" name="logback-core" rev="latest.integration" conf="*->master" />
-<dependency org="ch.qos.logback" name="logback-classic" rev="latest.integration" conf="*->master" />
-<dependency org="log4j" name="log4j" rev="latest.integration" conf="default->runtime" />
-<dependency org="commons-net" name="commons-net" rev="latest.integration"/>
-<dependency org="io.netty" name="netty" rev="3.10.6.Final" />
+<dependency org="com.ibm.icu" name="icu4j" rev="latest.integration" />
+<dependency org="com.mchange" name="c3p0" rev="latest.integration" />
 <dependency org="com.restfb" name="restfb" rev="latest.integration"/>
 <dependency org="commons-codec" name="commons-codec" rev="latest.integration" />
 <dependency org="commons-io" name="commons-io" rev="latest.integration"/>
-<dependency org="org.apache.commons" name="commons-compress" rev="latest.integration" />
 
-<dependency org="org.lwjgl" name="lwjgl" rev="3.1.0"/>
+<dependency org="io.netty" name="netty" rev="3.10.6.Final" />
+<dependency org="javax.mail" name="mail" rev="latest.integration"/>
+<dependency org="log4j" name="log4j" rev="latest.integration" />
+<dependency org="mysql" name="mysql-connector-java" rev="latest.integration" />
+<dependency org="org.apache.commons" name="commons-compress" rev="latest.integration"/>
+<dependency org="org.apache.commons" name="commons-email" rev="latest.integration" />
+<dependency org="org.apache.httpcomponents" name="httpclient" rev="latest.integration" />
+<dependency org="org.apache.httpcomponents" name="httpcore" rev="latest.integration" />
+<dependency org="org.jasypt" name="jasypt" rev="latest.integration" />
+<!--dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.7.25" /-->
+<dependency org="org.slf4j" name="jcl-over-slf4j" rev="latest.integration" />
+<!--dependency org="org.slf4j" name="log4j-over-slf4j" rev="1.7.25" /-->
+<dependency org="org.slf4j" name="log4j-over-slf4j" rev="latest.integration" />
+<!--dependency org="org.slf4j" name="slf4j-api" rev="1.7.25" /-->
+<dependency org="org.slf4j" name="slf4j-api" rev="latest.integration" />
+<!--<dependency org="com.maxmind.geoip2" name="geoip2" rev="latest.integration"/>-->
+
+<!-- <dependency org="org.lwjgl.lwjgl" name="parent" rev="latest.integration" /> --><!-- 2.8.5 -->
+<!-- <dependency org="org.lwjgl.lwjgl" name="lwjgl" rev="latest.integration" /> -->
+<!-- <dependency org="org.lwjgl.lwjgl" name="lwjgl_util_applet" rev="latest.integration" /> -->
+<!-- <dependency org="org.lwjgl.lwjgl" name="lwjgl_util" rev="latest.integration" /> -->
+<!-- <dependency org="org.lwjgl.lwjgl" name="lwjgl-platform" rev="latest.integration" />  -->
 
 
+<!--
+=====================================================================================
+sound libs
+=====================================================================================
+-->
+
+
+<!--
+============================
+jorbis
+0.0.17
+included in slick-util, CONTAINS jogg 0.0.7
+============================
+
+<dependency org="org.jcraft" name="jorbis" rev="latest.integration" />
+
+-->
+
+
+<!--
+============================
+jlayer
+1.0.1
+mp3
+============================
+-->
+<!--
+<dependency org="javazoom" name="jlayer" rev="latest.integration" />
+-->
+
+
+<!--
+============================
+mp3spi
+1.9.5
+handle zip files
+============================
+-->
+<!--
+<dependency org="javazoom" name="mp3spi" rev="latest.integration" />
+-->
+
+
+
+
+
+<!--
+============================
+soundlibs
+1.9.5
+archival parent container for jlayer/mp3spi, jorbis/jogg, tritonus-share
+============================
+-->
+<!--
+<dependency org="com.googlecode.soundlibs" name="soundlibs" rev="latest.integration" />
+-->
+
+
+
+<!--
+============================
+tritonus-share
+0.3.7
+mp3, ogg, dsp
+============================
+-->
+
+<!--
+<dependency org="org.tritonus" name="tritonus-share" rev="latest.integration" />
+-->
+
+
+<!-- also ibxm, included in slick-util -->
+
+<!-- IBXM much newer than slick: http://code.google.com/p/micromod/ -->
+
+
+
+<!--
+============================
+commons-dbcp
+1.4
+database connection pooling
+============================
+-->
+<!--
+<dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" />
+-->
+
+
+
+<!--
+============================
+commons-csv
+1.4
+handle csv files (there are other libs linked on the website i might want to use)
+============================
+-->
+<!--  <dependency org="commons-csv" name="commons-csv" rev="latest.integration"/> -->
+
+<!-- 3.5.0 [commons-csv test builds] -->
+<!-- <dependency org="org.apache.solr" name="solr-commons-csv" rev="3.5.0" /> -->
+
+
+<!--
+============================
+commons-vfs2
+2.0
+treat zip files as file system
+============================
+-->
+<!--
+<dependency org="org.apache.commons" name="commons-vfs2" rev="2.0" />
+
+commons-logging-1.1.1
+maven-scm-api-1.4
+plexus-utils-1.5.6
+maven-scm-provider-svnexe-1.4
+maven-scm-provider-svn-commons-1.4
+regexp-1.3
+ant-1.6.2
+commons-net-2.2
+commons-collections-3.1
+commons-httpclient-3.1
+commons-codec-1.2
+jackrabbit-webdav-1.5.2
+jackrabbit-jcr-commons-1.5.2
+jsch-0.1.42
+-->
+
+
+
+
+
+<!--
+=====================================================================================
+system libs
+=====================================================================================
+-->
+
+<!--
+============================
+commons-exec
+1.1
+running system processes
+============================
+-->
+<!--
+<dependency org="org.apache.commons" name="commons-exec" rev="1.1"/>
+-->
+
+
+
+<!--
+============================
+sigar
+1.6.4
+gets system info, uses native libs
+============================
+-->
+<!--
+<dependency org="org.fusesource" name="sigar" rev="1.6.4" />
+-->
+
+
+
+<!--
+============================
+joda-time
+2.1
+time utility (getDayOfWeek)
+============================
+-->
+<!--
+<dependency org="joda-time" name="joda-time" rev="2.1"/>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<dependency org="com.esotericsoftware.kryo" name="kryo" rev="2.20" />
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+=====================================================================================
+misc libs
+=====================================================================================
+-->
+
+<!-- physics libs -->
+
+
+
+<!--
+============================
+jbox2d
+2.1.2.2
+physics
+============================
+-->
+<!--
+<dependency org="org.jbox2d" name="jbox2d" rev="latest.integration"/>
+-->
+
+
+
+<!--
+============================
+jbullet
+
+physics
+============================
+-->
+
+
+
+
+<!--
+============================
+sanselan (commons-imaging)
+0.97-incubator
+image processing
+============================
+-->
+<!--
+<dependency org="org.apache.sanselan" name="" rev="0.97-incubator"/>
+-->
+
+
+<!--
+============================
+rhino
+1.7R4
+javascript interpreter
+============================
+-->
+<!--
+<dependency org="org.mozilla" name="rhino" rev="latest.integration" />
+
+-->
+
+<!--
+============================
+jackson
+4.1.2
+serialize to json
+============================
+-->
+<!--
+<dependency org="com.cedarsoft.serialization" name="jackson" rev="latest.integration" />
+-->
+
+
+
+
+
+<!--
+============================
+restfb
+1.6.11
+facebook
+============================
+
+<dependency org="com.restfb" name="restfb" rev="latest.integration"/>
+
+-->
+
+
+<!--
+============================
+minlog
+1.2
+by KRYO team
+============================
+-->
+<!--
+<dependency org="com.esotericsoftware.minlog" name="minlog" rev="latest.integration" />
+-->
+
+
+
+
+<!--
+============================
+commons-logging (jcl)
+1.1.1
+============================
+-->
+<!--
+<dependency org="commons-logging" name="commons-logging" rev="latest.integration" />
+
+logkit-1.0.1
+avalon-framework-4.1.3
+-->
+
+
+
+
+<!--
+=====================================================================================
+network libs
+=====================================================================================
+-->
+
+<!--
+============================
+commons-net
+3.1
+FTP, NNTP, NTP, etc
+============================
+
+
+<dependency org="commons-net" name="commons-net" rev="3.2"/>
+
+-->
+
+
+<!-- <dependency org="javax.media" name="jmf" rev="2.1.1e" /> -->
+<!-- <dependency org="com.github.sarxos" name="webcam-capture" rev="latest.integration" /> -->
+<!-- <dependency org="com.github.sarxos" name="webcam-capture-driver-jmf" rev="latest.integration"/> -->
+<!-- <dependency org="com.github.sarxos" name="webcam-capture-drivers" rev="latest.integration"/> -->
+<!-- <dependency org="com.github.sarxos" name="webcam-capture-driver-javacv" rev="latest.integration"/> -->
+
+<!--
+<dependency org="org.apache.commons" name="commons-vfs2" rev="latest.integration" />
+-->
+
+<!--
+============================
+jorbis
+0.0.17
+included in slick-util, CONTAINS jogg 0.0.7
+============================
+
+<dependency org="org.jcraft" name="jorbis" rev="latest.integration" />
+
+-->
+
+<!--
+<dependency org="com.googlecode.soundlibs" name="vorbisspi" rev="1.0.3-1" />
+<dependency org="com.googlecode.soundlibs" name="mp3spi" rev="1.9.5-1" />
+<dependency org="javazoom" name="jlayer" rev="1.0.1" />
+<dependency org="com.googlecode.soundlibs" name="vorbisspi" rev="1.0.3-1" />
+<dependency org="com.googlecode.soundlibs" name="tritonus-share" rev="0.3.7-2" />
+<dependency org="com.googlecode.soundlibs" name="jlayer" rev="1.0.1-1" />
+-->
+
+
+<!--
+============================
+soundlibs
+1.9.5
+archival parent container for jlayer/mp3spi, jorbis/jogg, tritonus-share
+============================
+-->
+<!--
+<dependency org="com.googlecode.soundlibs" name="soundlibs" rev="latest.integration" />
+-->
+
+<!--
+============================
+jlayer
+1.0.1
+mp3
+============================
+-->
+<!--
+<dependency org="javazoom" name="jlayer" rev="latest.integration" />
+-->
+
+
+<!--
+<dependency org="com.google.guava" name="guava" rev="14.0-rc1" />
+<dependency org="com.google.code.gson" name="gson" rev="2.7" />
+<dependency org="org.codehaus.jackson" name="jackson-core-lgpl" rev="1.9.12" />
+<dependency org="org.codehaus.jackson" name="jackson-mapper-lgpl" rev="1.9.12" />
+<dependency org="com.amazonaws" name="aws-java-sdk" rev="1.3.27" />
+<dependency org="com.jolbox" name="bonecp" rev="0.8.0-rc1" />
+<dependency org="com.mchange" name="c3p0" rev="0.9.5.2" />
+
+
+
+
+============================
+javax mail
+1.4.6-rc1
+============================
+<dependency org="javax.mail" name="mail" rev="1.5.0-b01"/>
+
+============================
+commons-email
+1.2
+email with attachments, uses javamail
+============================
+<dependency org="org.apache.commons" name="commons-email" rev="1.4" />
+
+============================
+icu4j
+50.1.1
+International Components for Unicode for Java
+needed by jasypt
+============================
+<dependency org="com.ibm.icu" name="icu4j" rev="57.1" />
+
+============================
+org.jasypt
+1.9.0
+encryption lib
+============================
+<dependency org="org.jasypt" name="jasypt" rev="1.9.2" />
+
+
+<dependency org="mysql" name="mysql-connector-java" rev="6.0.4" />  5.1.22
+<dependency org="com.restfb" name="restfb" rev="1.32.0"/>  1.6.11
+
+=====================================================================================
+logging libs
+=====================================================================================
+
+============================
+slf4j
+1.7.2
+wrapper over all other loggers, universal interface, by log4j/logback guy
+============================
+<dependency org="org.slf4j" name="slf4j-api" rev="1.7.21" />
+<dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.7.21" />
+<dependency org="org.slf4j" name="log4j-over-slf4j" rev="1.7.21" />
+
+<dependency org="org.slf4j" name="slf4j-api" rev="latest.integration" /> main library, needs a binding
+
+<dependency org="org.slf4j" name="osgi-over-slf4j" rev="latest.integration" />
+<dependency org="org.slf4j" name="log4j-over-slf4j" rev="latest.integration" /> log4j over slf4j
+<dependency org="org.slf4j" name="jcl-over-slf4j" rev="latest.integration" /> commons-logging over slf4j
+<dependency org="org.slf4j" name="jul-to-slf4j" rev="latest.integration" /> java.utils.logging bridge to slf4j - this is very slow.
+
+<dependency org="org.slf4j" name="slf4j-simple" rev="latest.integration" /> output to system.err
+<dependency org="org.slf4j" name="slf4j-jcl" rev="latest.integration" /> output to commons-logging
+<dependency org="org.slf4j" name="slf4j-log4j12" rev="latest.integration" /> output to log4j 1.2 series
+<dependency org="org.slf4j" name="slf4j-jdk14" rev="latest.integration" /> output to java.utils.logging
+<dependency org="org.slf4j" name="slf4j-nop" rev="latest.integration" /> output to dev/null
+
+<dependency org="org.slf4j" name="slf4j-ext" rev="latest.integration" />
+cal10n-api-0.7.4
+javaassist-3.4.GA
+commons-lang-2.4
+
+<dependency org="org.slf4j" name="slf4j-migrator" rev="latest.integration" />
+<dependency org="org.slf4j" name="slf4j-site" rev="latest.integration" />
+
+============================
+logback
+1.0.9
+successor to log4j
+============================
+
+<dependency org="ch.qos.logback" name="logback-classic" rev="1.1.7" />
+<dependency org="ch.qos.logback" name="logback-core" rev="1.1.7" />
+
+mail-1.4
+janino-2.6.1
+commons-compiler-2.6.1
+groovy-all-2.0.0
+geronimo-jms_1.1_spec.1.0
+servlet-api-2.5
+jansi-1.8
+
+<dependency org="ch.qos.logback" name="logback-examples" rev="latest.integration" />
+<dependency org="ch.qos.logback" name="logback-access" rev="latest.integration" />
+
+logback-access-1.0.9
+tomcat-catalina-7.0.21
+tomcat-servlet-api-7.0.21
+tomcat-juli-7.0.21
+tomcat-util-7.0.21
+jetty-server-7.5.1.v20110908.jar
+jetty-continuation-7.5.1.v20110908.jar
+jetty-http-7.5.1.v20110908.jar
+jetty-io-7.5.1.v20110908.jar
+jetty-util-7.5.1.v20110908.jar
+
+<dependency org="ch.qos.logback.contrib" name="logback-contrib-parent" rev="0.1.1" />
+
+============================
+log4j 1.x
+1.2.17
+by slf4j/logback guy
+============================
+<dependency org="log4j" name="log4j" rev="1.2.17" />
+
+javaee-api-5.0.2
+mail-1.4.3
+geronimo-jms_1.1_spec-1.0
+
+============================
+commons-logging (jcl)
+1.1.1
+============================
+<dependency org="commons-logging" name="commons-logging" rev="latest.integration" />
+
+logkit-1.0.1
+avalon-framework-4.1.3
+
+============================
+commons-codecs
+1.7
+base64, encoding
+============================
+<dependency org="commons-codec" name="commons-codec" rev="1.10" />
+
+============================
+httpcore (commons httpcomponents)
+4.3-alpha1
+============================
+<dependency org="org.apache.httpcomponents" name="httpcore" rev="4.4.5" />
+
+
+============================
+httpclient (commons httpcomponents) (formerly commons-httpclient 3, now commons-httpcomponents)
+4.2.2
+============================
+<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.4.5" />
+
+============================
+commons-io
+2.4
+FileUtils, IOUtils
+============================
+<dependency org="commons-io" name="commons-io" rev="2.5"/>
+
+============================
+netty
+3.6.0.Final
+wrapper over NIO
+============================
+<dependency org="io.netty" name="netty" rev="3.10.6.Final" />
+
+jboss marshalling-1.3.14
+protobuf-java-2.4.1
+servlet-api-2.5
+activation-1.1.1
+org.osgi.core-1.4.0
+org.osgi.compendium-1.4.0
+slf4j-api-1.6.4
+jboss-logging-spi-2.1.2.GA
+log4j-1.2.16
+
+============================
+steam-condenser
+1.2.1
+steam
+============================
+<dependency org="com.github.koraktor" name="steam-condenser" rev="latest.integration" />
+
+commons-compress 1.4
+xz-1.0
+commons-lang3-3.1
+httpclient-4.2
+httpcore-4.2
+commons-logging-1.1.1
+commons-codec-1.6
+json-20090211
+
+-->
 
 
 

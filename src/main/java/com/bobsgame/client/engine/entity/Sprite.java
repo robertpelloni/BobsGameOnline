@@ -1,22 +1,11 @@
 package com.bobsgame.client.engine.entity;
 
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.GL_TRUE;
-import static org.lwjgl.opengl.GL11.glBindTexture;
-import static org.lwjgl.opengl.GL11.glDisable;
-import static org.lwjgl.opengl.GL11.glEnable;
-import static org.lwjgl.opengl.GL11.glTexParameteri;
-import static org.lwjgl.opengl.GL12.GL_TEXTURE_BASE_LEVEL;
-import static org.lwjgl.opengl.GL12.GL_TEXTURE_MAX_LEVEL;
-import static org.lwjgl.opengl.GL14.GL_GENERATE_MIPMAP;
-
 import hq2x.HQ2X;
 
 import ch.qos.logback.classic.Logger;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -28,9 +17,7 @@ import org.slf4j.LoggerFactory;
 import slick.Texture;
 
 
-
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.Cache;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
@@ -40,12 +27,10 @@ import com.bobsgame.client.engine.game.Item;
 import com.bobsgame.client.engine.map.MapManager;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.EntityData;
 import com.bobsgame.shared.EventData;
 import com.bobsgame.shared.SpriteAnimationSequence;
 import com.bobsgame.shared.SpriteData;
 import com.bobsgame.shared.Utils;
-import com.bobsgame.GLUtils;
 
 
 //=========================================================================================================================

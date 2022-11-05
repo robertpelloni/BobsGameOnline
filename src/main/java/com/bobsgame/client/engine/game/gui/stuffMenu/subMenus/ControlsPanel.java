@@ -3,22 +3,13 @@ package com.bobsgame.client.engine.game.gui.stuffMenu.subMenus;
 
 import org.lwjgl.input.Controller;
 import org.lwjgl.input.Controllers;
-import org.lwjgl.opengl.Display;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.client.ControlsManager;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.gui.GUIManager;
-import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
 import com.bobsgame.client.engine.game.gui.stuffMenu.SubPanel;
 
 import de.matthiasmann.twl.Button;
 import de.matthiasmann.twl.DialogLayout;
 import de.matthiasmann.twl.Label;
-import de.matthiasmann.twl.ScrollPane;
 import de.matthiasmann.twl.Widget;
 
 

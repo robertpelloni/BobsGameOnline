@@ -2,27 +2,14 @@ package com.bobsgame.client.engine.game.gui.gameStore;
 
 
 
-import org.lwjgl.opengl.Display;
-
-import com.bobsgame.ClientMain;
-import com.bobsgame.LWJGLUtils;
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.gui.GUIManager;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
+import com.bobsgame.client.LWJGLUtils;
 
 import de.matthiasmann.twl.Button;
-import de.matthiasmann.twl.Color;
 import de.matthiasmann.twl.DialogLayout;
 import de.matthiasmann.twl.GUI;
 import de.matthiasmann.twl.Label;
-import de.matthiasmann.twl.ScrollPane;
 import de.matthiasmann.twl.TextArea;
-import de.matthiasmann.twl.TextWidget;
 import de.matthiasmann.twl.Widget;
-import de.matthiasmann.twl.renderer.AnimationState;
-import de.matthiasmann.twl.renderer.Image;
 import de.matthiasmann.twl.textarea.SimpleTextAreaModel;
 import de.matthiasmann.twl.theme.AnimatedImage;
 

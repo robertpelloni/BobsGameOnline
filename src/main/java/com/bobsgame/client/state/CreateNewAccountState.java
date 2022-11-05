@@ -2,8 +2,7 @@ package com.bobsgame.client.state;
 
 
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.LWJGLUtils;
 
 import de.matthiasmann.twl.GUI;
 

@@ -3,11 +3,11 @@ package com.bobsgame.client.engine.game.nd.ping;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.game.nd.ND;
-import com.bobsgame.client.engine.game.nd.NDGameEngine;
+
 //=========================================================================================================================
 public class Background extends EnginePart
 {//=========================================================================================================================

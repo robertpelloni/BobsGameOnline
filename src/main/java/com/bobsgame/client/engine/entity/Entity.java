@@ -22,20 +22,13 @@ package com.bobsgame.client.engine.entity;
 
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBindTexture;
-import static org.lwjgl.opengl.GL11.glClearColor;
 
-import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Enumeration;
 import java.util.ArrayList;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 //import java.nio.FloatBuffer;
 
 //import org.lwjgl.BufferUtils;
 //import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.GL11;
 import org.slf4j.LoggerFactory;
 
 import slick.Texture;
@@ -43,37 +36,21 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.client.engine.event.ActionManager;
-import com.bobsgame.client.engine.event.Dialogue;
 import com.bobsgame.client.engine.event.Event;
-import com.bobsgame.client.engine.event.EventManager;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.Player;
 import com.bobsgame.client.engine.map.Area;
 import com.bobsgame.client.engine.map.Door;
 import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
-import com.bobsgame.client.engine.map.MapState;
-import com.bobsgame.client.engine.map.WarpArea;
-import com.bobsgame.client.engine.text.Caption;
-import com.bobsgame.client.engine.text.CaptionManager;
-import com.bobsgame.client.engine.text.BobFont;
-import com.bobsgame.client.engine.text.TextManager;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.EntityData;
 import com.bobsgame.shared.EventData;
-import com.bobsgame.shared.MapData;
 import com.bobsgame.shared.SpriteAnimationSequence;
 import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
-import com.bobsgame.GLUtils;
-
-
-
 
 
 //=========================================================================================================================

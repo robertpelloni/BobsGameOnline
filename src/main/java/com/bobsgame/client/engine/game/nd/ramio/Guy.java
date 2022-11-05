@@ -2,15 +2,11 @@ package com.bobsgame.client.engine.game.nd.ramio;
 
 
 
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.glBindTexture;
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.map.Door;
 import com.bobsgame.client.engine.map.Map;
 import com.bobsgame.shared.EntityData;
 

@@ -1,19 +1,10 @@
 package com.bobsgame.client.engine.map;
 
-import java.util.ArrayList;
-
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.entity.SpriteManager;
-import com.bobsgame.client.engine.entity.RandomCharacter;
-import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.event.Event;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.shared.AreaData;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-
 
 
 //=========================================================================================================================

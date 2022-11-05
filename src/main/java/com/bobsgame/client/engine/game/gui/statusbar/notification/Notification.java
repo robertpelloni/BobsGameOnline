@@ -4,17 +4,12 @@ import org.lwjgl.opengl.Display;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.engine.Engine;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.gui.statusbar.NotificationManager;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.client.engine.game.gui.statusbar.buttons.StatusBarButton;
-import com.bobsgame.client.engine.game.gui.statusbar.buttons.StuffButton;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.MoneyCaption;
 import com.bobsgame.client.engine.text.Caption;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 import com.bobsgame.client.engine.text.BobFont;
 

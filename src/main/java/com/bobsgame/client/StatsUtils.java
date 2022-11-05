@@ -1,23 +1,8 @@
-package com.bobsgame;
+package com.bobsgame.client;
 
-import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
-import java.util.TimeZone;
 
-import org.apache.commons.net.ntp.NTPUDPClient;
-import org.apache.commons.net.ntp.NtpV3Packet;
-import org.apache.commons.net.ntp.TimeInfo;
-import org.apache.commons.net.ntp.TimeStamp;
-import org.lwjgl.LWJGLUtil;
 import org.lwjgl.Sys;
-import org.lwjgl.opengl.Display;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;

@@ -1,11 +1,6 @@
 package com.bobsgame.client.engine.entity;
 
 
-import org.lwjgl.Sys;
-import org.lwjgl.opengl.Display;
-
-import com.bobsgame.ClientMain;
-
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.console.ConsoleText;
 import com.bobsgame.client.engine.Engine;
@@ -13,9 +8,7 @@ import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.client.engine.map.Area;
 import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
 import com.bobsgame.shared.EntityData;
-import com.bobsgame.shared.Utils;
 
 import easing.Easing;
 

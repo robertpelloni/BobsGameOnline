@@ -1,49 +1,14 @@
 package com.bobsgame.client.engine.game.nd.ndmenu;
 
 
-import java.io.File;
-import java.nio.FloatBuffer;
-import java.util.ArrayList;
-
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
-import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL14.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL21.*;
-import static org.lwjgl.opengl.GL30.*;
-import static org.lwjgl.opengl.GL31.*;
-import static org.lwjgl.opengl.GL32.*;
-import static org.lwjgl.opengl.GL33.*;
-import static org.lwjgl.opengl.GL40.*;
-import static org.lwjgl.opengl.GL41.*;
-
-
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.Item;
 import com.bobsgame.client.engine.game.nd.ND;
 import com.bobsgame.client.engine.game.nd.NDGameEngine;
-import com.bobsgame.client.engine.sound.AudioManager;
-import com.bobsgame.client.engine.text.BobFont;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
 
-import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.glClear;
-
-import static org.lwjgl.opengl.GL11.glDrawBuffer;
-import static org.lwjgl.opengl.GL11.glOrtho;
 import static org.lwjgl.opengl.GL11.glVertexPointer;
 
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.Display;
+import com.bobsgame.client.GLUtils;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.ControlsManager;
 //=========================================================================================================================
 public class NDMenu extends NDGameEngine
 {//=========================================================================================================================

@@ -2,39 +2,19 @@ package com.bobsgame.client.engine.game;
 
 import static org.jboss.netty.channel.Channels.pipeline;
 
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
-
-import org.jboss.netty.bootstrap.ConnectionlessBootstrap;
-import org.jboss.netty.channel.AdaptiveReceiveBufferSizePredictorFactory;
-import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
-import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.MessageEvent;
-import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
-import org.jboss.netty.channel.socket.DatagramChannelFactory;
-import org.jboss.netty.channel.socket.nio.NioDatagramChannelFactory;
-import org.jboss.netty.handler.codec.frame.DelimiterBasedFrameDecoder;
-import org.jboss.netty.handler.codec.frame.Delimiters;
-import org.jboss.netty.handler.codec.string.StringDecoder;
-import org.jboss.netty.handler.codec.string.StringEncoder;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
 import com.bobsgame.client.console.Console;
-import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.entity.Character;
 import com.bobsgame.client.engine.game.gui.GameChallengeNotificationPanel;
 import com.bobsgame.client.engine.game.nd.NDGameEngine;
 import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.text.Caption;
 import com.bobsgame.client.network.FriendUDPConnection;
 
-import com.bobsgame.client.network.UDPConnection;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.net.GameSave;
 import com.bobsgame.shared.BobColor;

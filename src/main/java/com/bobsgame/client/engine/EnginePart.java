@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
+import com.bobsgame.client.ClientMain;
 import com.bobsgame.client.ControlsManager;
 import com.bobsgame.client.engine.cinematics.CinematicsManager;
 import com.bobsgame.client.engine.entity.Cameraman;
@@ -17,10 +17,8 @@ import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.Player;
 import com.bobsgame.client.engine.game.Wallet;
 import com.bobsgame.client.engine.game.gui.*;
-import com.bobsgame.client.engine.game.gui.GUIManager.*;
 import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
 import com.bobsgame.client.engine.game.gui.statusbar.*;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.*;
 import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
 import com.bobsgame.client.engine.game.nd.*;
 import com.bobsgame.client.engine.map.Map;

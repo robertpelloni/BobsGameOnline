@@ -1,4 +1,4 @@
-package com.bobsgame;
+package com.bobsgame.client;
 
 
 
@@ -9,37 +9,24 @@ package com.bobsgame;
 //import java.awt.GraphicsEnvironment;
 //import java.awt.event.WindowAdapter;
 //import java.awt.event.WindowEvent;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.Writer;
-import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.util.TimeZone;
-import java.util.concurrent.TimeUnit;
-
 
 
 import javax.imageio.ImageIO;
-import javax.swing.JApplet;
 
 
 import java.applet.Applet;
@@ -48,7 +35,6 @@ import java.awt.image.BufferedImage;
 //import java.awt.event.*;
 //import java.util.ArrayList;
 //import java.util.Random;
-import javax.swing.*;
 
 //import java.util.Timer;
 
@@ -57,23 +43,11 @@ import javax.swing.*;
 //import java.awt.Canvas;
 
 
-
-
-import net.java.games.input.AWTEnvironmentPlugin;
-import net.java.games.input.ControllerEnvironment;
-import net.java.games.input.DirectAndRawInputEnvironmentPlugin;
-import net.java.games.input.DirectInputEnvironmentPlugin;
-
-
 import netscape.javascript.*;
 
 import org.lwjgl.*;
-import org.lwjgl.input.Controller;
-import org.lwjgl.input.Controllers;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.openal.AL;
-import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.*;
 
 
@@ -89,10 +63,6 @@ import org.lwjgl.opengl.*;
 //import static org.lwjgl.opengl.GL30.*;
 //import static org.lwjgl.opengl.GL21.*;
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL14.*;
-import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL11.*;
 
 //import com.bobsgame.editor.BobColor;
@@ -101,18 +71,7 @@ import static org.lwjgl.opengl.GL11.*;
 //import org.newdawn.slick.util.ResourceLoader;
 
 
-
-import de.matthiasmann.twl.Button;
-import de.matthiasmann.twl.DialogLayout;
-import de.matthiasmann.twl.EditField;
-import de.matthiasmann.twl.Event;
-import de.matthiasmann.twl.FPSCounter;
 import de.matthiasmann.twl.GUI;
-import de.matthiasmann.twl.Label;
-import de.matthiasmann.twl.Timer;
-import de.matthiasmann.twl.Widget;
-import de.matthiasmann.twl.renderer.lwjgl.LWJGLRenderer;
-import de.matthiasmann.twl.theme.ThemeManager;
 
 
 import org.slf4j.LoggerFactory;
@@ -127,28 +86,17 @@ import ch.qos.logback.core.ConsoleAppender;
 import ch.qos.logback.core.FileAppender;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
 
-import com.bobsgame.client.Cache;
-import com.bobsgame.client.ControlsManager;
 import com.bobsgame.client.console.*;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.cinematics.CinematicsManager;
 import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.Player;
-import com.bobsgame.client.engine.game.gui.PlayerEditMenu;
-import com.bobsgame.client.engine.game.nd.ND;
-import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
 import com.bobsgame.client.network.GameClientTCP;
-import com.bobsgame.client.network.GameClientTCP.BobsGameClientHandler;
 import com.bobsgame.client.state.KeyboardScreen;
 import com.bobsgame.client.state.CreateNewAccountState;
 import com.bobsgame.client.state.GlowTileBackground;
 import com.bobsgame.client.state.LegalScreen;
 import com.bobsgame.client.state.LoggedOutState;
-import com.bobsgame.client.state.LoginScreen;
 import com.bobsgame.client.state.LoginState;
 import com.bobsgame.client.state.ServersHaveShutDownState;
-import com.bobsgame.client.state.State;
 import com.bobsgame.client.state.StateManager;
 import com.bobsgame.client.state.TitleScreenState;
 import com.bobsgame.client.state.YouWillBeNotifiedState;
@@ -157,14 +105,10 @@ import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.Utils;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ntp.NTPUDPClient;
-import org.apache.commons.net.ntp.NtpUtils;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.commons.net.ntp.TimeStamp;
-import org.apache.commons.net.time.TimeTCPClient;
-import org.apache.commons.net.time.TimeUDPClient;
 
 import com.bobsgame.audio.AudioUtils;
 
@@ -498,7 +442,7 @@ public class ClientMain extends Applet
 						{
 							try{Thread.currentThread().setName("ClientMain_mainLoop");}catch(SecurityException e){e.printStackTrace();}
 
-							if(BobNet.debugMode==false)browser = JSObject.getWindow(clientMain);
+							//if(BobNet.debugMode==false)browser = JSObject.getWindow(clientMain);
 
 							started=true;
 

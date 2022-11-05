@@ -1,6 +1,5 @@
 package com.bobsgame.client.engine.game;
 
-import com.bobsgame.ClientMain;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.event.ServerObject;

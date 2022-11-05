@@ -4,23 +4,17 @@ import java.util.ArrayList;
 
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.MessageEvent;
-import org.lwjgl.opengl.Display;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.engine.Engine;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.game.FriendCharacter;
-import com.bobsgame.client.engine.game.Item;
 import com.bobsgame.client.engine.game.MiniGameEngine;
 import com.bobsgame.client.engine.text.BobFont;
 import com.bobsgame.client.engine.text.Caption;
-import com.bobsgame.client.network.FriendUDPConnection;
 import com.bobsgame.client.network.UDPConnection;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-import com.bobsgame.GLUtils;
 
 
 //=========================================================================================================================

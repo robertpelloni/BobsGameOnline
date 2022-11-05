@@ -1,27 +1,10 @@
 package com.bobsgame.client.network;
 
-import org.jboss.netty.channel.Channels.*;
-
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Point;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
-import java.net.MalformedURLException;
-import java.net.SocketAddress;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-
 
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
@@ -29,7 +12,6 @@ import org.jboss.netty.channel.AdaptiveReceiveBufferSizePredictorFactory;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelEvent;
 import org.jboss.netty.channel.ChannelFuture;
-import org.jboss.netty.channel.ChannelHandler;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
@@ -43,23 +25,14 @@ import org.jboss.netty.handler.codec.frame.DelimiterBasedFrameDecoder;
 import org.jboss.netty.handler.codec.frame.Delimiters;
 import org.jboss.netty.handler.codec.string.StringDecoder;
 import org.jboss.netty.handler.codec.string.StringEncoder;
-import org.jboss.netty.handler.execution.ExecutionHandler;
-import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
 import org.jboss.netty.handler.timeout.ReadTimeoutException;
-import org.jboss.netty.handler.timeout.ReadTimeoutHandler;
-import org.jboss.netty.util.HashedWheelTimer;
-import org.jboss.netty.util.Timeout;
-import org.jboss.netty.util.Timer;
-import org.jboss.netty.util.TimerTask;
 import org.slf4j.LoggerFactory;
 
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.StatsUtils;
+import com.bobsgame.client.ClientMain;
 import com.bobsgame.client.console.Console;
-import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.event.Dialogue;
@@ -70,12 +43,7 @@ import com.bobsgame.client.engine.event.ServerObject;
 import com.bobsgame.client.engine.event.Skill;
 import com.bobsgame.client.engine.game.FriendCharacter;
 import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.gui.GUIManager;
-import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
 import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
 import com.bobsgame.client.engine.sound.Music;
 import com.bobsgame.client.engine.sound.Sound;
 import com.bobsgame.net.BobNet;

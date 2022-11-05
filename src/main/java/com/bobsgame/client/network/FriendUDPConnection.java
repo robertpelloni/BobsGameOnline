@@ -5,17 +5,11 @@ import java.net.InetSocketAddress;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.MessageEvent;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.client.console.Console;
+import com.bobsgame.client.ClientMain;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.game.FriendCharacter;
-import com.bobsgame.client.engine.game.FriendCharacter.FriendData;
-import com.bobsgame.client.engine.game.nd.GameDataLoader;
-import com.bobsgame.client.engine.game.nd.NDGameEngine;
-import com.bobsgame.client.engine.game.nd.bobsgame.BobsGame;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.net.GameSave;
-import com.bobsgame.shared.BobColor;
 
 
 //===============================================================================================

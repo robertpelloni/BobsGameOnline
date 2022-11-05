@@ -1,45 +1,17 @@
 package com.bobsgame.client.engine.entity;
 
-import static org.lwjgl.opengl.GL11.GL_NEAREST;
-import static org.lwjgl.opengl.GL11.GL_REPEAT;
-import static org.lwjgl.opengl.GL11.GL_RGBA;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_WRAP_S;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_WRAP_T;
-import static org.lwjgl.opengl.GL11.GL_TRUE;
-import static org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE;
-import static org.lwjgl.opengl.GL11.glBindTexture;
-import static org.lwjgl.opengl.GL11.glDisable;
-import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glTexImage2D;
-import static org.lwjgl.opengl.GL11.glTexParameteri;
-import static org.lwjgl.opengl.GL12.GL_TEXTURE_BASE_LEVEL;
-import static org.lwjgl.opengl.GL12.GL_TEXTURE_MAX_LEVEL;
-import static org.lwjgl.opengl.GL14.GL_GENERATE_MIPMAP;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.IntBuffer;
-import java.util.Enumeration;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
 
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.Cache;
-import com.bobsgame.client.console.Console;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.entity.Character;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.map.Area;
 import com.bobsgame.client.engine.map.Door;
 import com.bobsgame.client.engine.map.Map;

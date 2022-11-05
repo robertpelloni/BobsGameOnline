@@ -1,4 +1,4 @@
-package com.bobsgame;
+package com.bobsgame.client;
 
 
 import static org.lwjgl.opengl.ARBFramebufferObject.*;

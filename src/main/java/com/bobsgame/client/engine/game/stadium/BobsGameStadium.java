@@ -13,8 +13,8 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.GLUtils;
+import com.bobsgame.client.LWJGLUtils;
 import com.bobsgame.client.engine.game.nd.ND;
 import com.bobsgame.client.engine.game.nd.bobsgame.BobsGame;
 import com.bobsgame.client.engine.game.nd.bobsgame.game.GameLogic;

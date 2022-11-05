@@ -2,7 +2,6 @@ package com.bobsgame.client.engine.entity;
 
 
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
@@ -13,19 +12,14 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.console.Console;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.Player;
 import com.bobsgame.client.engine.map.Area;
 import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
 import com.bobsgame.client.engine.text.Caption;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.EntityData;
-import com.bobsgame.shared.MapData;
-import com.bobsgame.shared.SpriteAnimationSequence;
 import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 import com.bobsgame.client.engine.text.BobFont;

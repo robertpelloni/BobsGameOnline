@@ -1,22 +1,12 @@
 package com.bobsgame.client.state;
 
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import slick.Texture;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.console.Console;
-import com.bobsgame.client.console.ConsoleText;
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.state.GlowTileBackground.GlowTile;
-import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-
-import de.matthiasmann.twl.GUI;
+import com.bobsgame.client.ClientMain;
+import com.bobsgame.client.GLUtils;
 
 //=========================================================================================================================
 public class TitleScreenState extends State

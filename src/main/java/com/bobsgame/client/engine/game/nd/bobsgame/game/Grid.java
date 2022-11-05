@@ -2,24 +2,17 @@ package com.bobsgame.client.engine.game.nd.bobsgame.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
-
-import javax.swing.colorchooser.ColorSelectionModel;
 
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.game.nd.bobsgame.BobsGame;
-import com.bobsgame.client.engine.game.nd.bobsgame.game.*;
 import com.bobsgame.client.engine.game.nd.bobsgame.game.BlockType.TurnFromBlockTypeToType;
 import com.bobsgame.client.engine.game.nd.bobsgame.game.GameLogic.MovementType;
 import com.bobsgame.client.engine.game.nd.bobsgame.game.Settings.*;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
 
 import easing.Easing;
 

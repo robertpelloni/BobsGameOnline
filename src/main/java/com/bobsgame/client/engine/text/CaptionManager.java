@@ -2,23 +2,16 @@ package com.bobsgame.client.engine.text;
 
 import java.util.ArrayList;
 
-import org.lwjgl.opengl.Display;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.console.Console;
-import com.bobsgame.client.console.ConsoleText;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.client.engine.entity.Cameraman;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.map.Area;
 import com.bobsgame.client.engine.text.BobFont.BitmapFont;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 
 

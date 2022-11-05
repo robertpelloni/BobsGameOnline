@@ -2,18 +2,13 @@ package com.bobsgame.client.engine.event;
 
 
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
+import com.bobsgame.client.ClientMain;
 import com.bobsgame.client.Cache;
 import com.bobsgame.client.console.Console;
 
@@ -25,14 +20,9 @@ import com.bobsgame.client.engine.sound.*;
 import com.bobsgame.client.engine.text.*;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.EventData;
-import com.bobsgame.shared.MapData;
-import com.bobsgame.shared.MusicData;
-import com.bobsgame.shared.SpriteAnimationSequence;
 import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 import com.bobsgame.client.engine.game.*;
-import com.bobsgame.client.engine.game.gui.*;
-import com.bobsgame.client.engine.game.gui.statusbar.*;
 import com.bobsgame.client.engine.game.gui.statusbar.notification.*;
 import com.bobsgame.client.engine.game.stadium.BobsGameStadium;
 

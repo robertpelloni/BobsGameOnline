@@ -6,9 +6,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,7 +14,6 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.lwjgl.opengl.Display;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -30,56 +26,27 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.engine.Engine;
+import com.bobsgame.client.ClientMain;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.entity.Sprite;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.Player;
-import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
-import com.bobsgame.client.engine.game.gui.stuffMenu.SubPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.ControlsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.DebugInfoPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.ItemsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.LogsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.MessagesPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.SettingsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.StatusPanel;
 import com.bobsgame.client.engine.text.Caption;
-import com.bobsgame.client.engine.text.CaptionManager;
-import com.bobsgame.client.engine.text.BobFont;
-import com.bobsgame.client.network.GameClientTCP;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.net.GameSave;
-import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.Utils;
-import com.bobsgame.GLUtils;
-import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
-import com.restfb.types.User;
 
 import de.matthiasmann.twl.ComboBox;
 import de.matthiasmann.twl.DialogLayout;
 import de.matthiasmann.twl.EditField;
 import de.matthiasmann.twl.EditField.Callback;
 import de.matthiasmann.twl.Button;
-import de.matthiasmann.twl.GUI;
 import de.matthiasmann.twl.Label;
-import de.matthiasmann.twl.ListBox;
 import de.matthiasmann.twl.ScrollPane;
 import de.matthiasmann.twl.ToggleButton;
-import de.matthiasmann.twl.Widget;
 import de.matthiasmann.twl.model.OptionBooleanModel;
 import de.matthiasmann.twl.model.SimpleChangableListModel;
 import de.matthiasmann.twl.model.SimpleIntegerModel;
-import de.matthiasmann.twl.theme.AnimatedImage;
-
-
-import netscape.javascript.*;
-
 
 
 //=========================================================================================================================

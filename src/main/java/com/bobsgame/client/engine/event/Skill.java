@@ -1,12 +1,8 @@
 package com.bobsgame.client.engine.event;
 
-import com.bobsgame.ClientMain;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.shared.DialogueData;
-import com.bobsgame.shared.MusicData;
 import com.bobsgame.shared.SkillData;
-import com.bobsgame.shared.SoundData;
+
 //=========================================================================================================================
 public class Skill extends ServerObject
 {//=========================================================================================================================

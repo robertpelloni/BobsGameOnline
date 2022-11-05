@@ -1,25 +1,15 @@
 package com.bobsgame.client.engine.map;
 
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.glBindTexture;
-
 import java.util.Enumeration;
 import java.util.ArrayList;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.ControlsManager;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.entity.Cameraman;
-import com.bobsgame.client.engine.entity.Character;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.entity.SpriteManager;
 import com.bobsgame.client.engine.entity.RandomCharacter;
-import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.event.Event;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.Player;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.DoorData;
 import com.bobsgame.shared.Utils;

@@ -6,7 +6,7 @@ import org.lwjgl.opengl.Display;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.game.gui.MenuPanel;
 import com.bobsgame.shared.Utils;

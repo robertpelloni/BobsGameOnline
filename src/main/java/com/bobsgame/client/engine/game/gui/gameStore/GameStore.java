@@ -1,35 +1,9 @@
 package com.bobsgame.client.engine.game.gui.gameStore;
 
-import org.lwjgl.opengl.Display;
-
-import com.bobsgame.ClientMain;
-
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.gui.GUIManager;
 import com.bobsgame.client.engine.game.gui.MenuPanel;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.ControlsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.DebugInfoPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.ItemsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.LogsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.MessagesPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.SettingsPanel;
-import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.StatusPanel;
 
-import de.matthiasmann.twl.DialogLayout;
-import de.matthiasmann.twl.GUI;
-import de.matthiasmann.twl.Label;
 import de.matthiasmann.twl.ScrollPane;
-import de.matthiasmann.twl.ToggleButton;
-import de.matthiasmann.twl.Widget;
-import de.matthiasmann.twl.model.OptionBooleanModel;
-import de.matthiasmann.twl.model.SimpleIntegerModel;
-
-
-
-
 
 
 //=========================================================================================================================

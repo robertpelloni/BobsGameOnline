@@ -1,10 +1,7 @@
 package com.bobsgame.client.engine.event;
 
-import com.bobsgame.ClientMain;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.shared.FlagData;
-import com.bobsgame.shared.MusicData;
 
 //=========================================================================================================================
 public class Flag extends ServerObject

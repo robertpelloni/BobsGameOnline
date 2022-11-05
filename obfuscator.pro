@@ -15,7 +15,7 @@
 
 -repackageclasses com.bobsgame.client
 
--keep public class com.bobsgame.ClientMain
+-keep public class com.bobsgame.client.ClientMain
 {
 	public *;
 }

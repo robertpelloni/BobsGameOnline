@@ -8,14 +8,11 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
-import com.bobsgame.client.engine.Engine;
+import com.bobsgame.client.GLUtils;
+import com.bobsgame.client.LWJGLUtils;
 import com.bobsgame.client.state.State;
 import com.bobsgame.net.BobNet;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-import com.bobsgame.GLUtils;
 
 //=========================================================================================================================
 public class Console

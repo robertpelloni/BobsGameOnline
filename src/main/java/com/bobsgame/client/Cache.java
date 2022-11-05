@@ -21,8 +21,6 @@ import java.io.OutputStream;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
@@ -40,12 +38,9 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.console.ConsoleText;
 import com.bobsgame.net.BobNet;
-import com.bobsgame.shared.SpriteData;
 import com.bobsgame.shared.Utils;
 //===============================================================================================
 public class Cache

@@ -24,8 +24,8 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.GLUtils;
+import com.bobsgame.client.LWJGLUtils;
 import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.entity.SpriteManager;
 import com.bobsgame.client.engine.game.nd.ND;

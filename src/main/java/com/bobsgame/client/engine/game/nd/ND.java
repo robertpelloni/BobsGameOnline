@@ -15,8 +15,8 @@ import org.lwjgl.opengl.Display;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.GLUtils;
+import com.bobsgame.client.LWJGLUtils;
 
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.console.ConsoleText;

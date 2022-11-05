@@ -1,32 +1,16 @@
 package com.bobsgame.client.engine.game.gui.stuffMenu;
 
 
-import org.lwjgl.opengl.Display;
-
-import com.bobsgame.ClientMain;
-
-import com.bobsgame.client.console.Console;
-import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.gui.GUIManager;
 import com.bobsgame.client.engine.game.gui.MenuPanel;
-import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.client.engine.game.gui.stuffMenu.subMenus.*;
 
 
-import de.matthiasmann.twl.DialogLayout;
-import de.matthiasmann.twl.DialogLayout.Group;
-import de.matthiasmann.twl.GUI;
-import de.matthiasmann.twl.Label;
-import de.matthiasmann.twl.ProgressBar;
 import de.matthiasmann.twl.ScrollPane;
-import de.matthiasmann.twl.Scrollbar;
-import de.matthiasmann.twl.Scrollbar.Orientation;
 import de.matthiasmann.twl.model.OptionBooleanModel;
 import de.matthiasmann.twl.model.SimpleIntegerModel;
 import de.matthiasmann.twl.ToggleButton;
-import de.matthiasmann.twl.Widget;
+
 //=========================================================================================================================
 public class StuffMenu extends MenuPanel
 {//=========================================================================================================================

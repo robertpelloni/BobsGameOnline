@@ -2,7 +2,7 @@ package com.bobsgame.client.engine.game.nd.ndmenu;
 
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.state.GlowTileBackground;
 

@@ -1,10 +1,6 @@
 package com.bobsgame.client.engine.game.gui.stuffMenu;
 
-import org.lwjgl.opengl.Display;
-
-import com.bobsgame.ClientMain;
-import com.bobsgame.client.ControlsManager;
-import com.bobsgame.client.engine.Engine;
+import com.bobsgame.client.ClientMain;
 import com.bobsgame.client.engine.game.Clock;
 import com.bobsgame.client.engine.game.FriendManager;
 import com.bobsgame.client.engine.game.ClientGameEngine;
@@ -15,9 +11,6 @@ import com.bobsgame.client.engine.game.gui.PlayerEditMenu;
 import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
 import com.bobsgame.client.engine.game.gui.statusbar.NotificationManager;
 import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.ClockCaption;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.DayCaption;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.MoneyCaption;
 import com.bobsgame.client.engine.game.nd.ND;
 import com.bobsgame.net.GameSave;
 import com.bobsgame.client.engine.event.EventManager;

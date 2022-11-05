@@ -18,8 +18,8 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.ClientMain;
+import com.bobsgame.client.LWJGLUtils;
 import com.bobsgame.client.console.*;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.entity.Sprite;

@@ -1,25 +1,19 @@
 package com.bobsgame.client.engine.game.gui;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import org.lwjgl.LWJGLException;
-
-import com.bobsgame.ClientMain;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.LWJGLUtils;
 import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.FriendCharacter;
 import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
 import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
-import com.bobsgame.client.engine.game.nd.NDGameEngine;
 import com.bobsgame.client.state.KeyboardScreen;
 
 
 
 import de.matthiasmann.twl.GUI;
-import de.matthiasmann.twl.renderer.lwjgl.LWJGLRenderer;
-import de.matthiasmann.twl.theme.ThemeManager;
+
 //=========================================================================================================================
 public class GUIManager extends EnginePart
 {//=========================================================================================================================

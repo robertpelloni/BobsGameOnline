@@ -2,17 +2,11 @@ package com.bobsgame.client.engine.game.gui.statusbar.captions;
 
 import org.lwjgl.opengl.Display;
 
-import com.bobsgame.GLUtils;
-import com.bobsgame.client.engine.Engine;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.client.engine.map.Light;
-import com.bobsgame.client.engine.text.Caption;
-import com.bobsgame.client.engine.text.CaptionManager;
 import com.bobsgame.shared.BobColor;
-import com.bobsgame.shared.Utils;
-import com.bobsgame.client.engine.text.BobFont;
-
 
 
 //=========================================================================================================================

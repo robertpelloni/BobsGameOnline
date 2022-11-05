@@ -3,14 +3,9 @@ package com.bobsgame.client.engine.map;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import static org.lwjgl.opengl.GL11.*;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.Display;
-
 
 
 import org.slf4j.LoggerFactory;
@@ -21,13 +16,10 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.Cache;
-import com.bobsgame.client.ControlsManager;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.LightData;
 import com.bobsgame.shared.Utils;

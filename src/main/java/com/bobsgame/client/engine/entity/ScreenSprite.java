@@ -1,19 +1,10 @@
 package com.bobsgame.client.engine.entity;
 
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.glBindTexture;
-
-import org.lwjgl.opengl.Display;
-
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.map.Door;
-import com.bobsgame.client.engine.map.Map;
 import com.bobsgame.shared.EntityData;
-import com.bobsgame.shared.MapData;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 //=========================================================================================================================
 public class ScreenSprite extends Entity

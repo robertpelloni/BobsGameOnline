@@ -27,7 +27,7 @@ import ch.qos.logback.classic.Logger;
 
 import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.shared.BobColor;
-        import com.bobsgame.GLUtils;
+        import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;

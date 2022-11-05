@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import slick.Texture;
 
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.shared.SpriteData;

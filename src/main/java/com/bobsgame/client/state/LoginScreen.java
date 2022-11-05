@@ -1,27 +1,13 @@
 package com.bobsgame.client.state;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.StringTokenizer;
-
-import org.lwjgl.opengl.Display;
-
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.StatsUtils;
+import com.bobsgame.client.ClientMain;
 import com.bobsgame.client.Cache;
-import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.game.gui.GUIManager;
 import com.bobsgame.client.engine.game.gui.MenuPanel;
-import com.bobsgame.client.engine.map.Map;
-import com.bobsgame.client.engine.map.MapManager;
-import com.bobsgame.client.network.GameClientTCP;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.types.User;
 
 import de.matthiasmann.twl.Button;
 import de.matthiasmann.twl.DialogLayout;
@@ -30,22 +16,7 @@ import de.matthiasmann.twl.Event;
 import de.matthiasmann.twl.GUI;
 import de.matthiasmann.twl.Label;
 import de.matthiasmann.twl.ScrollPane;
-import de.matthiasmann.twl.Timer;
 import de.matthiasmann.twl.ToggleButton;
-import de.matthiasmann.twl.Widget;
-
-
-
-
-import java.applet.*;
-import java.awt.BorderLayout;
-import java.awt.Panel;
-import java.awt.TextArea;
-import java.awt.TextField;
-
-import netscape.javascript.JSObject;
-import netscape.javascript.JSException;
-
 
 
 //=========================================================================================================================

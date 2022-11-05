@@ -3,12 +3,6 @@ package com.bobsgame.client.engine.game.stadium;
 
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
-import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL14.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL21.*;
 //import static org.lwjgl.opengl.GL30.*;
 //import static org.lwjgl.opengl.GL31.*;
 //import static org.lwjgl.opengl.GL32.*;
@@ -16,43 +10,17 @@ import static org.lwjgl.opengl.GL21.*;
 //import static org.lwjgl.opengl.GL40.*;
 
 
+import com.bobsgame.client.GLUtils;
+import com.bobsgame.client.LWJGLUtils;
 
-
-import java.io.File;
-
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.Display;
-
-import slick.Texture;
-
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
-
-import com.bobsgame.client.console.Console;
-import com.bobsgame.client.console.ConsoleText;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.game.nd.ND;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.FriendCharacter;
-import com.bobsgame.client.engine.game.Item;
-import com.bobsgame.client.engine.game.gui.MenuPanel;
-import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
 import com.bobsgame.client.engine.map.Area;
-import com.bobsgame.client.engine.map.Light;
-import com.bobsgame.client.engine.map.MapManager;
-
 
 
 import com.bobsgame.client.state.State;
 import com.bobsgame.client.state.StateManager;
-import com.bobsgame.shared.Utils;
-
-import easing.Easing;
-
 
 
 //=========================================================================================================================

@@ -1,18 +1,12 @@
 package com.bobsgame.client.engine.sound;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 
-import com.bobsgame.ClientMain;
 import com.bobsgame.client.Cache;
 import com.bobsgame.client.engine.Engine;
-import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.event.ServerObject;
-import com.bobsgame.shared.MusicData;
 import com.bobsgame.shared.SoundData;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.audio.AudioChannel;
 import com.bobsgame.audio.AudioUtils;
 //=========================================================================================================================

@@ -1,50 +1,25 @@
 package com.bobsgame.client.engine;
 
-import static org.lwjgl.opengl.GL11.GL_ONE;
-import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 
-
-import java.io.IOException;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.io.IOUtils;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.ControlsManager;
 import com.bobsgame.client.console.Console;
 import com.bobsgame.client.console.ConsoleText;
 import com.bobsgame.client.engine.cinematics.CinematicsManager;
 import com.bobsgame.client.engine.entity.Cameraman;
-import com.bobsgame.client.engine.entity.Character;
-import com.bobsgame.client.engine.entity.Entity;
 import com.bobsgame.client.engine.entity.SpriteManager;
-import com.bobsgame.client.engine.entity.Sprite;
 import com.bobsgame.client.engine.event.ActionManager;
-import com.bobsgame.client.engine.event.Dialogue;
-import com.bobsgame.client.engine.event.Event;
 import com.bobsgame.client.engine.event.EventManager;
-import com.bobsgame.client.engine.event.Flag;
-import com.bobsgame.client.engine.event.GameString;
-import com.bobsgame.client.engine.event.Skill;
 import com.bobsgame.client.engine.game.Clock;
 import com.bobsgame.client.engine.game.FriendManager;
 import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.Item;
 import com.bobsgame.client.engine.game.Player;
 import com.bobsgame.client.engine.game.Wallet;
 import com.bobsgame.client.engine.game.gui.GUIManager;
@@ -52,23 +27,12 @@ import com.bobsgame.client.engine.game.gui.PlayerEditMenu;
 import com.bobsgame.client.engine.game.gui.gameStore.GameStore;
 import com.bobsgame.client.engine.game.gui.statusbar.NotificationManager;
 import com.bobsgame.client.engine.game.gui.statusbar.StatusBar;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.ClockCaption;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.DayCaption;
-import com.bobsgame.client.engine.game.gui.statusbar.captions.MoneyCaption;
 import com.bobsgame.client.engine.game.gui.stuffMenu.StuffMenu;
 import com.bobsgame.client.engine.game.nd.ND;
-import com.bobsgame.client.engine.map.Area;
-import com.bobsgame.client.engine.map.Door;
-import com.bobsgame.client.engine.map.Light;
 import com.bobsgame.client.engine.map.Map;
 import com.bobsgame.client.engine.map.MapManager;
-import com.bobsgame.client.engine.map.MapState;
-import com.bobsgame.client.engine.map.WarpArea;
-import com.bobsgame.client.engine.sound.Music;
 import com.bobsgame.client.engine.sound.AudioManager;
-import com.bobsgame.client.engine.sound.Sound;
 import com.bobsgame.client.engine.text.CaptionManager;
-import com.bobsgame.client.engine.text.BobFont;
 import com.bobsgame.client.engine.text.TextManager;
 
 
@@ -77,11 +41,7 @@ import com.bobsgame.client.engine.text.TextManager;
 
 import com.bobsgame.client.state.State;
 import com.bobsgame.net.GameSave;
-import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.MapData;
-import com.bobsgame.shared.SkillData;
-import com.bobsgame.shared.SpriteData;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 
 

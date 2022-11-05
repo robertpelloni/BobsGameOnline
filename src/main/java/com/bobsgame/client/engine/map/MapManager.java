@@ -35,32 +35,15 @@ package com.bobsgame.client.engine.map;
 //import static org.lwjgl.opengl.GL32.*;
 //import static org.lwjgl.opengl.GL31.*;
 //import static org.lwjgl.opengl.GL30.*;
-import static org.lwjgl.opengl.GL21.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL14.*;
 import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL11.*;
 
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Vector;
 
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import org.slf4j.LoggerFactory;
@@ -69,22 +52,13 @@ import slick.Texture;
 
 import ch.qos.logback.classic.Logger;
 
-import com.bobsgame.ClientMain;
-import com.bobsgame.GLUtils;
-import com.bobsgame.LWJGLUtils;
-import com.bobsgame.client.console.Console;
+import com.bobsgame.client.GLUtils;
+import com.bobsgame.client.LWJGLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.entity.SpriteManager;
-import com.bobsgame.client.engine.entity.RandomCharacter;
 import com.bobsgame.client.engine.entity.Sprite;
-import com.bobsgame.client.engine.event.Event;
-import com.bobsgame.client.engine.event.Skill;
 import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.game.Player;
-import com.bobsgame.shared.MapData;
-import com.bobsgame.shared.Utils;
 import com.bobsgame.shared.MapData.RenderOrder;
 
 //import se.krka.kahlua.converter.*;

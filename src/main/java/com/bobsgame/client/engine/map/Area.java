@@ -1,29 +1,16 @@
 package com.bobsgame.client.engine.map;
 
-import java.awt.Font;
 import java.util.Enumeration;
 import java.util.ArrayList;
 
-import org.lwjgl.opengl.Display;
-
 import slick.Texture;
 
-import com.bobsgame.GLUtils;
+import com.bobsgame.client.GLUtils;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.EnginePart;
-import com.bobsgame.client.engine.entity.Cameraman;
 import com.bobsgame.client.engine.entity.Entity;
-import com.bobsgame.client.engine.entity.SpriteManager;
 import com.bobsgame.client.engine.entity.RandomCharacter;
-import com.bobsgame.client.engine.entity.ScreenSprite;
-import com.bobsgame.client.engine.event.ActionManager;
-import com.bobsgame.client.engine.event.Dialogue;
 import com.bobsgame.client.engine.event.Event;
-import com.bobsgame.client.engine.game.ClientGameEngine;
-import com.bobsgame.client.engine.text.Caption;
-import com.bobsgame.client.engine.text.CaptionManager;
-import com.bobsgame.client.engine.text.BobFont;
-import com.bobsgame.client.engine.text.TextManager;
 import com.bobsgame.shared.AreaData;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.EventData;
