@@ -1,82 +1,5 @@
 package com.bobsgame;
 
-
-
-
-//import java.awt.Frame;
-//import java.awt.GraphicsConfiguration;
-//import java.awt.GraphicsDevice;
-//import java.awt.GraphicsEnvironment;
-//import java.awt.event.WindowAdapter;
-//import java.awt.event.WindowEvent;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
-import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
-import java.util.TimeZone;
-
-
-import javax.imageio.ImageIO;
-
-
-import java.applet.Applet;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-//import java.awt.event.*;
-//import java.util.ArrayList;
-//import java.util.Random;
-
-//import java.util.Timer;
-
-//import java.applet.Applet;
-//import java.awt.BorderLayout;
-//import java.awt.Canvas;
-
-
-import com.bobsgame.client.*;
-import netscape.javascript.*;
-
-import org.lwjgl.*;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.openal.AL;
-import org.lwjgl.opengl.*;
-
-
-//import static org.lwjgl.opengl.GL12.GL_CLAMP_TO_EDGE;
-//import static org.lwjgl.opengl.GL12.GL_TEXTURE_WRAP_R;
-
-//import static org.lwjgl.opengl.GL42.*;
-//import static org.lwjgl.opengl.GL41.*;
-//import static org.lwjgl.opengl.GL40.*;
-//import static org.lwjgl.opengl.GL33.*;
-//import static org.lwjgl.opengl.GL32.*;
-//import static org.lwjgl.opengl.GL31.*;
-//import static org.lwjgl.opengl.GL30.*;
-//import static org.lwjgl.opengl.GL21.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL11.*;
-
-//import com.bobsgame.editor.BobColor;
-//import org.newdawn.slick.opengl.Texture;
-//import org.newdawn.slick.opengl.TextureLoader;
-//import org.newdawn.slick.util.ResourceLoader;
-
-
-import de.matthiasmann.twl.GUI;
-
-
-import org.slf4j.LoggerFactory;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
@@ -86,239 +9,85 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.ConsoleAppender;
 import ch.qos.logback.core.FileAppender;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
-
-import com.bobsgame.client.console.*;
+import com.bobsgame.audio.AudioUtils;
+import com.bobsgame.client.*;
+import com.bobsgame.client.console.Console;
 import com.bobsgame.client.engine.Engine;
 import com.bobsgame.client.engine.game.ClientGameEngine;
 import com.bobsgame.client.network.GameClientTCP;
-import com.bobsgame.client.state.KeyboardScreen;
-import com.bobsgame.client.state.CreateNewAccountState;
-import com.bobsgame.client.state.GlowTileBackground;
-import com.bobsgame.client.state.LegalScreen;
-import com.bobsgame.client.state.LoggedOutState;
-import com.bobsgame.client.state.LoginState;
-import com.bobsgame.client.state.ServersHaveShutDownState;
-import com.bobsgame.client.state.StateManager;
-import com.bobsgame.client.state.TitleScreenState;
-import com.bobsgame.client.state.YouWillBeNotifiedState;
-import com.bobsgame.net.*;
+import com.bobsgame.client.state.*;
+import com.bobsgame.net.BobNet;
+import com.bobsgame.net.ClientStats;
 import com.bobsgame.shared.BobColor;
 import com.bobsgame.shared.Utils;
-
+import de.matthiasmann.twl.GUI;
+import netscape.javascript.JSObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.commons.net.ntp.TimeStamp;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.LWJGLUtil;
+import org.lwjgl.Sys;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.openal.AL;
+import org.lwjgl.opengl.Display;
+import org.slf4j.LoggerFactory;
 
-import com.bobsgame.audio.AudioUtils;
+import javax.imageio.ImageIO;
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL20.*;
 
-
-//=========================================================================================================================
-public class ClientMain extends Applet
-{//=========================================================================================================================
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
-
-
-
-
+public class ClientMain extends Applet {
 	public static ClientMain clientMain;
 
-
-
-	//=========================================================================================================================
-	public ClientMain()
-	{//=========================================================================================================================
-
-	}
-
-
-
-	//=========================================================================================================================
-	public static void main(String[] args)
-	{//=========================================================================================================================
-
-
-
-		//log.debug("main()");
-
-
-
+	public static void main(String[] args) {
 		//TODO: could download natives into home dir/.bobsGame/native and then set to it for applet and desktop both
-
-
-
 		//System.setProperty("org.lwjgl.librarypath","\\res");
 
-
-
-/*
-		Set these by either passing -Dkey=value as a Java VM option or by calling System.setProperty("key","value"); in your code (in most likely a static block).
-
-
-		org.lwjgl.librarypath=<full path to native directory>
-
-			Set the path to look for the native libraries in. Example:
-			view sourceprint?
-			1.System.setProperty("org.lwjgl.librarypath",System.getProperty("user.dir") + File.separator + "native" + File.separator + "os");
-
-
-		org.lwjgl.opengl.Display.noinput=<true|false>
-
-			Do not initialize any controls when creating the display
-
-
-		org.lwjgl.opengl.Display.nomouse=<true|false>
-
-			Do not create the mouse when creating the display
-
-
-		org.lwjgl.opengl.Display.nokeyboard=<true|false>
-
-			Do not create the keyboard when creating the display
-
-
-		org.lwjgl.util.Debug=<true|false>
-
-			Whether to output debug info
-
-
-		org.lwjgl.util.NoChecks=<true|false>
-
-			Whether to disable runtime function/buffer checks and state tracking.
-
-
-		org.lwjgl.opengl.Display.allowSoftwareOpenGL=<true|false>
-
-			Whether to allow creation of a software only opengl context
-
-
-		org.lwjgl.opengl.Window.undecorated=<true|false>
-
-			Whether to create an undecorated window (no title bar)
-
-
-		org.lwjgl.input.Mouse.allowNegativeMouseCoords=<true|false>
-
-			Usually mouse is clamped to 0,0 - setting this to true will cause you to get negative values if dragging outside and below or left of window
-*/
-
-
-
-
-
-
-		//Log.set(Log.LEVEL_DEBUG);
-
-			//AWT EventQueue
-//	       EventQueue.invokeLater(new Runnable()
-//	       {
-//
-//	            public void run()
-//	            {
-//	            	//main
-//	            }
-//	        });
-
-		//SwingUtilities EventQueue
-//		try
-//		{
-//			SwingUtilities.invokeLater(new Runnable()//Causes doRun.run() to be executed asynchronously on the AWT event dispatching thread. This will happen after all pending AWT events have been processed.
-//			//SwingUtilities.invokeAndWait(new Runnable()//Causes doRun.run() to be executed synchronously on the AWT event dispatching thread. This call blocks until all pending AWT events have been processed and (then) doRun.run() returns
-//			{
-//				@Override
-//				public void run()
-//				{
-//				}
-//			});
-//		}
-//		catch(InterruptedException | InvocationTargetException ex)
-//		{
-//		}
-
-
-		try{Thread.currentThread().setName("ClientMain_main");}catch(SecurityException e){e.printStackTrace();}
-
-
+		try {
+			Thread.currentThread().setName("ClientMain_main");
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
 
 		clientMain = new ClientMain();
 
-
 		clientMain.mainInit();
 
-		try
-		{
+		try {
 			clientMain.mainLoop();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch(Exception e){e.printStackTrace();}
 
-		try
-		{
+		try {
 			clientMain.cleanup();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch(Exception e){e.printStackTrace();}
-
 
 		ClientMain.exit();
-
 
 		//for(int i=0;i<100000;i++)
 		//bg.clientUDP.sendDatagramToServer(i);
 		//bg.quit();
-
-
-
-/*
-		new Thread(
-				new Runnable()
-				{
-					public void run()
-					{
-
-						try
-						{
-
-							ClientMain bg = new ClientMain();
-							bg.mainLoop();
-						}
-						catch (Exception e)
-						{
-							e.printStackTrace();
-						}
-
-					}
-				}
-				).start();
-
-		while(ClientMain.exit==false)
-		{
-			try
-			{
-				Thread.sleep(16);
-			}
-			catch (InterruptedException e)
-			{
-				e.printStackTrace();
-			}
-		}*/
 	}
 
-
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-	// APPLET FUN
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-
 	static Canvas appletCanvas = null; //TODO: try using JComponent?
-
 
 	static int lastWidth = 0;
 	static int lastHeight = 0;
@@ -329,192 +98,107 @@ public class ClientMain extends Applet
 	static int canvasWidth = 0;
 	static int canvasHeight = 0;
 
-
-
 	static Thread gameThread = null;
 	static Runnable gameRunnable = null;
 	public static JSObject browser = null;
 
 	static boolean started = false;
 
-
-
-	//=========================================================================================================================
 	@Override
-	public void init()
-	{//=========================================================================================================================
-
+	public void init() {
 		String host = getCodeBase().toString();
 		log.debug(host);
 
-		if(
-				host.startsWith("https://bobsgame.com/")==false&&
-				host.startsWith("https://www.bobsgame.com/")==false&&
-				host.startsWith("http://bobsgame.com/")==false&&
-				host.startsWith("http://www.bobsgame.com/")==false&&
-				host.startsWith("bobsgame.com/")==false&&
-				host.startsWith("www.bobsgame.com/")==false&&
-				host.startsWith("http://s3.amazonaws.com/bobsgame/client/")==false&&
-				host.startsWith("https://s3.amazonaws.com/bobsgame/client")==false&&
-				host.startsWith("s3.amazonaws.com/bobsgame/client/")==false&&
-				host.startsWith("bobsgame.s3.amazonaws.com/client/")==false&&
-				host.startsWith("http://bobsgame.s3.amazonaws.com/client/")==false&&
-				host.startsWith("https://bobsgame.s3.amazonaws.com/client/")==false
-		)
+		if (host.startsWith("https://bobsgame.com/") == false &&
+			host.startsWith("https://www.bobsgame.com/") == false &&
+			host.startsWith("http://bobsgame.com/") == false &&
+			host.startsWith("http://www.bobsgame.com/") == false &&
+			host.startsWith("bobsgame.com/") == false &&
+			host.startsWith("www.bobsgame.com/") == false &&
+			host.startsWith("http://s3.amazonaws.com/bobsgame/client/") == false &&
+			host.startsWith("https://s3.amazonaws.com/bobsgame/client") == false &&
+			host.startsWith("s3.amazonaws.com/bobsgame/client/") == false &&
+			host.startsWith("bobsgame.s3.amazonaws.com/client/") == false &&
+			host.startsWith("http://bobsgame.s3.amazonaws.com/client/") == false &&
+			host.startsWith("https://bobsgame.s3.amazonaws.com/client/") == false
+		) {
 			ClientMain.exit();
-
-		//log.error("init()");
-
+		}
 	}
 
-
-	//=========================================================================================================================
 	@Override
-	public void start()
-	{//=========================================================================================================================
-
-
-
-//        EventQueue.invokeLater(new Runnable()
-//        {
-//            public void run()
-//            {
-//            }
-//        });
-
-//      try
-//      {
-//         SwingUtilities.invokeLater(new Runnable()
-//          {
-//              @Override
-//              public void run()
-//              {
-//              }
-//          });
-//      }
-//      catch(InterruptedException | InvocationTargetException ex)
-//      {
-//      }
-
-		//log.error("start()");
-
-
-
-		if(started==true)return;
+	public void start() {
+		if (started == true) {
+			return;
+		}
 
 		clientMain = this;
 
+		try {
+			Thread.currentThread().setName("ClientMain_start");
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
 
-		try{Thread.currentThread().setName("ClientMain_start");}catch(SecurityException e){e.printStackTrace();}
-		//DONE: set names on all threads, network, helpers, etc.
+		isApplet = true;
 
-
-		isApplet=true;
-
-
-		if(BobNet.debugMode==true)setBackground(java.awt.Color.red);
-		else setBackground(java.awt.Color.black);
+		if (BobNet.debugMode == true) {
+			setBackground(java.awt.Color.RED);
+		} else {
+			setBackground(java.awt.Color.BLACK);
+		}
 
 		setLayout(new BorderLayout());
-		try
-		{
-			appletCanvas = new Canvas()
-			{
-				public final void addNotify()
-				{
+
+		try {
+			appletCanvas = new Canvas() {
+				@Override
+				public void addNotify() {
 					super.addNotify();
 
-
-//					gameThread = new Thread() // or new Thread(new Runnable()
-//					{
-//						public void run()
-//						{
-//
-//							clientMain.mainInit();
-//							clientMain.mainLoop();
-//						}
-//					};
-//					gameThread.start();
-
-
-					gameRunnable = new Runnable()
-					{
-						public void run()
-						{
-							try{Thread.currentThread().setName("ClientMain_mainLoop");}catch(SecurityException e){e.printStackTrace();}
-
-							//if(BobNet.debugMode==false)browser = JSObject.getWindow(clientMain);
-
-							started=true;
-
-							mainInit();
-
-							try
-							{
-								mainLoop();
-							}
-							catch(Exception e){e.printStackTrace();}
-
-							try
-							{
-								cleanup();
-							}
-							catch(Exception e)
-							{
+					gameRunnable = new Runnable() {
+						@Override
+						public void run() {
+							try {
+								Thread.currentThread().setName("ClientMain_mainLoop");
+							} catch (SecurityException e) {
 								e.printStackTrace();
 							}
 
-							//System.exit(0);
+							started = true;
+
+							mainInit();
+
+							try {
+								mainLoop();
+							} catch(Exception e) {
+								e.printStackTrace();
+							}
+
+							try {
+								cleanup();
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
 					};
-					//SwingUtilities.invokeLater(gameRunnable);
-					//or
-					//gameThread = new Thread(gameRunnable,"ClientMain_mainLoop");//this actually make the window not resize!!
-					//SwingUtilities.invokeLater(gameThread);
-					//or
+
 					gameThread = new Thread(gameRunnable);
 					gameThread.start();
-
-
-
-/*
-public class ThreadA implements Runnable {
-	public void run() {
-		//Code
-	}
-}
-//with a "new Thread(threadA).start()" call
-
-
-public class ThreadB extends Thread {
-	public ThreadB() {
-		super("ThreadB");
-	}
-	public void run() {
-		//Code
-	}
-}
-//with a "threadB.start()" call
- */
-
 				}
-
 			};
 
+			if (BobNet.debugMode == true) {
+				appletCanvas.setBackground(java.awt.Color.GREEN);
+			} else {
+				appletCanvas.setBackground(java.awt.Color.BLACK);
+			}
 
-			if(BobNet.debugMode==true)appletCanvas.setBackground(java.awt.Color.green);
-			else appletCanvas.setBackground(java.awt.Color.black);
-
-
-			//validate();
-
-			//setSize(500,500);
 			appletCanvas.setSize(getWidth(),getHeight());
 
 			add(appletCanvas, BorderLayout.CENTER);
 
 			this.setFocusable(true);
-			//this.requestFocus();
 
 			appletCanvas.setFocusable(true);
 			appletCanvas.requestFocus();
@@ -526,47 +210,19 @@ public class ThreadB extends Thread {
 
 			canvasWidth = appletCanvas.getWidth();
 			canvasHeight = appletCanvas.getHeight();
-
-		}
-		catch (Exception e)
-		{
-			log.error(""+e.getMessage());
+		} catch (Exception e) {
+			log.error(e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException("Unable to create display");
 		}
-
-
-
 	}
 
-
-
-
-
-
-
-	//=========================================================================================================================
 	@Override
-	public void stop()
-	{//=========================================================================================================================
-
-		log.debug("stop()");
-
-
-
-
-
-
-
+	public void stop() {
 	}
 
-	//=========================================================================================================================
 	@Override
-	public void destroy()
-	{//=========================================================================================================================
-
-
-
+	public void destroy() {
 		log.debug("destroy()");
 
 		log.debug("exit=true");
@@ -590,65 +246,19 @@ public class ThreadB extends Thread {
 		super.destroy();
 
 	}
-	//=========================================================================================================================
-	public static void exit()
-	{//=========================================================================================================================
-		if(isApplet)clientMain.destroy();
-		else System.exit(0);
+
+	public static void exit() {
+		if (isApplet) {
+			clientMain.destroy();
+		} else {
+			System.exit(0);
+		}
 	}
 
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-	//=========================================================================================================================
-
-
-
-	//=========================================================================================================================
 	public ClientStats clientInfo = new ClientStats();
 
-	//=========================================================================================================================
-	public void initClientInfo()
-	{//=========================================================================================================================
-
-
+	public void initClientInfo() {
 		Properties systemProperties = System.getProperties();
-
-
-//		log.debug("Java Runtime Environment version: "+prop.getProperty("java.version"));
-//		log.debug("Java Runtime Environment vendor: "+prop.getProperty("java.vendor"));
-//		log.debug("Java vendor URL: "+prop.getProperty("java.vendor.url"));
-//		log.debug("Java installation directory: "+prop.getProperty("java.home"));
-//		log.debug("Java Virtual Machine specification version: "+prop.getProperty("java.vm.specification.version"));
-//		log.debug("Java Virtual Machine specification vendor: "+prop.getProperty("java.vm.specification.vendor"));
-//		log.debug("Java Virtual Machine specification name: "+prop.getProperty("java.vm.specification.name"));
-//		log.debug("Java Virtual Machine implementation version: "+prop.getProperty("java.vm.version"));
-//		log.debug("Java Virtual Machine implementation vendor: "+prop.getProperty("java.vm.vendor"));
-//		log.debug("Java Virtual Machine implementation name: "+prop.getProperty("java.vm.name"));
-//		log.debug("Java Runtime Environment specification version: "+prop.getProperty("java.specification.version"));
-//		log.debug("Java Runtime Environment specification vendor: "+prop.getProperty("java.specification.vendor"));
-//		log.debug("Java Runtime Environment specification name: "+prop.getProperty("java.specification.name"));
-//		log.debug("Java class format version number: "+prop.getProperty("java.class.version"));
-//		log.debug("Java class path: "+prop.getProperty("java.class.path"));
-//		log.debug("List of paths to search when loading libraries: "+prop.getProperty("java.library.path"));
-//		log.debug("Default temp file path: "+prop.getProperty("java.io.tmpdir"));
-//		log.debug("Name of JIT compiler to use: "+prop.getProperty("java.compiler"));
-//		log.debug("Path of extension directory or directories: "+prop.getProperty("java.ext.dirs"));
-//		log.debug("Operating system name: "+prop.getProperty("os.name"));
-//		log.debug("Operating system architecture: "+prop.getProperty("os.arch"));
-//		log.debug("Operating system version: "+prop.getProperty("os.version"));
-//		log.debug("User's account name: "+prop.getProperty("user.name"));
-//		log.debug("User's home directory: "+prop.getProperty("user.home"));
-//		log.debug("User's current working directory: "+prop.getProperty("user.dir"));
-//		log.debug("File separator ('/' on UNIX): "+prop.getProperty("file.separator"));
-//		log.debug("Path separator (':' on UNIX): "+prop.getProperty("path.separator"));
-//		log.debug("Line separator ('\\n' on UNIX): "+prop.getProperty("line.separator"));
-
-
-
 
 		if(isApplet==true)
 		{
@@ -677,44 +287,40 @@ public class ThreadB extends Thread {
 		clientInfo.getEnvNumberOfProcessors = System.getenv("NUMBER_OF_PROCESSORS");
 
 
-		clientInfo.jreVersion			= ""+systemProperties.getProperty("java.version");
-		clientInfo.jreVendor			= ""+systemProperties.getProperty("java.vendor");
-		//clientInfo.jreVendorURL			= ""+systemProperties.getProperty("java.vendor.url");
-		clientInfo.jreHomeDir			= ""+systemProperties.getProperty("java.home");
-		//clientInfo.jvmSpecVersion		= ""+systemProperties.getProperty("java.vm.specification.version");
-		//clientInfo.jvmSpecVendor		= ""+systemProperties.getProperty("java.vm.specification.vendor");
-		//clientInfo.jvmSpecName			= ""+systemProperties.getProperty("java.vm.specification.name");
-		clientInfo.jvmVersion			= ""+systemProperties.getProperty("java.vm.version");
-		//clientInfo.jvmVendor			= ""+systemProperties.getProperty("java.vm.vendor");
-		clientInfo.jvmName				= ""+systemProperties.getProperty("java.vm.name");
-		//clientInfo.jreSpecVersion		= ""+systemProperties.getProperty("java.specification.version");
-		//clientInfo.jreSpecVendor		= ""+systemProperties.getProperty("java.specification.vendor");
-		//clientInfo.jreSpecName			= ""+systemProperties.getProperty("java.specification.name");
-		clientInfo.javaClassVersion		= ""+systemProperties.getProperty("java.class.version");
-		clientInfo.javaClassPath		= ""+systemProperties.getProperty("java.class.path");
-		clientInfo.javaLibraryPath		= ""+systemProperties.getProperty("java.library.path");
-		clientInfo.javaTempDir			= ""+systemProperties.getProperty("java.io.tmpdir");
-		//clientInfo.javaJITCompiler		= ""+systemProperties.getProperty("java.compiler");
-		//clientInfo.javaExtensionPath	= ""+systemProperties.getProperty("java.ext.dirs");
-		clientInfo.osName				= ""+systemProperties.getProperty("os.name");
-		clientInfo.osArch				= ""+systemProperties.getProperty("os.arch");
-		clientInfo.osVersion			= ""+systemProperties.getProperty("os.version");
-		clientInfo.osUserAccountName	= ""+systemProperties.getProperty("user.name");
-		clientInfo.osHomeDir			= ""+systemProperties.getProperty("user.home");
-		clientInfo.workingDir			= ""+systemProperties.getProperty("user.dir");
-
+		clientInfo.jreVersion			= systemProperties.getProperty("java.version");
+		clientInfo.jreVendor			= systemProperties.getProperty("java.vendor");
+		//clientInfo.jreVendorURL			= systemProperties.getProperty("java.vendor.url");
+		clientInfo.jreHomeDir			= systemProperties.getProperty("java.home");
+		//clientInfo.jvmSpecVersion		= systemProperties.getProperty("java.vm.specification.version");
+		//clientInfo.jvmSpecVendor		= systemProperties.getProperty("java.vm.specification.vendor");
+		//clientInfo.jvmSpecName			= systemProperties.getProperty("java.vm.specification.name");
+		clientInfo.jvmVersion			= systemProperties.getProperty("java.vm.version");
+		//clientInfo.jvmVendor			= systemProperties.getProperty("java.vm.vendor");
+		clientInfo.jvmName				= systemProperties.getProperty("java.vm.name");
+		//clientInfo.jreSpecVersion		= systemProperties.getProperty("java.specification.version");
+		//clientInfo.jreSpecVendor		= systemProperties.getProperty("java.specification.vendor");
+		//clientInfo.jreSpecName			= systemProperties.getProperty("java.specification.name");
+		clientInfo.javaClassVersion		= systemProperties.getProperty("java.class.version");
+		clientInfo.javaClassPath		= systemProperties.getProperty("java.class.path");
+		clientInfo.javaLibraryPath		= systemProperties.getProperty("java.library.path");
+		clientInfo.javaTempDir			= systemProperties.getProperty("java.io.tmpdir");
+		//clientInfo.javaJITCompiler		= systemProperties.getProperty("java.compiler");
+		//clientInfo.javaExtensionPath	= systemProperties.getProperty("java.ext.dirs");
+		clientInfo.osName				= systemProperties.getProperty("os.name");
+		clientInfo.osArch				= systemProperties.getProperty("os.arch");
+		clientInfo.osVersion			= systemProperties.getProperty("os.version");
+		clientInfo.osUserAccountName	= systemProperties.getProperty("user.name");
+		clientInfo.osHomeDir			= systemProperties.getProperty("user.home");
+		clientInfo.workingDir			= systemProperties.getProperty("user.dir");
 
 		clientInfo.displayWidth = Display.getDesktopDisplayMode().getWidth();
 		clientInfo.displayHeight = Display.getDesktopDisplayMode().getHeight();
 		clientInfo.displayBPP = Display.getDesktopDisplayMode().getBitsPerPixel();
 		clientInfo.displayFreq = Display.getDesktopDisplayMode().getFrequency();
 
-
-
 		clientInfo.shaderCompiled = LWJGLUtils.useShader;
 		clientInfo.canUseFBO = LWJGLUtils.useFBO;
 		clientInfo.usingVSync = LWJGLUtils.vsync;
-
 
 		clientInfo.displayAdapter = Display.getAdapter();
 		clientInfo.displayDriver = Display.getVersion();
@@ -723,13 +329,11 @@ public class ThreadB extends Thread {
 		clientInfo.lwjglPlatformName = LWJGLUtil.getPlatformName();
 
 		clientInfo.numCPUs = StatsUtils.rt.availableProcessors();
-		clientInfo.totalMemory = StatsUtils.totalMemory/1024/1024;
-		clientInfo.maxMemory = StatsUtils.maxMemory/1024/1024;
+		clientInfo.totalMemory = StatsUtils.totalMemory / 1024 / 1024;
+		clientInfo.maxMemory = StatsUtils.maxMemory / 1024 / 1024;
 
 		clientInfo.numControllersFound = LWJGLUtils.numControllers;
 		clientInfo.controllersNames = LWJGLUtils.controllerNames;
-
-
 
 		clientInfo.timeZoneGMTOffset = timeZoneGMTOffset;
 
@@ -739,25 +343,14 @@ public class ThreadB extends Thread {
 		clientInfo.shaderVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
 		clientInfo.glExtensions = glGetString(GL_EXTENSIONS);
 
-
 		clientInfo.log();
-		log.info("CurrentDisplayWidth:"+Display.getWidth());
-		log.info("CurrentDisplayHeight:"+Display.getHeight());
-
-
+		log.info("CurrentDisplayWidth:" + Display.getWidth());
+		log.info("CurrentDisplayHeight:" + Display.getHeight());
 	}
 
-
-
-
-
-
-	//=========================================================================================================================
 	public float timeZoneGMTOffset = 0.0f;
 	public float DSTOffset = 0.0f;
-	public void initTime()
-	{//=========================================================================================================================
-
+	public void initTime() {
 		log.info("Init Time...");
 
 		//put timezone in connection info
@@ -768,11 +361,8 @@ public class ThreadB extends Thread {
 		String gmtOffset = new SimpleDateFormat("Z").format(calendarTime);
 		log.info("Local TimeZone GMT offset: "+gmtOffset);
 
-
-
 		//get the time zone
 		TimeZone timezone = calendar.getTimeZone();
-
 
 		//get timezone raw millisecond offset
 		int offset = timezone.getRawOffset();
@@ -786,8 +376,7 @@ public class ThreadB extends Thread {
 
 		//add daylight savings offset
 		int dstOffset = 0;
-		if (timezone.inDaylightTime(new Date()))
-		{
+		if (timezone.inDaylightTime(new Date())) {
 			dstOffset = timezone.getDSTSavings();
 		}
 		int dstOffsetHrs = dstOffset / 1000 / 60 / 60;
@@ -803,153 +392,132 @@ public class ThreadB extends Thread {
 		//log.debug("Total Offset Hours: " + combinedOffsetHrs);
 		//log.debug("Total Offset Mins: " + combinedOffsetMins);
 
-
 		//make an adjusted calendar to getTime from
 		Calendar adjustedCalendar = Calendar.getInstance();
 		adjustedCalendar.add(Calendar.HOUR_OF_DAY, (-combinedOffsetHrs));
 		adjustedCalendar.add(Calendar.MINUTE, (-combinedOffsetMins));
 		//log.debug("GMT Time: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(adjustedCalendar.getTime()) + " + " + combinedOffsetHrs + ":" + combinedOffsetMins);
 
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.currentThread().setName("ClientMain_initTime");
+				} catch (SecurityException e) {
+					e.printStackTrace();
+				}
 
+				String NTPhost = "time.nist.gov"; // this goes through lots of servers in round-robin, so keep trying.
 
+				NTPUDPClient ntpUDPClient = new NTPUDPClient();
+				ntpUDPClient.setDefaultTimeout(5000);
 
+				int timeTryCount = 0;
+				boolean haveTime = false;
 
-		new Thread
-		(
-			new Runnable()
-			{
-				public void run()
-				{
+				while (haveTime == false && timeTryCount < 5) {
+					switch (timeTryCount) {
+						case 0:
+							NTPhost = "time.nist.gov";
+							break;
+						case 1:
+							NTPhost = "nist1-sj.ustiming.org";
+							break;
+						case 2:
+							NTPhost = "nisttime.carsoncity.k12.mi.us";
+							break;
+						case 3:
+							NTPhost = "wwv.nist.gov";
+							break;
+						case 4:
+							NTPhost = "nist1.symmetricom.com";
+							break;
+					}
 
-					try{Thread.currentThread().setName("ClientMain_initTime");}catch(SecurityException e){e.printStackTrace();}
+					timeTryCount++;
 
-
-					String NTPhost = "time.nist.gov";//this goes through lots of servers in round-robin, so keep trying.
-
-					NTPUDPClient ntpUDPClient = new NTPUDPClient();
-					ntpUDPClient.setDefaultTimeout(5000);
-
-					int timeTryCount=0;
-					boolean haveTime = false;
-					while(haveTime==false&&timeTryCount<5)
-					{
-
-
-						if(timeTryCount==0)NTPhost = "time.nist.gov";
-						if(timeTryCount==1)NTPhost = "nist1-sj.ustiming.org";
-						if(timeTryCount==2)NTPhost = "nisttime.carsoncity.k12.mi.us";
-						if(timeTryCount==3)NTPhost = "wwv.nist.gov";
-						if(timeTryCount==4)NTPhost = "nist1.symmetricom.com";
-
-
-						timeTryCount++;
-
-						if(ntpUDPClient.isOpen()==true)ntpUDPClient.close();
-
-						try
-						{
-							ntpUDPClient.open();
-						}
-						catch(SocketException e){log.debug("Could not open NTP UDP Client: "+e.getMessage());continue;}
-
-						InetAddress hostAddr = null;
-						try
-						{
-							hostAddr = InetAddress.getByName(NTPhost);
-						}
-						catch(UnknownHostException e){log.debug("Could not resolve NTP host: "+NTPhost+" | "+e.getMessage());continue;}
-
-						//log.debug("> " + hostAddr.getHostName() + "/" + hostAddr.getHostAddress());
-
-						TimeInfo timeInfo = null;
-
-						try
-						{
-							timeInfo = ntpUDPClient.getTime(hostAddr);
-						}catch(IOException e){log.debug("Could not get time from NTP host: "+hostAddr.getHostAddress()+" | "+e.getMessage());continue;}
-
-
-						NtpV3Packet message = timeInfo.getMessage();
-
-
-						// Transmit time is time reply sent by server (t3)
-						TimeStamp xmitNtpTime = message.getTransmitTimeStamp();
-						//log.debug(" Transmit Timestamp:\t" + xmitNtpTime + "  "+ xmitNtpTime.toDateString());
-
-
-						Date serverDate = xmitNtpTime.getDate();
-						log.info("Server Time (Adjusted by local TimeZone + DST): " + serverDate);
-
-						// init game clock
-
-
-						Calendar serverCalendar = Calendar.getInstance();
-						serverCalendar.setTime(serverDate);
-
-
-						int hour = serverCalendar.get(Calendar.HOUR_OF_DAY);
-						int minute = serverCalendar.get(Calendar.MINUTE);
-						int second = serverCalendar.get(Calendar.SECOND);
-						int day = serverCalendar.get(Calendar.DAY_OF_WEEK)-1;
-
-						clientGameEngine.clock.setTime(day, hour, minute, second);
-
-
-
+					if (ntpUDPClient.isOpen() == true) {
 						ntpUDPClient.close();
-						haveTime=true;
-
 					}
 
-					if(haveTime==false)
-					{
-						log.error("Could not get time from NTP server!");
-
-						//TODO: just set to local clock time.
+					try {
+						ntpUDPClient.open();
+					} catch (SocketException e) {
+						log.debug("Could not open NTP UDP Client: " + e.getMessage());
+						continue;
 					}
 
+					InetAddress hostAddr = null;
+					try {
+						hostAddr = InetAddress.getByName(NTPhost);
+					} catch (UnknownHostException e){
+						log.debug("Could not resolve NTP host: " + NTPhost + " | " + e.getMessage());
+						continue;
+					}
+
+					//log.debug("> " + hostAddr.getHostName() + "/" + hostAddr.getHostAddress());
+
+					TimeInfo timeInfo = null;
+
+					try {
+						timeInfo = ntpUDPClient.getTime(hostAddr);
+					} catch (IOException e) {
+						log.debug("Could not get time from NTP host: " + hostAddr.getHostAddress() + " | " + e.getMessage());
+						continue;
+					}
+
+					NtpV3Packet message = timeInfo.getMessage();
+
+					// Transmit time is time reply sent by server (t3)
+					TimeStamp xmitNtpTime = message.getTransmitTimeStamp();
+					//log.debug(" Transmit Timestamp:\t" + xmitNtpTime + "  "+ xmitNtpTime.toDateString());
+
+					Date serverDate = xmitNtpTime.getDate();
+					log.info("Server Time (Adjusted by local TimeZone + DST): " + serverDate);
+					// init game clock
+
+					Calendar serverCalendar = Calendar.getInstance();
+					serverCalendar.setTime(serverDate);
+
+					int hour = serverCalendar.get(Calendar.HOUR_OF_DAY);
+					int minute = serverCalendar.get(Calendar.MINUTE);
+					int second = serverCalendar.get(Calendar.SECOND);
+					int day = serverCalendar.get(Calendar.DAY_OF_WEEK) - 1;
+
+					clientGameEngine.clock.setTime(day, hour, minute, second);
+
+					ntpUDPClient.close();
+					haveTime=true;
+				}
+
+				if(haveTime==false) {
+					log.error("Could not get time from NTP server!");
+
+					//TODO: just set to local clock time.
 				}
 			}
-
-		).start();
-
+		}).start();
 	}
 
-
-
-
-
-
-	//=========================================================================================================================
-	public void doLegalScreen()
-	{//=========================================================================================================================
-
-		if(new File(Cache.cacheDir+"session").exists()==false)
-		{
-
+	public void doLegalScreen() {
+		if (new File(Cache.cacheDir + "session").exists() == false) {
 			//if(BobNet.debugMode==false)
 			{
-
 				log.info("Legal Screen...");
 
 				LegalScreen legalScreen = new LegalScreen();
 				GUI legalScreenGUI = new GUI(legalScreen, LWJGLUtils.TWLrenderer);
 				legalScreenGUI.applyTheme(LWJGLUtils.TWLthemeManager);
 
-				while(legalScreen.clickedOK_S()==false)
-				{
-
+				while (legalScreen.clickedOK_S() == false )  {
 					glClear(GL_COLOR_BUFFER_BIT);
-
 
 					legalScreen.update();
 					legalScreenGUI.update();
 
-					if(
-							(Display.isCloseRequested() || ( BobNet.debugMode==true && Keyboard.isKeyDown(Keyboard.KEY_ESCAPE) ))
-							||legalScreen.clickedCancel_S()==true
-					)
-					{
+					if((Display.isCloseRequested() || (BobNet.debugMode == true && Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)))
+							|| legalScreen.clickedCancel_S() == true
+					) {
 						legalScreen.destroy();
 						LWJGLUtils.TWLthemeManager.destroy();
 						Display.destroy();
@@ -960,30 +528,18 @@ public class ThreadB extends Thread {
 					Display.sync(60);
 					Display.update();
 					doResizeCheck();
-
 				}
 
 				legalScreen.destroy();
 				glClear(GL_COLOR_BUFFER_BIT);
 
 				log.info("Accepted Legal Screen.");
-
 			}
-
 		}
-
 	}
 
-
-
-
-	//=========================================================================================================================
-	public void showControlsImage()
-	{//=========================================================================================================================
-
-		if(new File(Cache.cacheDir+"session").exists()==false)
-		{
-
+	public void showControlsImage() {
+		if (new File(Cache.cacheDir + "session").exists() == false) {
 			//if(BobNet.debugMode==false)
 			{
 				KeyboardScreen keyboardScreen = new KeyboardScreen();
@@ -993,14 +549,11 @@ public class ThreadB extends Thread {
 				keyboardScreen.okButton.setVisible(true);
 				keyboardScreen.setActivated(true);
 
-				while(keyboardScreen.clickedOK_S()==false)
-				{
+				while (keyboardScreen.clickedOK_S() == false) {
 					glClear(GL_COLOR_BUFFER_BIT);
-
 
 					keyboardScreen.update();
 					keyboardScreenGUI.update();
-
 
 					Display.sync(60);
 					Display.update();
@@ -1008,62 +561,41 @@ public class ThreadB extends Thread {
 				keyboardScreen.destroy();
 				glClear(GL_COLOR_BUFFER_BIT);
 			}
-
 		}
-
 	}
 
+	public void makeGhostThread() {
+		// ghost thread to prevent stuttering
+		// this is due to windows aero, for some reason creating a ghost thread prevents it for some fucking reason
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.currentThread().setName("ClientMain_ghostThreadToPreventAeroStutter");
+				} catch (SecurityException e) {
+					e.printStackTrace();
+				}
 
+				while (exit == false) {
+					try {
+						Thread.sleep(16);//this only seems to work at 16
 
-
-
-	//=========================================================================================================================
-	public void makeGhostThread()
-	{//=========================================================================================================================
-
-		//ghost thread to prevent stuttering
-		//this is due to windows aero, for some reason creating a ghost thread prevents it for some fucking reason
-		new Thread
-		(
-			new Runnable()
-			{
-				public void run()
-				{
-					try{Thread.currentThread().setName("ClientMain_ghostThreadToPreventAeroStutter");}catch(SecurityException e){e.printStackTrace();}
-
-					while(exit==false)
-					{
-						try
-						{
-							Thread.sleep(16);//this only seems to work at 16
-
-							//Thread.yield(); //high cpu usage
-							//if(Display.isActive()==false)Display.processMessages();
-						}
-						catch (Exception e)
-						{
-							e.printStackTrace();
-						}
+						//Thread.yield(); //high cpu usage
+						//if(Display.isActive()==false)Display.processMessages();
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}
-		).start();
-
+		}).start();
 	}
 
 
-	//=========================================================================================================================
-	public void initDebugLogger()
-	{//=========================================================================================================================
-
-
-
+	public void initDebugLogger() {
 		Logger rootLogger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 		LoggerContext loggerContext = rootLogger.getLoggerContext();
 		// we are not interested in auto-configuration
 		loggerContext.reset();
-
-
 
 		PatternLayoutEncoder consoleEncoder = new PatternLayoutEncoder();
 		consoleEncoder.setContext(loggerContext);
@@ -1077,9 +609,6 @@ public class ThreadB extends Thread {
 		consoleAppender.start();
 
 		rootLogger.addAppender(consoleAppender);
-
-
-
 
 		HTMLLayout htmlLayout = new HTMLLayout();
 		htmlLayout.setPattern("%date{yyyy-MM-dd HH:mm:ss}%relative%thread%F%L%c{2}%M%level%msg");
@@ -1101,17 +630,11 @@ public class ThreadB extends Thread {
 
 		rootLogger.addAppender(htmlFileAppender);
 
-
-
-
-
-
 		PatternLayoutEncoder textEncoder = new PatternLayoutEncoder();
 		textEncoder.setContext(loggerContext);
 		textEncoder.setPattern("%date{yyyy-MM-dd HH:mm:ss} %-50(%-5level| %msg   ) [%thread] \n");
 		textEncoder.setImmediateFlush(true);
 		textEncoder.start();
-
 
 		FileAppender<ILoggingEvent> textFileAppender = new FileAppender<ILoggingEvent>();
 		textFileAppender.setContext(loggerContext);
@@ -1122,19 +645,10 @@ public class ThreadB extends Thread {
 
 		rootLogger.addAppender(textFileAppender);
 
-
-
 		rootLogger.setLevel(Level.ALL);
-
-
-
 	}
 
-	//=========================================================================================================================
-	public void initReleaseLogger()
-	{//=========================================================================================================================
-
-
+	public void initReleaseLogger() {
 		Logger rootLogger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 		LoggerContext loggerContext = rootLogger.getLoggerContext();
 		// we are not interested in auto-configuration
@@ -1174,28 +688,11 @@ public class ThreadB extends Thread {
 		rootLogger.addAppender(textFileAppender);
 
 		//rootLogger.setLevel(Level.WARN);
-
-
-
-
-
 	}
-
-
-
-
-
-
-	//=========================================================================================================================
-
-
-
 
 	public static Logger log = (Logger) LoggerFactory.getLogger(ClientMain.class);
 
-
 	public volatile boolean exit = false;
-
 
 	public static Cache cacheManager = new Cache();
 	public StateManager stateManager;
@@ -1238,10 +735,6 @@ public class ThreadB extends Thread {
 
 	public GameClientTCP gameClientTCP;
 	//public ClientUDP clientUDP;
-
-
-
-
 
 	public static String serverAddress = BobNet.releaseServerAddress;
 	public static String STUNServerAddress = BobNet.releaseSTUNServerAddress;
@@ -1301,15 +794,11 @@ public class ThreadB extends Thread {
 
 		stateManager = new StateManager();
 
-		//-------------------
 		//init game
-		//-------------------
 		log.info("Init Client...");
 		makeNewClientEngine();
 
-		//-------------------
 		//init login GUI
-		//-------------------
 		log.info("Init GUIs...");
 		if (glowTileBackground == null) {
 			glowTileBackground = new GlowTileBackground();
@@ -1365,14 +854,14 @@ public class ThreadB extends Thread {
 
 
 
-	//=========================================================================================================================
-	public void makeNewClientEngine()
-	{//=========================================================================================================================
+	public void makeNewClientEngine() {
+		if (clientGameEngine != null) {
+			clientGameEngine.cleanup();
+		}
 
-
-		if(clientGameEngine!=null)clientGameEngine.cleanup();
-		if(gameClientTCP!=null)gameClientTCP.cleanup();
-
+		if (gameClientTCP != null) {
+			gameClientTCP.cleanup();
+		}
 
 		controlsManager = new ControlsManager();
 		clientGameEngine = new ClientGameEngine();
@@ -1380,18 +869,14 @@ public class ThreadB extends Thread {
 		Engine.setClientGameEngine(clientGameEngine);
 		Engine.setControlsManager(controlsManager);
 
-
 		//stateManager.setState(game);
 
 		clientGameEngine.init();
 
-		//-------------------
 		//init network
-		//-------------------
 		gameClientTCP = new GameClientTCP(clientGameEngine);
 
 	}
-
 
 	public static boolean introMode = false;
 	public static boolean previewClientInEditor = false;
@@ -1401,33 +886,21 @@ public class ThreadB extends Thread {
 	boolean screenShotKeyPressed = false;
 	boolean resize = false;
 
-	//=========================================================================================================================
-	//this is called from the browser javascript on window.focus
-	public void focus()
-	{//=========================================================================================================================
-
-		resize=true;
-
+	// this is called from the browser javascript on window.focus
+	public void focus() {
+		resize = true;
 
 		this.requestFocus();
 
-		if(isApplet==true)
-		{
+		if (isApplet == true) {
 			appletCanvas.requestFocus();
 			appletCanvas.requestFocusInWindow();
 		}
-
 	}
 
-	//=========================================================================================================================
 	//this is called from the browser javascript on window.blur
-	public void blur()
-	{//=========================================================================================================================
-
-
+	public void blur() {
 	}
-
-
 
 	public static String facebookID = "";
 	public static String facebookAccessToken = "";
@@ -1447,39 +920,18 @@ public class ThreadB extends Thread {
 		setGotFacebookResponse_S(true);
 	}
 
-
-
-
-
-
-
-
-	//=========================================================================================================================
-	public void mainLoop() throws Exception
-	{//=========================================================================================================================
-
-		//------------------------------
-		// main loop
-		//------------------------------
-
+	public void mainLoop() {
 		makeGhostThread();
-
 		focus();
-
-
 		StatsUtils.initTimers();
 
 		log.info("Begin Main Loop...");
 
-		while(exit==false)
-		{
-
+		while (exit == false) {
 			if(Display.isCloseRequested() || (BobNet.debugMode==true&&Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)))exit=true;
-
 
 			StatsUtils.updateTimers();
 			StatsUtils.updateDebugInfo();
-
 
 			//if(ticksPassed>0)
 			{
@@ -1498,71 +950,39 @@ public class ThreadB extends Thread {
 			}
 
 
-			if(serversAreShuttingDown)
-			{
+			if (serversAreShuttingDown) {
 				GLUtils.drawFilledRect(0, 0, 0, 0, Display.getWidth(), 0, Display.getHeight(), 0.2f);
 				GLUtils.drawOutlinedString("The servers are shutting down soon for updating.", Display.getWidth()/2-60, Display.getHeight()/2-12, BobColor.white);
 			}
 
 
-			if(Display.isActive()==false && BobNet.debugMode==false)
-			{
-
-
+			if(Display.isActive()==false && BobNet.debugMode==false) {
 				GLUtils.drawFilledRect(0, 0, 0, 0, Display.getWidth(), 0, Display.getHeight(), 0.5f);
 				GLUtils.drawOutlinedString("Low power mode. Click to resume.", Display.getWidth()/2-70, Display.getHeight()/2-12, BobColor.white);
 
-
-
 				Display.sync(10);
 
-				if(Display.isVisible())Display.update();
-				else
-				Display.processMessages();
+				if (Display.isVisible()) {
+					Display.update();
+				} else {
+					Display.processMessages();
+				}
+
 				//Display.update();
-
-
-
-
-				/*try
-				{
-					Thread.sleep(100);
-				}
-				catch (InterruptedException e)
-				{
-					e.printStackTrace();
-				}*/
-
-				//Thread.yield();
-
-				//continue;
-
-			}
-			else
-			{
-
-
-				if(LWJGLUtils.vsync)
-				{
-					try
-					{
-						//this just lowers cpu usage
-						Thread.sleep(2);//TODO: vary this based on system speed
+			} else {
+				if(LWJGLUtils.vsync) {
+					try {
+						// this just lowers cpu usage
+						Thread.sleep(2); // TODO: vary this based on system speed
 						//System.gc();
-
 						Thread.yield();
-
-					}catch(Exception e){e.printStackTrace();}
-
-				}
-				else
-				if(LWJGLUtils.vsync==false)
-				{
-
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else if (LWJGLUtils.vsync == false) {
 					//Display.sync(240);
 					//Display.sync(90);
 					Display.sync(60);
-
 
 					//sync() only seems to work properly with ghost thread
 
@@ -1604,55 +1024,20 @@ public class ThreadB extends Thread {
 						Thread.yield();
 
 					}catch(Exception e){e.printStackTrace();}*/
-
 				}
-
-
 				Display.update();
-
-
-
 			}
-
-
-
 			doScreenShotCheck();
-
 			doResizeCheck();
-
 			LWJGLUtils.e();
 		}
-
-
 	}
 
+	public void doResizeCheck() {
+		// log.info("Display.getWidth() x Display.getHeight():"+Display.getWidth()+" x "+Display.getHeight());
+		// log.info("getWidth() x getHeight():"+getWidth()+" x "+getHeight());
 
-
-
-
-	//=========================================================================================================================
-	public void doResizeCheck()
-	{//=========================================================================================================================
-
-
-
-//			log.info("Display.getWidth() x Display.getHeight():"+Display.getWidth()+" x "+Display.getHeight());
-//			log.info("getWidth() x getHeight():"+getWidth()+" x "+getHeight());
-//			if(isApplet)
-//			{
-//				log.info("appletCanvas.getWidth() x appletCanvas.getHeight():"+appletCanvas.getWidth()+" x "+appletCanvas.getHeight());
-//				log.info("this.getContentPane().getWidth() x this.getContentPane().getHeight():"+this.getContentPane().getWidth()+" x "+this.getContentPane().getHeight());
-//				log.info("this.getGlassPane().getWidth() x this.getGlassPane().getHeight():"+this.getGlassPane().getWidth()+" x "+this.getGlassPane().getHeight());
-//				log.info("this.getRootPane().getWidth() x this.getRootPane().getHeight():"+this.getRootPane().getWidth()+" x "+this.getRootPane().getHeight());
-//				log.info("this.getParent().getWidth() x this.getParent().getHeight():"+this.getParent().getWidth()+" x "+this.getParent().getHeight());
-//
-//			}
-
-
-
-
-		if(isApplet==true)
-		{
+		if (isApplet == true) {
 			//appletCanvas.notify();
 			//appletCanvas.setSize(500,500);
 			//invalidate();
@@ -1669,9 +1054,7 @@ public class ThreadB extends Thread {
 					||getHeight()!=lastHeight
 					||appletCanvas.getWidth()!=lastAppletCanvasWidth
 					||appletCanvas.getHeight()!=lastAppletCanvasHeight
-
-			)
-			{
+			) {
 
 				log.info("Resized applet.");
 
@@ -1690,8 +1073,7 @@ public class ThreadB extends Thread {
 				//add(appletCanvas);
 				//validate();
 
-				try
-				{
+				/*try {
 
 					//Display.setParent(null);
 
@@ -1707,110 +1089,75 @@ public class ThreadB extends Thread {
 					//Display.setDisplayMode(new DisplayMode(canvasWidth,canvasHeight));
 					//Display.update();
 
-				}
-				catch (Exception e)
-				{
+				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}*/
 			}
-
-
 		}
 
+		if (Display.wasResized() == true || resize == true) {
+			resize = false;
 
-
-		if(Display.wasResized()==true || resize==true)
-		{
-			resize=false;
-
-
-			//reset GL model matrix, etc.
-
+			// reset GL model matrix, etc.
 			log.info("Resized window.");
 
-
-
-//				log.info("Display.getWidth() x Display.getHeight():"+Display.getWidth()+" x "+Display.getHeight());
-//				log.info("getWidth() x getHeight():"+getWidth()+" x "+getHeight());
-//				if(isApplet)log.info("appletCanvas.getWidth() x appletCanvas.getHeight():"+appletCanvas.getWidth()+" x "+appletCanvas.getHeight());
-	//
-	//
 			lastDisplayWidth = Display.getWidth();
 			lastDisplayHeight = Display.getHeight();
 			lastWidth = getWidth();
 			lastHeight = getHeight();
 
-			if(isApplet)
-			{
+			if (isApplet) {
 				lastAppletCanvasWidth = appletCanvas.getWidth();
 				lastAppletCanvasHeight = appletCanvas.getHeight();
 			}
 
 
 			LWJGLUtils.doResize();
-
-
 		}
 	}
 
-
-
-
-	//=========================================================================================================================
-	public void doScreenShotCheck()
-	{//=========================================================================================================================
-
-
+	public void doScreenShotCheck() {
 		boolean takeScreenShot = false;
 
-		if(Keyboard.isKeyDown(Keyboard.KEY_F12))
-		{
-			if(screenShotKeyPressed==false)
-			{
-				screenShotKeyPressed=true;
-				takeScreenShot=true;
+		if (Keyboard.isKeyDown(Keyboard.KEY_F12)) {
+			if (screenShotKeyPressed == false) {
+				screenShotKeyPressed = true;
+				takeScreenShot = true;
 			}
-		}
-		else
-		{
-			screenShotKeyPressed=false;
+		} else {
+			screenShotKeyPressed = false;
 		}
 
+		if (takeScreenShot) {
+			clientGameEngine.audioManager.playSound("screenShot", 1.0f, 1.0f, 1);
 
-		if(takeScreenShot)
-		{
-
-			clientGameEngine.audioManager.playSound("screenShot",1.0f,1.0f,1);
-
-			String imageName = "bobsgame-"+new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(Calendar.getInstance().getTime())+".png";
+			String imageName = "bobsgame-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(Calendar.getInstance().getTime()) + ".png";
 			String fileName = "";
 
-			if(System.getProperty("os.name").contains("Win"))
-			{
-				Console.add("Saved screenshot on Desktop.",BobColor.green,3000);
-				fileName = System.getProperty("user.home")+Cache.slash+"Desktop"+Cache.slash+imageName;
-			}
-			else
-			{
-				Console.add("Saved screenshot in home folder.",BobColor.green,3000);
-				fileName = System.getProperty("user.home")+Cache.slash+imageName;
+			if (System.getProperty("os.name").contains("Win")) {
+				Console.add("Saved screenshot on Desktop.", BobColor.green, 3000);
+				fileName = System.getProperty("user.home") + Cache.slash + "Desktop" + Cache.slash + imageName;
+			} else {
+				Console.add("Saved screenshot in home folder.", BobColor.green, 3000);
+				fileName = System.getProperty("user.home") + Cache.slash + imageName;
 			}
 
-			GL11.glReadBuffer(GL11.GL_FRONT);
+			glReadBuffer(GL_FRONT);
+
 			int width = Display.getWidth();
-			int height= Display.getHeight();
-			int bytesPerPixel = Display.getDisplayMode().getBitsPerPixel()/8; // Assuming a 32-bit display with a byte each for red, green, blue, and alpha.
+			int height = Display.getHeight();
+
+			int bytesPerPixel = Display.getDisplayMode().getBitsPerPixel() / 8; // Assuming a 32-bit display with a byte each for red, green, blue, and alpha.
+
 			ByteBuffer buffer = BufferUtils.createByteBuffer(width * height * bytesPerPixel);
-			GL11.glReadPixels(0, 0, width, height, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buffer );
+			glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 
 			File file = new File(fileName);
 			String format = "PNG";
 			BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
-			for(int x = 0; x < width; x++)
-			{
-				for(int y = 0; y < height; y++)
-				{
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
 					int i = (x + (width * y)) * bytesPerPixel;
 					int r = buffer.get(i) & 0xFF;
 					int g = buffer.get(i + 1) & 0xFF;
@@ -1819,52 +1166,40 @@ public class ThreadB extends Thread {
 				}
 			}
 
-
-			try
-			{
+			try {
 				ImageIO.write(image, format, file);
-			} catch (IOException e) { e.printStackTrace(); }
-
-
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-
 
 		boolean printLog = false;
 
-		if(Keyboard.isKeyDown(Keyboard.KEY_F11))
-		{
-			if(debugKeyPressed==false)
-			{
-				debugKeyPressed=true;
-				printLog=true;
+		if (Keyboard.isKeyDown(Keyboard.KEY_F11)) {
+			if (debugKeyPressed == false) {
+				debugKeyPressed = true;
+				printLog = true;
 			}
-		}
-		else
-		{
+		} else {
 			debugKeyPressed=false;
 		}
 
-		if(printLog)
-		{
-
-			String imageName = "bobsgame-"+new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(Calendar.getInstance().getTime())+".txt";
+		if (printLog) {
+			String imageName = "bobsgame-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(Calendar.getInstance().getTime()) + ".txt";
 			String fileName = "";
 
-			if(System.getProperty("os.name").contains("Win"))
-			{
-				Console.add("Saved debug log on Desktop.",BobColor.green,3000);
-				fileName = System.getProperty("user.home")+Cache.slash+"Desktop"+Cache.slash+imageName;
-			}
-			else
-			{
-				Console.add("Saved debug log in home folder.",BobColor.green,3000);
-				fileName = System.getProperty("user.home")+Cache.slash+imageName;
+			if (System.getProperty("os.name").contains("Win")) {
+				Console.add("Saved debug log on Desktop.", BobColor.green, 3000);
+				fileName = System.getProperty("user.home") + Cache.slash + "Desktop" + Cache.slash + imageName;
+			} else {
+				Console.add("Saved debug log in home folder.", BobColor.green, 3000);
+				fileName = System.getProperty("user.home") + Cache.slash + imageName;
 			}
 
 			Writer output = null;
-			try
-			{
-				output = new BufferedWriter(new FileWriter(new File(fileName)));
+
+			try {
+				output = new BufferedWriter(new FileWriter(fileName));
 
 				String s = FileUtils.readFileToString(new File(Cache.cacheDir+"log.txt"));
 				s = s + "\n";
@@ -1872,53 +1207,42 @@ public class ThreadB extends Thread {
 
 				output.write(s);
 				output.close();
-			}
-			catch (IOException e)
-			{
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
-
 	}
 
-
-	//=========================================================================================================================
-	public void cleanup() throws Exception
-	{//=========================================================================================================================
-		//------------------------------
+	public void cleanup() throws Exception {
 		// end main loop, cleanup
-		//------------------------------
-
-
 		log.info("Cleaning up...");
 
-		try
-		{
+		try {
 			Display.setParent(null);
-		}
-		catch(LWJGLException e)
-		{
+		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
 
-		try{
-
+		try {
 			AL.destroy();
-		}catch(Exception e){e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		try{
+		try {
 			gameClientTCP.cleanup();
 			clientGameEngine.cleanup();
-		}catch(Exception e){e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-
-		try{
+		try {
 			loginState.cleanup();
 			createNewAccountState.cleanup();
 			LWJGLUtils.TWLthemeManager.destroy();
-		}catch(Exception e){e.printStackTrace();}
-
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		//loggedOutState.cleanup();
 		//serversHaveShutDownState.cleanup();
@@ -1926,19 +1250,12 @@ public class ThreadB extends Thread {
 		//youWillBeNotifiedState.cleanup();
 		//glowTileBackground.cleanup();
 
-
 		try{
 			Display.destroy();
-		}catch(Exception e){e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		log.info("Exiting...");
-
-
-
 	}
-
-
-
-
 }
-
