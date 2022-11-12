@@ -226,16 +226,13 @@ public class ClientMain extends Applet {
 		log.debug("destroy()");
 
 		log.debug("exit=true");
-		clientMain.exit=true; //this will end ghost thread, game thread break out of loop, call quit() and exit.
+		clientMain.exit = true; // this will end ghost thread, game thread break out of loop, call quit() and exit.
 		this.exit = true;
 
 		log.debug("Waiting for gameThread.join()");
-		try
-		{
+		try {
 			gameThread.join();
-		}
-		catch(InterruptedException e)
-		{
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		log.debug("gameThread.join() complete.");
@@ -244,7 +241,6 @@ public class ClientMain extends Applet {
 		remove(appletCanvas);
 
 		super.destroy();
-
 	}
 
 	public static void exit() {
@@ -260,11 +256,9 @@ public class ClientMain extends Applet {
 	public void initClientInfo() {
 		Properties systemProperties = System.getProperties();
 
-		if(isApplet==true)
-		{
+		if (isApplet == true) {
 			//connect through JSObject and get these from browser
-			if(browser!=null)
-			{
+			if (browser != null) {
 				clientInfo.browserUserAgentString = (String) browser.eval("getUserAgentString();");
 				clientInfo.browserAppNameVersionString = (String) browser.eval("getAppNameString();");
 				clientInfo.browserReferrerString = (String) browser.eval("getReferrerString();");
@@ -359,7 +353,7 @@ public class ClientMain extends Applet {
 		Date calendarTime = calendar.getTime();
 		log.info("Local Adjusted Time: " + calendarTime);
 		String gmtOffset = new SimpleDateFormat("Z").format(calendarTime);
-		log.info("Local TimeZone GMT offset: "+gmtOffset);
+		log.info("Local TimeZone GMT offset: " + gmtOffset);
 
 		//get the time zone
 		TimeZone timezone = calendar.getTimeZone();
@@ -509,7 +503,7 @@ public class ClientMain extends Applet {
 				GUI legalScreenGUI = new GUI(legalScreen, LWJGLUtils.TWLrenderer);
 				legalScreenGUI.applyTheme(LWJGLUtils.TWLthemeManager);
 
-				while (legalScreen.clickedOK_S() == false )  {
+				while (legalScreen.clickedOK_S() == false)  {
 					glClear(GL_COLOR_BUFFER_BIT);
 
 					legalScreen.update();
@@ -590,7 +584,6 @@ public class ClientMain extends Applet {
 		}).start();
 	}
 
-
 	public void initDebugLogger() {
 		Logger rootLogger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 		LoggerContext loggerContext = rootLogger.getLoggerContext();
@@ -654,13 +647,12 @@ public class ClientMain extends Applet {
 		// we are not interested in auto-configuration
 		loggerContext.reset();
 
-
 		PatternLayoutEncoder consoleEncoder = new PatternLayoutEncoder();
 		consoleEncoder.setContext(loggerContext);
 		consoleEncoder.setPattern("%date{yyyy-MM-dd HH:mm:ss} %-50(%-5level| %msg   ) [%thread] \n");
 		consoleEncoder.start();
 
-		ConsoleAppender<ILoggingEvent> consoleAppender = new ConsoleAppender<ILoggingEvent>();
+		ConsoleAppender<ILoggingEvent> consoleAppender = new ConsoleAppender<>();
 		consoleAppender.setWithJansi(false);
 		consoleAppender.setContext(loggerContext);
 		consoleAppender.setEncoder(consoleEncoder);
@@ -668,17 +660,13 @@ public class ClientMain extends Applet {
 
 		rootLogger.addAppender(consoleAppender);
 
-
-
-
 		PatternLayoutEncoder textEncoder = new PatternLayoutEncoder();
 		textEncoder.setContext(loggerContext);
 		textEncoder.setPattern("%date{yyyy-MM-dd HH:mm:ss} %-50(%-5level| %msg   ) [%thread] \n");
 		textEncoder.setImmediateFlush(true);
 		textEncoder.start();
 
-
-		FileAppender<ILoggingEvent> textFileAppender = new FileAppender<ILoggingEvent>();
+		FileAppender<ILoggingEvent> textFileAppender = new FileAppender<>();
 		textFileAppender.setContext(loggerContext);
 		textFileAppender.setEncoder(textEncoder);
 		textFileAppender.setAppend(true);
@@ -686,8 +674,6 @@ public class ClientMain extends Applet {
 		textFileAppender.start();
 
 		rootLogger.addAppender(textFileAppender);
-
-		//rootLogger.setLevel(Level.WARN);
 	}
 
 	public static Logger log = (Logger) LoggerFactory.getLogger(ClientMain.class);
@@ -700,7 +686,7 @@ public class ClientMain extends Applet {
 	public ControlsManager controlsManager;
 
 	public ClientGameEngine clientGameEngine;
-	public ArrayDeque<ClientGameEngine> gameStack = new ArrayDeque<ClientGameEngine>();
+	public ArrayDeque<ClientGameEngine> gameStack = new ArrayDeque<>();
 
 	public Console console;
 
@@ -713,14 +699,10 @@ public class ClientMain extends Applet {
 
 	public static GlowTileBackground glowTileBackground;
 
-
 	public boolean serversAreShuttingDown = false;
 
 	//public SpriteAssetIndex spriteAssetManager;
 	//public MapAssetIndex mapAssetManager;
-
-
-
 
 	public String slash = System.getProperties().getProperty("file.separator");
 
@@ -780,7 +762,6 @@ public class ClientMain extends Applet {
 		LWJGLUtils.initControllers();
 
 		audioUtils = new AudioUtils();
-
 		glUtils = new GLUtils();
 		statsUtils = new StatsUtils();
 
@@ -794,11 +775,11 @@ public class ClientMain extends Applet {
 
 		stateManager = new StateManager();
 
-		//init game
+		// init game
 		log.info("Init Client...");
 		makeNewClientEngine();
 
-		//init login GUI
+		// init login GUI
 		log.info("Init GUIs...");
 		if (glowTileBackground == null) {
 			glowTileBackground = new GlowTileBackground();
@@ -852,8 +833,6 @@ public class ClientMain extends Applet {
 		initClientInfo();
 	}
 
-
-
 	public void makeNewClientEngine() {
 		if (clientGameEngine != null) {
 			clientGameEngine.cleanup();
@@ -873,14 +852,12 @@ public class ClientMain extends Applet {
 
 		clientGameEngine.init();
 
-		//init network
+		// init network
 		gameClientTCP = new GameClientTCP(clientGameEngine);
-
 	}
 
 	public static boolean introMode = false;
 	public static boolean previewClientInEditor = false;
-
 
 	boolean debugKeyPressed = false;
 	boolean screenShotKeyPressed = false;
@@ -898,7 +875,7 @@ public class ClientMain extends Applet {
 		}
 	}
 
-	//this is called from the browser javascript on window.blur
+	// this is called from the browser javascript on window.blur
 	public void blur() {
 	}
 
@@ -907,16 +884,18 @@ public class ClientMain extends Applet {
 	public static boolean _gotFacebookResponse = false;
 
 
-	synchronized static public void setGotFacebookResponse_S(boolean b){_gotFacebookResponse = b;}
-	synchronized static public boolean getGotFacebookResponse_S(){return _gotFacebookResponse;}
+	public synchronized static void setGotFacebookResponse_S(boolean b) {
+		_gotFacebookResponse = b;
+	}
 
-	//=========================================================================================================================
+	public synchronized static boolean getGotFacebookResponse_S() {
+		return _gotFacebookResponse;
+	}
+
 	//this is called from the browser javascript after we call the facebook JS SDK
-	public void setFacebookCredentials(String facebookID, String accessToken)
-	{//=========================================================================================================================
+	public void setFacebookCredentials(String facebookID, String accessToken) {
 		ClientMain.facebookID = facebookID;
 		ClientMain.facebookAccessToken = accessToken;
-
 		setGotFacebookResponse_S(true);
 	}
 
@@ -928,7 +907,9 @@ public class ClientMain extends Applet {
 		log.info("Begin Main Loop...");
 
 		while (exit == false) {
-			if(Display.isCloseRequested() || (BobNet.debugMode==true&&Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)))exit=true;
+			if (Display.isCloseRequested() || (BobNet.debugMode == true && Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))) {
+				exit = true;
+			}
 
 			StatsUtils.updateTimers();
 			StatsUtils.updateDebugInfo();
@@ -949,16 +930,14 @@ public class ClientMain extends Applet {
 				//LWJGLUtils.setBlendMode(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 			}
 
-
 			if (serversAreShuttingDown) {
 				GLUtils.drawFilledRect(0, 0, 0, 0, Display.getWidth(), 0, Display.getHeight(), 0.2f);
 				GLUtils.drawOutlinedString("The servers are shutting down soon for updating.", Display.getWidth()/2-60, Display.getHeight()/2-12, BobColor.white);
 			}
 
-
-			if(Display.isActive()==false && BobNet.debugMode==false) {
+			if (Display.isActive() == false && BobNet.debugMode == false) {
 				GLUtils.drawFilledRect(0, 0, 0, 0, Display.getWidth(), 0, Display.getHeight(), 0.5f);
-				GLUtils.drawOutlinedString("Low power mode. Click to resume.", Display.getWidth()/2-70, Display.getHeight()/2-12, BobColor.white);
+				GLUtils.drawOutlinedString("Low power mode. Click to resume.", Display.getWidth() / 2 - 70, Display.getHeight()/  2 - 12, BobColor.white);
 
 				Display.sync(10);
 
@@ -970,7 +949,7 @@ public class ClientMain extends Applet {
 
 				//Display.update();
 			} else {
-				if(LWJGLUtils.vsync) {
+				if (LWJGLUtils.vsync) {
 					try {
 						// this just lowers cpu usage
 						Thread.sleep(2); // TODO: vary this based on system speed
@@ -1010,16 +989,13 @@ public class ClientMain extends Applet {
 						//no ghost thread
 						//30 = 30 fps solid, jitter but no stutter, very smooth though **(same for with ghost thread)
 
-
 						//ghost thread
 						//8 = ~ 120-125 fps, starting to get a little bit of stutter
 						//7 = ~ 130-140 fps, no stutter, tiny bit choppy for some reason
 						//6 = ~ 150 fps, no stutter
 						//5 = ~ 200 fps, no stutter
 						//4 = ~ 250 fps, no stutter
-
 						//1 = 950 fps, very smooth
-
 
 						Thread.yield();
 
@@ -1046,52 +1022,26 @@ public class ClientMain extends Applet {
 
 			//validate();
 
-			if(
-					//Display.getWidth()!=canvasWidth||Display.getHeight()!=canvasHeight
-					Display.getWidth()!=lastDisplayWidth
-					||Display.getHeight()!=lastDisplayHeight
-					||getWidth()!=lastWidth
-					||getHeight()!=lastHeight
-					||appletCanvas.getWidth()!=lastAppletCanvasWidth
-					||appletCanvas.getHeight()!=lastAppletCanvasHeight
+			if (Display.getWidth() != lastDisplayWidth
+					|| Display.getHeight() != lastDisplayHeight
+					|| getWidth() != lastWidth
+					|| getHeight() != lastHeight
+					|| appletCanvas.getWidth() != lastAppletCanvasWidth
+					|| appletCanvas.getHeight() != lastAppletCanvasHeight
 			) {
-
 				log.info("Resized applet.");
-
-
-
 
 				resize = true;
 
 				canvasWidth = Display.getWidth();
 				canvasHeight = Display.getHeight();
 
-				//TODO: resize to browser window
+				// TODO: resize to browser window
 				//appletCanvas.setSize(canvasWidth,canvasHeight);
 				//appletCanvas.validate();
 				//remove(appletCanvas);
 				//add(appletCanvas);
 				//validate();
-
-				/*try {
-
-					//Display.setParent(null);
-
-					//remove(appletCanvas);
-					//add(appletCanvas);
-					//validate();
-
-					//Display.update();
-					//Display.setParent(appletCanvas);
-					//Display.update();
-
-
-					//Display.setDisplayMode(new DisplayMode(canvasWidth,canvasHeight));
-					//Display.update();
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}*/
 			}
 		}
 
@@ -1110,7 +1060,6 @@ public class ClientMain extends Applet {
 				lastAppletCanvasWidth = appletCanvas.getWidth();
 				lastAppletCanvasHeight = appletCanvas.getHeight();
 			}
-
 
 			LWJGLUtils.doResize();
 		}
@@ -1181,7 +1130,7 @@ public class ClientMain extends Applet {
 				printLog = true;
 			}
 		} else {
-			debugKeyPressed=false;
+			debugKeyPressed = false;
 		}
 
 		if (printLog) {
@@ -1201,11 +1150,10 @@ public class ClientMain extends Applet {
 			try {
 				output = new BufferedWriter(new FileWriter(fileName));
 
-				String s = FileUtils.readFileToString(new File(Cache.cacheDir+"log.txt"));
+				String s = FileUtils.readFileToString(new File(Cache.cacheDir + "log.txt"));
 				s = s + "\n";
-				//s = s + clientInfo.printString();
-
 				output.write(s);
+
 				output.close();
 			} catch (IOException e) {
 				e.printStackTrace();

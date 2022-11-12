@@ -1,81 +1,58 @@
 package com.bobsgame.client;
 
 import org.lwjgl.input.Controller;
-import org.lwjgl.input.Controllers;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
+public class ControlsManager {
+	// keyboard
+	private boolean KEY_UP_HELD = false;
+	private boolean KEY_DOWN_HELD = false;
+	private boolean KEY_LEFT_HELD = false;
+	private boolean KEY_RIGHT_HELD = false;
 
+	private boolean KEY_TAB_HELD = false; // was START
+	private boolean KEY_RETURN_HELD = false; // was SELECT
 
-//=========================================================================================================================
-public class ControlsManager
-{//=========================================================================================================================
+	private boolean KEY_LBRACKET_HELD = false; // was L
+	private boolean KEY_RBRACKET_HELD = false; // was R
 
-
-
-
-
-
-
-
-	//------------------------------------
-	//keyboard
-	//------------------------------------
-
-	private boolean KEY_UP_HELD=false;
-	private boolean KEY_DOWN_HELD=false;
-	private boolean KEY_LEFT_HELD=false;
-	private boolean KEY_RIGHT_HELD=false;
-
-	private boolean KEY_TAB_HELD=false;//was START
-	private boolean KEY_RETURN_HELD=false;//was SELECT
-
-	private boolean KEY_LBRACKET_HELD=false;//was L
-	private boolean KEY_RBRACKET_HELD=false;//was R
-
-	private boolean KEY_SPACE_HELD=false;//was A
-	private boolean KEY_LSHIFT_HELD=false;//was B
-	private boolean KEY_LCTRL_HELD=false;
-	private boolean KEY_F1_HELD=false;
-
+	private boolean KEY_SPACE_HELD = false; // was A
+	private boolean KEY_LSHIFT_HELD = false; // was B
+	private boolean KEY_LCTRL_HELD = false;
+	private boolean KEY_F1_HELD = false;
 
 	//private boolean KEY_Y_HELD=false;
 	//private boolean KEY_X_HELD=false;
 
+	private boolean KEY_MINUS_HELD = false; // zoom in
+	private boolean KEY_PLUS_HELD = false; // zoom out
 
-	private boolean KEY_MINUS_HELD=false;//zoom in
-	private boolean KEY_PLUS_HELD=false;//zoom out
+	private boolean KEY_H_HELD = false;
+	private boolean KEY_TILDE_HELD = false;
+	private boolean KEY_1_HELD = false;
+	private boolean KEY_2_HELD = false;
+	private boolean KEY_3_HELD = false;
+	private boolean KEY_4_HELD = false;
+	private boolean KEY_5_HELD = false;
+	private boolean KEY_6_HELD = false;
 
-	private boolean KEY_H_HELD=false;
-	private boolean KEY_TILDE_HELD=false;
-	private boolean KEY_1_HELD=false;
-	private boolean KEY_2_HELD=false;
-	private boolean KEY_3_HELD=false;
-	private boolean KEY_4_HELD=false;
-	private boolean KEY_5_HELD=false;
-	private boolean KEY_6_HELD=false;
+	private boolean KEY_NUM2_HELD = false;
+	private boolean KEY_NUM3_HELD = false;
+	private boolean KEY_NUM5_HELD = false;
+	private boolean KEY_NUM6_HELD = false;
+	private boolean KEY_NUM8_HELD = false;
+	private boolean KEY_NUM9_HELD = false;
 
-	private boolean KEY_NUM2_HELD=false;
-	private boolean KEY_NUM3_HELD=false;
-	private boolean KEY_NUM5_HELD=false;
-	private boolean KEY_NUM6_HELD=false;
-	private boolean KEY_NUM8_HELD=false;
-	private boolean KEY_NUM9_HELD=false;
+	private boolean KEY_NUM1_HELD = false;
+	private boolean KEY_NUM4_HELD = false;
+	private boolean KEY_NUM0_HELD = false;
 
-	private boolean KEY_NUM1_HELD=false;
-	private boolean KEY_NUM4_HELD=false;
-	private boolean KEY_NUM0_HELD=false;
+	private boolean KEY_RSHIFT_HELD = false; // quickzoom
+	private boolean KEY_RCTRL_HELD = false; // quickzoom
+	private boolean KEY_BACKSPACE_HELD = false; // reset zoom
 
-	private boolean KEY_RSHIFT_HELD=false;//quickzoom
-	private boolean KEY_RCTRL_HELD=false;//quickzoom
-	private boolean KEY_BACKSPACE_HELD=false;//reset zoom
-
-
-
-	//------------------------------------
-	//joystick
-	//------------------------------------
-
+	// joystick
 	private boolean JOY_UP_HELD = false;
 	private boolean JOY_DOWN_HELD = false;
 	private boolean JOY_LEFT_HELD = false;
@@ -87,206 +64,174 @@ public class ControlsManager
 	private boolean JOY_ZOOMIN_HELD = false;
 	private boolean JOY_ZOOMOUT_HELD = false;
 
+	// buttons set from either joystick or keyboard
 
+	// pressed
+	public boolean MOUSEBUTTON_0_PRESSED = false;
 
-	//------------------------------------
-	//buttons set from either joystick or keyboard
-	//------------------------------------
+	public boolean BUTTON_ACTION_PRESSED = false; // A or ACTION or L or SPACE
+	public boolean BUTTON_CANCEL_PRESSED = false; // B or ??
+
+	public boolean BUTTON_UP_PRESSED = false;
+	public boolean BUTTON_DOWN_PRESSED = false;
+	public boolean BUTTON_LEFT_PRESSED = false;
+	public boolean BUTTON_RIGHT_PRESSED = false;
+
+	public boolean BUTTON_SPACE_PRESSED = false; // was A
+	public boolean BUTTON_LSHIFT_PRESSED = false; // was B
+	public boolean BUTTON_LCTRL_PRESSED = false;
+	public boolean BUTTON_F1_PRESSED = false;
+
+	//public boolean BUTTON_X_PRESSED=false;
+	//public boolean BUTTON_Y_PRESSED=false;
+
+	public boolean BUTTON_TAB_PRESSED = false; // was START
+	public boolean BUTTON_RETURN_PRESSED = false; // was SELECT
+
+	public boolean BUTTON_LBRACKET_PRESSED = false; // was L
+	public boolean BUTTON_RBRACKET_PRESSED = false; // was R
+
+	public boolean BUTTON_MINUS_PRESSED = false; // zoom in
+	public boolean BUTTON_PLUS_PRESSED = false; // zoom out
+
+	public boolean BUTTON_H_PRESSED = false;
+	public boolean BUTTON_TILDE_PRESSED = false;
+	public boolean BUTTON_1_PRESSED = false;
+	public boolean BUTTON_2_PRESSED = false;
+	public boolean BUTTON_3_PRESSED = false;
+	public boolean BUTTON_4_PRESSED = false;
+	public boolean BUTTON_5_PRESSED = false;
+	public boolean BUTTON_6_PRESSED = false;
+
+	public boolean BUTTON_NUM2_PRESSED = false;
+	public boolean BUTTON_NUM3_PRESSED = false;
+	public boolean BUTTON_NUM5_PRESSED = false;
+	public boolean BUTTON_NUM6_PRESSED = false;
+	public boolean BUTTON_NUM8_PRESSED = false;
+	public boolean BUTTON_NUM9_PRESSED = false;
+
+	public boolean BUTTON_NUM1_PRESSED = false;
+	public boolean BUTTON_NUM4_PRESSED = false;
+	public boolean BUTTON_NUM0_PRESSED = false;
+
+	public boolean BUTTON_RSHIFT_PRESSED = false; // quickzoom
+	public boolean BUTTON_RCTRL_PRESSED = false; // quickzoom
+	public boolean BUTTON_BACKSPACE_PRESSED = false; // reset zoom
+
+	// held
+	public boolean MOUSEBUTTON_0_HELD = false;
+
+	public boolean BUTTON_ACTION_HELD = false; // A or ACTION or L or SPACE
+	public boolean BUTTON_CANCEL_HELD = false; // B or ??
+
+	public boolean BUTTON_UP_HELD = false;
+	public boolean BUTTON_DOWN_HELD = false;
+	public boolean BUTTON_LEFT_HELD = false;
+	public boolean BUTTON_RIGHT_HELD = false;
+
+	public boolean BUTTON_SPACE_HELD = false; // was A
+	public boolean BUTTON_LSHIFT_HELD = false; // was B
+	public boolean BUTTON_LCTRL_HELD = false;
+	public boolean BUTTON_F1_HELD = false;
+
+	//public boolean BUTTON_X_HELD=false;
+	//public boolean BUTTON_Y_HELD=false;
+	public boolean BUTTON_TAB_HELD = false; // was START
+	public boolean BUTTON_RETURN_HELD = false; // was SELECT
+
+	public boolean BUTTON_LBRACKET_HELD = false; // was L
+	public boolean BUTTON_RBRACKET_HELD = false; // was R
+
+	public boolean BUTTON_MINUS_HELD = false; // zoom in
+	public boolean BUTTON_PLUS_HELD = false; // zoom out
+
+	public boolean BUTTON_H_HELD = false;
+	public boolean BUTTON_TILDE_HELD = false;
+	public boolean BUTTON_1_HELD = false;
+	public boolean BUTTON_2_HELD = false;
+	public boolean BUTTON_3_HELD = false;
+	public boolean BUTTON_4_HELD = false;
+	public boolean BUTTON_5_HELD = false;
+	public boolean BUTTON_6_HELD = false;
+
+	public boolean BUTTON_NUM2_HELD = false;
+	public boolean BUTTON_NUM3_HELD = false;
+	public boolean BUTTON_NUM5_HELD = false;
+	public boolean BUTTON_NUM6_HELD = false;
+	public boolean BUTTON_NUM8_HELD = false;
+	public boolean BUTTON_NUM9_HELD = false;
+
+	public boolean BUTTON_NUM1_HELD = false;
+	public boolean BUTTON_NUM4_HELD = false;
+	public boolean BUTTON_NUM0_HELD = false;
+
+	public boolean BUTTON_RSHIFT_HELD = false; // quickzoom
+	public boolean BUTTON_RCTRL_HELD = false; // quickzoom
+	public boolean BUTTON_BACKSPACE_HELD = false; // reset zoom
+
+	public void update() {
+		//------------------------------------
+		// reset pressed
+		//------------------------------------
+		MOUSEBUTTON_0_PRESSED = false;
+
+		BUTTON_ACTION_PRESSED = false;
+		BUTTON_CANCEL_PRESSED = false;
+
+		BUTTON_SPACE_PRESSED = false; // was A
+		BUTTON_LSHIFT_PRESSED = false; // was B
+		BUTTON_LCTRL_PRESSED = false;
+		BUTTON_F1_PRESSED = false;
+
+		//BUTTON_Y_PRESSED=false;
+		//BUTTON_X_PRESSED=false;
+
+		BUTTON_TAB_PRESSED = false; // was START
+		BUTTON_RETURN_PRESSED = false; // was SELECT
+
+		BUTTON_LBRACKET_PRESSED = false; // was L
+		BUTTON_RBRACKET_PRESSED = false; // was R
+
+		BUTTON_MINUS_PRESSED = false;
+		BUTTON_PLUS_PRESSED = false;
+
+		BUTTON_UP_PRESSED = false;
+		BUTTON_DOWN_PRESSED = false;
+		BUTTON_LEFT_PRESSED = false;
+		BUTTON_RIGHT_PRESSED = false;
+
+		BUTTON_H_PRESSED = false;
+		BUTTON_TILDE_PRESSED = false;
+		BUTTON_1_PRESSED = false;
+		BUTTON_2_PRESSED = false;
+		BUTTON_3_PRESSED = false;
+		BUTTON_4_PRESSED = false;
+		BUTTON_5_PRESSED = false;
+		BUTTON_6_PRESSED = false;
+
+		BUTTON_NUM2_PRESSED = false;
+		BUTTON_NUM3_PRESSED = false;
+		BUTTON_NUM5_PRESSED = false;
+		BUTTON_NUM6_PRESSED = false;
+		BUTTON_NUM8_PRESSED = false;
+		BUTTON_NUM9_PRESSED = false;
+
+		BUTTON_NUM1_PRESSED = false;
+		BUTTON_NUM4_PRESSED = false;
+		BUTTON_NUM0_PRESSED = false;
+
+		BUTTON_RSHIFT_PRESSED = false;
+		BUTTON_RCTRL_PRESSED = false;
+		BUTTON_BACKSPACE_PRESSED = false;
 
 		//------------------------------------
-		//pressed
+		// see if button was held last frame
+		// if it wasnt, pressed = 1
 		//------------------------------------
 
-			public boolean MOUSEBUTTON_0_PRESSED=false;
-
-			public boolean BUTTON_ACTION_PRESSED=false;//A or ACTION or L or SPACE
-			public boolean BUTTON_CANCEL_PRESSED=false;//B or ??
-
-
-			public boolean BUTTON_UP_PRESSED=false;
-			public boolean BUTTON_DOWN_PRESSED=false;
-			public boolean BUTTON_LEFT_PRESSED=false;
-			public boolean BUTTON_RIGHT_PRESSED=false;
-
-			public boolean BUTTON_SPACE_PRESSED=false;//was A
-			public boolean BUTTON_LSHIFT_PRESSED=false;//was B
-			public boolean BUTTON_LCTRL_PRESSED=false;
-			public boolean BUTTON_F1_PRESSED=false;
-
-			//public boolean BUTTON_X_PRESSED=false;
-			//public boolean BUTTON_Y_PRESSED=false;
-
-			public boolean BUTTON_TAB_PRESSED=false;//was START
-			public boolean BUTTON_RETURN_PRESSED=false;//was SELECT
-
-			public boolean BUTTON_LBRACKET_PRESSED=false;//was L
-			public boolean BUTTON_RBRACKET_PRESSED=false;//was R
-
-			public boolean BUTTON_MINUS_PRESSED=false;//zoom in
-			public boolean BUTTON_PLUS_PRESSED=false;//zoom out
-
-			public boolean BUTTON_H_PRESSED=false;
-			public boolean BUTTON_TILDE_PRESSED=false;
-			public boolean BUTTON_1_PRESSED=false;
-			public boolean BUTTON_2_PRESSED=false;
-			public boolean BUTTON_3_PRESSED=false;
-			public boolean BUTTON_4_PRESSED=false;
-			public boolean BUTTON_5_PRESSED=false;
-			public boolean BUTTON_6_PRESSED=false;
-
-			public boolean BUTTON_NUM2_PRESSED=false;
-			public boolean BUTTON_NUM3_PRESSED=false;
-			public boolean BUTTON_NUM5_PRESSED=false;
-			public boolean BUTTON_NUM6_PRESSED=false;
-			public boolean BUTTON_NUM8_PRESSED=false;
-			public boolean BUTTON_NUM9_PRESSED=false;
-
-			public boolean BUTTON_NUM1_PRESSED=false;
-			public boolean BUTTON_NUM4_PRESSED=false;
-			public boolean BUTTON_NUM0_PRESSED=false;
-
-			public boolean BUTTON_RSHIFT_PRESSED=false;//quickzoom
-			public boolean BUTTON_RCTRL_PRESSED=false;//quickzoom
-			public boolean BUTTON_BACKSPACE_PRESSED=false;//reset zoom
-
-
 		//------------------------------------
-		//held
+		// store held
 		//------------------------------------
-
-			public boolean MOUSEBUTTON_0_HELD=false;
-
-			public boolean BUTTON_ACTION_HELD=false;//A or ACTION or L or SPACE
-			public boolean BUTTON_CANCEL_HELD=false;//B or ??
-
-			public boolean BUTTON_UP_HELD=false;
-			public boolean BUTTON_DOWN_HELD=false;
-			public boolean BUTTON_LEFT_HELD=false;
-			public boolean BUTTON_RIGHT_HELD=false;
-
-			public boolean BUTTON_SPACE_HELD=false;//was A
-			public boolean BUTTON_LSHIFT_HELD=false;//was B
-			public boolean BUTTON_LCTRL_HELD=false;
-			public boolean BUTTON_F1_HELD=false;
-
-			//public boolean BUTTON_X_HELD=false;
-			//public boolean BUTTON_Y_HELD=false;
-			public boolean BUTTON_TAB_HELD=false;//was START
-			public boolean BUTTON_RETURN_HELD=false;//was SELECT
-
-			public boolean BUTTON_LBRACKET_HELD=false;//was L
-			public boolean BUTTON_RBRACKET_HELD=false;//was R
-
-			public boolean BUTTON_MINUS_HELD=false;//zoom in
-			public boolean BUTTON_PLUS_HELD=false;//zoom out
-
-			public boolean BUTTON_H_HELD=false;
-			public boolean BUTTON_TILDE_HELD=false;
-			public boolean BUTTON_1_HELD=false;
-			public boolean BUTTON_2_HELD=false;
-			public boolean BUTTON_3_HELD=false;
-			public boolean BUTTON_4_HELD=false;
-			public boolean BUTTON_5_HELD=false;
-			public boolean BUTTON_6_HELD=false;
-
-			public boolean BUTTON_NUM2_HELD=false;
-			public boolean BUTTON_NUM3_HELD=false;
-			public boolean BUTTON_NUM5_HELD=false;
-			public boolean BUTTON_NUM6_HELD=false;
-			public boolean BUTTON_NUM8_HELD=false;
-			public boolean BUTTON_NUM9_HELD=false;
-
-			public boolean BUTTON_NUM1_HELD=false;
-			public boolean BUTTON_NUM4_HELD=false;
-			public boolean BUTTON_NUM0_HELD=false;
-
-			public boolean BUTTON_RSHIFT_HELD=false;//quickzoom
-			public boolean BUTTON_RCTRL_HELD=false;//quickzoom
-			public boolean BUTTON_BACKSPACE_HELD=false;//reset zoom
-
-
-
-
-
-	//=========================================================================================================================
-	public ControlsManager()
-	{//=========================================================================================================================
-
-
-
-
-	}
-
-
-
-	//=========================================================================================================================
-	public void update()
-	{//=========================================================================================================================
-
-		//------------------------------------
-		//reset pressed
-		//------------------------------------
-			MOUSEBUTTON_0_PRESSED=false;
-
-			BUTTON_ACTION_PRESSED=false;
-			BUTTON_CANCEL_PRESSED=false;
-
-
-			BUTTON_SPACE_PRESSED=false;//was A
-			BUTTON_LSHIFT_PRESSED=false;//was B
-			BUTTON_LCTRL_PRESSED=false;
-			BUTTON_F1_PRESSED=false;
-
-			//BUTTON_Y_PRESSED=false;
-			//BUTTON_X_PRESSED=false;
-
-			BUTTON_TAB_PRESSED=false;//was START
-			BUTTON_RETURN_PRESSED=false;//was SELECT
-
-			BUTTON_LBRACKET_PRESSED=false;//was L
-			BUTTON_RBRACKET_PRESSED=false;//was R
-
-			BUTTON_MINUS_PRESSED=false;
-			BUTTON_PLUS_PRESSED=false;
-
-			BUTTON_UP_PRESSED=false;
-			BUTTON_DOWN_PRESSED=false;
-			BUTTON_LEFT_PRESSED=false;
-			BUTTON_RIGHT_PRESSED=false;
-
-			BUTTON_H_PRESSED=false;
-			BUTTON_TILDE_PRESSED=false;
-			BUTTON_1_PRESSED=false;
-			BUTTON_2_PRESSED=false;
-			BUTTON_3_PRESSED=false;
-			BUTTON_4_PRESSED=false;
-			BUTTON_5_PRESSED=false;
-			BUTTON_6_PRESSED=false;
-
-			BUTTON_NUM2_PRESSED=false;
-			BUTTON_NUM3_PRESSED=false;
-			BUTTON_NUM5_PRESSED=false;
-			BUTTON_NUM6_PRESSED=false;
-			BUTTON_NUM8_PRESSED=false;
-			BUTTON_NUM9_PRESSED=false;
-
-			BUTTON_NUM1_PRESSED=false;
-			BUTTON_NUM4_PRESSED=false;
-			BUTTON_NUM0_PRESSED=false;
-
-			BUTTON_RSHIFT_PRESSED=false;
-			BUTTON_RCTRL_PRESSED=false;
-			BUTTON_BACKSPACE_PRESSED=false;
-
-
-
-		//------------------------------------
-		//see if button was held last frame
-		//if it wasnt, pressed = 1
-		//------------------------------------
-			//------------------------------------
-			//store held
-			//------------------------------------
 
 				boolean LAST_MOUSEBUTTON_0_HELD=MOUSEBUTTON_0_HELD;
 
@@ -647,19 +592,18 @@ public class ControlsManager
 
 	public Controller controller=null;
 
-	float minVal=0.9f;
+	float minVal = 0.9f;
+	
+	public boolean isJoystickButtonHeld(int id) {
+		if (controller == null) return false;
+		if (id == notSet) return false;
 
-	//=========================================================================================================================
-	public boolean isJoystickButtonHeld(int id)
-	{//=========================================================================================================================
-
-		if(controller==null)return false;
-		if(id==notSet)return false;
-
-		if(id==gameController_LeftAnalog_XAxis_Negative)
+		if (id == gameController_LeftAnalog_XAxis_Negative)
 		{
 			float val = controller.getXAxisValue();
-			if(val<0.0f&&Math.abs(val)>minVal)return true;
+			if (val < 0.0f && Math.abs(val) > minVal) {
+				return true;
+			}
 			return false;
 		}
 
@@ -772,14 +716,5 @@ public class ControlsManager
 
 		if(controller.isButtonPressed(id))return true;
 		return false;
-
 	}
-
-
-
-
-
-
-
-
 }

@@ -1,89 +1,43 @@
 package com.bobsgame.client.state;
 
-import com.bobsgame.client.engine.EnginePart;
-
-//=========================================================================================================================
-public class State
-{//=========================================================================================================================
-
-
-
-
-	static public long lastTicks = 0; //updated once per frame from main loop
-	static public long mainTicksPassed = 0;//updated once per frame from main loop
-	static public boolean callNanoTimeForEachCall = false;
+public class State {
+	public static long lastTicks = 0; // updated once per frame from main loop
+	public static long mainTicksPassed = 0; // updated once per frame from main loop
+	public static boolean callNanoTimeForEachCall = false;
 
 	public float engineSpeed = 1.0f;
 
-
-
-	//=========================================================================================================================
-	public void setEngineSpeed(float f)
-	{//=========================================================================================================================
+	public void setEngineSpeed(float f) {
 		engineSpeed = f;
-
 	}
 
-
-	//=========================================================================================================================
-	public long engineTicksPassed()
-	{//=========================================================================================================================
-
-
-		if(callNanoTimeForEachCall==true)
-		{
-			long ticks = System.nanoTime()/1000/1000;//Sys.getTime();
-
-			return (long)((ticks-lastTicks)*engineSpeed);
-
+	public long engineTicksPassed() {
+		if (callNanoTimeForEachCall == true) {
+			long ticks = System.nanoTime() / 1000 / 1000;
+			return (long) ((ticks - lastTicks) * engineSpeed);
+		} else {
+			return (long) (mainTicksPassed * engineSpeed);
 		}
-		else
-		{
-			return (long)(mainTicksPassed * engineSpeed);
+	}
+
+	public long realWorldTicksPassed() {
+		if (callNanoTimeForEachCall == true) {
+			long ticks = System.nanoTime() / 1000 / 1000;
+			return (ticks - lastTicks);
+		} else {
+			return mainTicksPassed;
 		}
+	}
 
-
-		//DONE: can multiply this to speed up game, divide it to slow game down!
+	public void update() {
 
 	}
 
-	//=========================================================================================================================
-	public long realWorldTicksPassed()
-	{//=========================================================================================================================
-
-
-		if(callNanoTimeForEachCall==true)
-		{
-			long ticks = System.nanoTime()/1000/1000;//Sys.getTime();
-
-			return (long)((ticks-lastTicks));
-
-		}
-		else
-		{
-			return (long)(mainTicksPassed);
-		}
-
-
-		//DONE: can multiply this to speed up game, divide it to slow game down!
-
-	}
-	//=========================================================================================================================
-	public void update()
-	{//=========================================================================================================================
-
-
-	}
-	//=========================================================================================================================
-	public void render()
-	{//=========================================================================================================================
-
-
-	}
-	//=========================================================================================================================
-	public void cleanup()
-	{//=========================================================================================================================
+	public void render() {
 
 	}
 
+	public void cleanup() {
+
+	}
 }

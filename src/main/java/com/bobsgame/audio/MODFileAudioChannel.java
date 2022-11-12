@@ -1,9 +1,10 @@
 package com.bobsgame.audio;
 
-
-
 import ibxm.IBXM;
 import ibxm.Module;
+import org.apache.commons.io.IOUtils;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.openal.AL10;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,22 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.SourceDataLine;
-
-import org.apache.commons.io.IOUtils;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.openal.AL10;
-
-import com.bobsgame.shared.Utils;
-
-
-//=========================================================================================================================
-public class MODFileAudioChannel extends AudioChannel
-{//=========================================================================================================================
-
-
+public class MODFileAudioChannel extends AudioChannel {
 	/** The size of the sections to stream from the mod file */
 	//private static final int sectionSize=4096*10;
 
