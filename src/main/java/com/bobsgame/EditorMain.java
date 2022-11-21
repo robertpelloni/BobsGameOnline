@@ -1,6 +1,4 @@
-
 package com.bobsgame;
-
 
 import java.awt.*;
 import java.awt.event.*;
@@ -11,7 +9,6 @@ import javax.swing.border.EtchedBorder;
 
 import com.bobsgame.editor.InfoLabelPanel;
 import org.lwjgl.openal.AL;
-
 
 import com.bobsgame.audio.AudioUtils;
 import com.bobsgame.editor.ControlPanel.ControlPanel;
@@ -31,21 +28,11 @@ import com.bobsgame.editor.TileCanvas.TileCanvas;
 import com.bobsgame.shared.MapData;
 import com.bobsgame.shared.Utils;
 
-
-//===============================================================================================
-public class EditorMain extends JFrame implements ActionListener, ItemListener, WindowListener, KeyListener, MouseWheelListener
-{//===============================================================================================
-
-	//===============================================================================================
-	public static void main(String[] args)
-	{//===============================================================================================
-
+public class EditorMain extends JFrame implements ActionListener, ItemListener, WindowListener, KeyListener, MouseWheelListener {
+	public static void main(String[] args) {
 		//System.out.println("starting...");
-
 		new EditorMain();
-
 	}
-
 
 	public static String exportDirectory = System.getProperties().getProperty("user.home")+"\\Desktop\\bgEditor_Output\\";
 	public static String defaultProjectFolder = "F:\\source\\bobsgame\\workspace\\_gfx\\_____MAPS\\";
@@ -57,20 +44,10 @@ public class EditorMain extends JFrame implements ActionListener, ItemListener, 
 	public static String androidProjectAssetsDir = "F:\\source\\bobsgame\\workspace\\bg-android\\assets\\";
 
 
-
-
 	public static boolean soundWasInitialized = false;
-
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
-
 
 	public static JFileChooser fileChooser;
 	private RenameWindow rename;
-
 
 	private JMenuBar menuBar;
 	private JMenu fileMenu, editMenu, spritesMenu, tilesetMenu, mapMenu, stateMenu, helpMenu, paletteMenu, optionsMenu, soundAndMusicMenu, cutsceneMenu;
@@ -3521,10 +3498,8 @@ public class EditorMain extends JFrame implements ActionListener, ItemListener, 
 
 }
 
-class JMenuSpacer extends JMenuItem
-{
-	public JMenuSpacer(String s)
-	{
+class JMenuSpacer extends JMenuItem {
+	public JMenuSpacer(String s) {
 		super.setText(s);
 		super.setEnabled(false);
 		super.setArmed(false);

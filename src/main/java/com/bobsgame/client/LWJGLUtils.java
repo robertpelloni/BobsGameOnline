@@ -60,31 +60,18 @@ public class LWJGLUtils
 
 	}
 
-
-
-
-
-	//=========================================================================================================================
 	/**
 	 * Set the display mode to be used
-	 *
-	 * @param width
-	 *            The width of the display required
-	 * @param height
-	 *            The height of the display required
-	 * @param fullscreen
-	 *            True if we want fullscreen mode
+	 * @param width The width of the display required
+	 * @param height The height of the display required
+	 * @param fullscreen True if we want fullscreen mode
 	 */
-	public static void setFullscreenCompatibleDisplayMode(int width, int height, boolean fullscreen)
-	{//=========================================================================================================================
-
-		//return if requested DisplayMode is already set
-		if (
-				(Display.getDisplayMode().getWidth() == width)
-				&&(Display.getDisplayMode().getHeight() == height)
-				&&(Display.isFullscreen() == fullscreen)
-		)
-		{
+	public static void setFullscreenCompatibleDisplayMode(int width, int height, boolean fullscreen) {
+		// return if requested DisplayMode is already set
+		if ((Display.getDisplayMode().getWidth() == width)
+				&& (Display.getDisplayMode().getHeight() == height)
+				&& (Display.isFullscreen() == fullscreen)
+		) {
 			return;
 		}
 
@@ -97,37 +84,22 @@ public class LWJGLUtils
 				DisplayMode[] modes = Display.getAvailableDisplayModes();
 
 				int freq = 0;
-				for(int i = 0; i < modes.length; i++)
-				{
+				for (int i = 0; i < modes.length; i++) {
 					DisplayMode current = modes[i];
 
-					if(
-							(current.getWidth() == width)
-							&&(current.getHeight() == height)
-					)
-					{
-						if(
-								(targetDisplayMode == null)
-								||(current.getFrequency() >= freq)
-						)
-						{
-							if(
-									(targetDisplayMode == null)
-									||(current.getBitsPerPixel() > targetDisplayMode.getBitsPerPixel())
-							)
-							{
+					if ((current.getWidth() == width) && (current.getHeight() == height)) {
+						if ((targetDisplayMode == null) || (current.getFrequency() >= freq)) {
+							if ((targetDisplayMode == null) || (current.getBitsPerPixel() > targetDisplayMode.getBitsPerPixel())) {
 								targetDisplayMode = current;
 								freq = targetDisplayMode.getFrequency();
 							}
 						}
 
-						//if we've found a match for bpp and frequence against the original display mode
-						//then it's probably best to go for this one since it's most likely compatible with the monitor
-						if (
-								(current.getBitsPerPixel() == Display.getDesktopDisplayMode().getBitsPerPixel())
-								&&(current.getFrequency() == Display.getDesktopDisplayMode().getFrequency())
-						)
-						{
+						// if we've found a match for bpp and frequence against the original display mode
+						// then it's probably best to go for this one since it's most likely compatible with the monitor
+						if ((current.getBitsPerPixel() == Display.getDesktopDisplayMode().getBitsPerPixel())
+								&& (current.getFrequency() == Display.getDesktopDisplayMode().getFrequency())
+						) {
 							targetDisplayMode = current;
 							break;
 						}
@@ -139,70 +111,58 @@ public class LWJGLUtils
 				//targetDisplayMode = new DisplayMode(width, height);
 			//}
 
-			if (targetDisplayMode == null)
-			{
+			if (targetDisplayMode == null) {
 				log.warn("Could not find video mode : " + width + "x" + height + " fullscreen: " + fullscreen);
 				return;
 			}
 
 			Display.setDisplayMode(targetDisplayMode);
 			Display.setFullscreen(fullscreen);
-
-		}
-		catch (LWJGLException e)
-		{
+		} catch (LWJGLException e) {
 			log.warn("Could not set video mode: " + width + "x" + height + " fullscreen: " + fullscreen + e);
 		}
 	}
 
+	public static int SCREEN_SIZE_X = 1280;
+	public static int SCREEN_SIZE_Y = 720;
 
+	public static boolean vsync = true;
 
+	public static boolean useShader = true;
+	public static int lightShader = 0;
+	public static int colorShader = 0;
 
+	public static ArrayList<Integer> bgShaders = new ArrayList<>();
 
+	public static int bgShaderCount = 61;
 
-	static public int SCREEN_SIZE_X = 1280;
-	static public int SCREEN_SIZE_Y = 720;
+	public static int gaussianShader = 0;
+	public static int maskShader = 0;
+	public static int bloomShader = 0;
 
-	static public boolean vsync=true;
+	public static boolean useFBO = true;
 
+	public static int mainFBO_lightTexture;
+	public static int mainFBO_Texture;
 
-	static public boolean useShader=true;
-	static public int lightShader=0;
-	static public int colorShader=0;
+	public static int nDFBO_Texture;
+	public static int nDFBO_MaskTexture;
 
-	static public ArrayList<Integer> bgShaders = new ArrayList<Integer>();
+	public static int nDBloomFBO_Texture_0;
+	public static int nDBloomFBO_Texture_1;
 
-	static public int bgShaderCount = 61;
-
-	static public int gaussianShader=0;
-	static public int maskShader=0;
-	static public int bloomShader=0;
-
-
-
-	static public boolean useFBO = true;
-
-	static public int mainFBO_lightTexture;
-	static public int mainFBO_Texture;
-
-	static public int nDFBO_Texture;
-	static public int nDFBO_MaskTexture;
-
-	static public int nDBloomFBO_Texture_0;
-	static public int nDBloomFBO_Texture_1;
-
-	static public int nDBGFBO_Texture_0;
-	static public int nDBGFBO_Texture_1;
+	public static int nDBGFBO_Texture_0;
+	public static int nDBGFBO_Texture_1;
 	//static public int miniMapFBOTextureID;
 
-	static public int mainFBO;
-	static public int nDFBO;
-	static public int nDBloomFBO;
-	static public int nDBGFBO;
+	public static int mainFBO;
+	public static int nDFBO;
+	public static int nDBloomFBO;
+	public static int nDBGFBO;
 	//static public int miniMapFBOID;
 
-	static public int nDBGFBOWidth = 640;
-	static public int nDBGFBOHeight = 480;
+	public static int nDBGFBOWidth = 640;
+	public static int nDBGFBOHeight = 480;
 
 
 	//public int lightFBOID;
@@ -211,53 +171,40 @@ public class LWJGLUtils
 
 	//private AWTGLCanvas canvas;
 
-	static public int desktopDisplayWidth = 0;
-	static public int desktopDisplayHeight = 0;
-	static public int desktopDisplayBPP = 0;
-	static public int desktopDisplayFreq = 0;
+	public static int desktopDisplayWidth = 0;
+	public static int desktopDisplayHeight = 0;
+	public static int desktopDisplayBPP = 0;
+	public static int desktopDisplayFreq = 0;
 
-
-	//=========================================================================================================================
-	public static void setDisplayMode()
-	{//=========================================================================================================================
-
-
+	public static void setDisplayMode() {
 		DisplayMode[] modes = null;
 
-		try
-		{
-			modes=Display.getAvailableDisplayModes();
-		}
-		catch(LWJGLException e)
-		{
+		try {
+			modes = Display.getAvailableDisplayModes();
+		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
 
-
-
-		for(int i=0;i<modes.length;i++)
-		{
+		for (int i = 0; i < modes.length; i++) {
 			DisplayMode m = modes[i];
-
 			//log.debug(m.getWidth() + "x" + m.getHeight() + " BPP: " + m.getBitsPerPixel() + " Frequency: " + m.getFrequency() + "Hz");
 		}
 
-		//TODO: get the browser window/current frame size using javascript
-		//set the applet size to this using javascript
-		//set the windowed display to this
+		// TODO: get the browser window/current frame size using javascript
+		// set the applet size to this using javascript
+		// set the windowed display to this
 
-		//get list of display modes
-		//get desktop resolution
+		// get list of display modes
+		// get desktop resolution
 		desktopDisplayWidth = Display.getDesktopDisplayMode().getWidth();
 		desktopDisplayHeight = Display.getDesktopDisplayMode().getHeight();
 		desktopDisplayBPP = Display.getDesktopDisplayMode().getBitsPerPixel();
 		desktopDisplayFreq = Display.getDesktopDisplayMode().getFrequency();
 
-		int halfSizeWidth = desktopDisplayWidth/2;
-		int halfSizeHeight = desktopDisplayHeight/2;
+		int halfSizeWidth = desktopDisplayWidth / 2;
+		int halfSizeHeight = desktopDisplayHeight / 2;
 
-
-		//get monitor resolution ??
+		// get monitor resolution ??
 
 		//get cpu, gpu, ram
 		//if fast enough, set to full resolution fullscreen
@@ -282,26 +229,15 @@ public class LWJGLUtils
 		//else
 		//setFullscreenCompatibleDisplayMode(desktopDisplayWidth, desktopDisplayHeight, false);
 		//Display.setFullscreen(true);
-
-
 	}
 
-
-
-
-	//=========================================================================================================================
-	public static void setViewport()
-	{//=========================================================================================================================
+	public static void setViewport() {
 		glViewport(0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y);
 		glLoadIdentity();
 		glOrtho(0, SCREEN_SIZE_X, SCREEN_SIZE_Y, 0, -1, 1);
 	}
 
-	//=========================================================================================================================
-	public static void initGL(String windowName)
-	{//=========================================================================================================================
-
-
+	public static void initGL(String windowName) {
 		//-----------------------------------
 		//opens another frame window, could be used as a debug console or something!
 		//-----------------------------------
@@ -329,44 +265,33 @@ public class LWJGLUtils
 		pack();
 		setVisible(true);*/
 
-		try
-		{
-
-
-
-
-
+		try {
 			Display.setResizable(true);
 			//TODO: we want vsync be default in fullscreen, or if we can detect aero is off (win 7 no accel, windows xp, linux, mac)
-
-
 			//TODO: if we are a window, we want 1280x900 or whatever, resizeable.
 			//if we are an applet, we want to resize based on the applet size, which is resized by javascript
-
 			//if we go fullscreen, we want to go full or half monitor resolution and turn on vsync
 
-			if(vsync==true)Display.setVSyncEnabled(true);
+			if (vsync == true) Display.setVSyncEnabled(true);
 			Display.setTitle(windowName);//ULTRA \"bob's game\" ONLINE");//world of \"bob's game\"");
 
-
-
-			//if we want to disable deprecated GL functions below GL 3.3
+			// if we want to disable deprecated GL functions below GL 3.3
 //			ContextAttribs ctxAttr = new ContextAttribs(3, 3);
 //			ctxAttr = ctxAttr.withForwardCompatible(true);
 //			ctxAttr = ctxAttr.withProfileCore(true);
 //			ctxAttr = ctxAttr.withProfileCompatibility(false);
 //			ctxAttr = ctxAttr.withDebug(true);
 
-			Display.create();//new PixelFormat(),ctxAttr);
+			Display.create(); //new PixelFormat(),ctxAttr);
 
 
 			log.info("Setting up GL...");
 
-			log.info("GL vendor: "+glGetString(GL_VENDOR));
-			log.info("GL version: "+glGetString(GL_VERSION));
-			log.info("Renderer: "+glGetString(GL_RENDERER));
-			log.info("Shader version: "+glGetString(GL_SHADING_LANGUAGE_VERSION));
-			log.info("Extensions: "+glGetString(GL_EXTENSIONS));
+			log.info("GL vendor: " + glGetString(GL_VENDOR));
+			log.info("GL version: " + glGetString(GL_VERSION));
+			log.info("Renderer: " + glGetString(GL_RENDERER));
+			log.info("Shader version: " + glGetString(GL_SHADING_LANGUAGE_VERSION));
+			log.info("Extensions: " + glGetString(GL_EXTENSIONS));
 
 			//Display.setSwapInterval(120);
 
@@ -375,14 +300,10 @@ public class LWJGLUtils
 				//Mouse.setGrabbed(true);
 			//}
 
-
-
-
 			//glEnable(GL_TEXTURE_2D);
 			glEnable(GL_BLEND);
 			//glEnable(GL_LINE_SMOOTH);
 			//glShadeModel(GL_SMOOTH);
-
 
 			//glColor4f(0.0f,0.0f,0.0f,0.0f);
 			//glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
@@ -393,8 +314,6 @@ public class LWJGLUtils
 
 			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 			//glClearDepth(1);
-
-
 
 			glDisable(GL_SCISSOR_TEST);
 			glDisable(GL_DEPTH_TEST);
@@ -413,124 +332,81 @@ public class LWJGLUtils
 			//glLoadIdentity();
 			//glViewport(0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y);
 
-
 			log.info("Setting up FBO...");
-
 
 			// check if GL_ARB_framebuffer_object can be use on this system
 
-			if(GLContext.getCapabilities().GL_EXT_framebuffer_object)
-			{
+			if (GLContext.getCapabilities().GL_EXT_framebuffer_object) {
 				useFBO = true;
 				ARBFBO = false;
-
 				log.info("EXT FBO supported.");
-			}
-			else
-			if(GLContext.getCapabilities().GL_ARB_framebuffer_object)
-			{
+			} else if (GLContext.getCapabilities().GL_ARB_framebuffer_object) {
 				useFBO = true;
 				ARBFBO = true;
-
 				log.info("EXT FBO not supported. Using ARB FBO.");
-			}
-
-			else
-			{
-
-
-
+			} else {
 				log.error("FBO not supported.");
-				useFBO=false;
+				useFBO = false;
 
 				new GLUtils();
 
-
 				GLUtils.drawFilledRect(0, 0, 0, 0, Display.getWidth(), 0, Display.getHeight(), 0.5f);
-				GLUtils.drawOutlinedString("Your graphics card is not supported yet. (Needs FBO support.)", Display.getWidth()/2-100, Display.getHeight()/2-12, BobColor.white);
+				GLUtils.drawOutlinedString("Your graphics card is not supported yet. (Needs FBO support.)", Display.getWidth() / 2 - 100, Display.getHeight() / 2 - 12, BobColor.white);
 
 				Display.update();
 
-				try
-				{
+				try {
 					Thread.sleep(5000);
-				}
-				catch(InterruptedException e)
-				{
+				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 
-
 				ClientMain.exit();
-
 			}
 
-
-
-
-
-
 			{
-
-				//generate FBOs
+				// generate FBOs
 				mainFBO = LWJGLUtils.genFBO();
 				LWJGLUtils.bindFBO(mainFBO);
 
-
-				mainFBO_Texture = LWJGLUtils.setupFBOTexture(glGenTextures(),(int)(SCREEN_SIZE_X), (int)(SCREEN_SIZE_Y));
+				mainFBO_Texture = LWJGLUtils.setupFBOTexture(glGenTextures(), SCREEN_SIZE_X, SCREEN_SIZE_Y);
 				LWJGLUtils.attachTextureToFBO(0,mainFBO_Texture);
 
-
-				mainFBO_lightTexture = LWJGLUtils.setupFBOTexture(glGenTextures(),(int)(SCREEN_SIZE_X), (int)(SCREEN_SIZE_Y));
+				mainFBO_lightTexture = LWJGLUtils.setupFBOTexture(glGenTextures(), SCREEN_SIZE_X, SCREEN_SIZE_Y);
 				LWJGLUtils.attachTextureToFBO(1, mainFBO_lightTexture);
 
-
-
 				//=================================
-
-
 
 				nDFBO = LWJGLUtils.genFBO();
 				LWJGLUtils.bindFBO(nDFBO);
 
-
-				nDFBO_Texture = LWJGLUtils.setupFBOTexture(glGenTextures(),ND.SCREEN_SIZE_X*ND.FBO_SCALE_MULTIPLIER, ND.SCREEN_SIZE_Y*ND.FBO_SCALE_MULTIPLIER);
+				nDFBO_Texture = LWJGLUtils.setupFBOTexture(glGenTextures(), ND.SCREEN_SIZE_X * ND.FBO_SCALE_MULTIPLIER, ND.SCREEN_SIZE_Y * ND.FBO_SCALE_MULTIPLIER);
 				LWJGLUtils.attachTextureToFBO(0, nDFBO_Texture);
 
-
-				nDFBO_MaskTexture = LWJGLUtils.setupFBOTexture(glGenTextures(),ND.SCREEN_SIZE_X*ND.FBO_SCALE_MULTIPLIER, ND.SCREEN_SIZE_Y*ND.FBO_SCALE_MULTIPLIER);
+				nDFBO_MaskTexture = LWJGLUtils.setupFBOTexture(glGenTextures(), ND.SCREEN_SIZE_X * ND.FBO_SCALE_MULTIPLIER, ND.SCREEN_SIZE_Y * ND.FBO_SCALE_MULTIPLIER);
 				LWJGLUtils.attachTextureToFBO(1, nDFBO_MaskTexture);
 
-
-
 				//=================================
-
 
 				nDBloomFBO = LWJGLUtils.genFBO();
 				LWJGLUtils.bindFBO(nDBloomFBO);
 
-				nDBloomFBO_Texture_0 = LWJGLUtils.setupFBOTexture(glGenTextures(),(int)(ND.SCREEN_SIZE_X*ND.FBO_SCALE_MULTIPLIER*ND.BLOOM_FBO_SCALE), (int)(ND.SCREEN_SIZE_Y*ND.FBO_SCALE_MULTIPLIER*ND.BLOOM_FBO_SCALE));
+				nDBloomFBO_Texture_0 = LWJGLUtils.setupFBOTexture(glGenTextures(), (int) (ND.SCREEN_SIZE_X * ND.FBO_SCALE_MULTIPLIER * ND.BLOOM_FBO_SCALE), (int) (ND.SCREEN_SIZE_Y * ND.FBO_SCALE_MULTIPLIER * ND.BLOOM_FBO_SCALE));
 				LWJGLUtils.attachTextureToFBO(0, nDBloomFBO_Texture_0);
 
-
-				nDBloomFBO_Texture_1 = LWJGLUtils.setupFBOTexture(glGenTextures(),(int)(ND.SCREEN_SIZE_X*ND.FBO_SCALE_MULTIPLIER*ND.BLOOM_FBO_SCALE), (int)(ND.SCREEN_SIZE_Y*ND.FBO_SCALE_MULTIPLIER*ND.BLOOM_FBO_SCALE));
+				nDBloomFBO_Texture_1 = LWJGLUtils.setupFBOTexture(glGenTextures(), (int) (ND.SCREEN_SIZE_X * ND.FBO_SCALE_MULTIPLIER * ND.BLOOM_FBO_SCALE), (int) (ND.SCREEN_SIZE_Y * ND.FBO_SCALE_MULTIPLIER * ND.BLOOM_FBO_SCALE));
 				LWJGLUtils.attachTextureToFBO(1, nDBloomFBO_Texture_1);
 
-
-
 				//=================================
-
 
 				nDBGFBO = LWJGLUtils.genFBO();
 				LWJGLUtils.bindFBO(nDBGFBO);
 
-				nDBGFBO_Texture_0 = LWJGLUtils.setupFBOTexture(glGenTextures(),nDBGFBOWidth,nDBGFBOHeight);
+				nDBGFBO_Texture_0 = LWJGLUtils.setupFBOTexture(glGenTextures(), nDBGFBOWidth, nDBGFBOHeight);
 				LWJGLUtils.attachTextureToFBO(0, nDBGFBO_Texture_0);
 
-				nDBGFBO_Texture_1 = LWJGLUtils.setupFBOTexture(glGenTextures(),nDBGFBOWidth,nDBGFBOHeight);
+				nDBGFBO_Texture_1 = LWJGLUtils.setupFBOTexture(glGenTextures(), nDBGFBOWidth, nDBGFBOHeight);
 				LWJGLUtils.attachTextureToFBO(1, nDBGFBO_Texture_1);
-
-
 
 				//bind the depth renderbuffer
 				//glBindRenderbuffer(GL_RENDERBUFFER, depthRenderBufferID);
@@ -543,10 +419,9 @@ public class LWJGLUtils
 				LWJGLUtils.bindFBO(0);
 			}
 
-			e();
+			checkForGLError();
 
 			log.info("Setting up shaders...");
-
 
 			String glVersion = glGetString(GL_VERSION);
 			//String shaderVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
@@ -569,23 +444,23 @@ public class LWJGLUtils
 //			boolean extensionsStringHasNVGPUProgram4 = glExtensions.contains("GL_NV_gpu_program4");
 
 			int glVersionMajor = 0;
-			glVersionMajor = Integer.parseInt(glVersion.substring(0,glVersion.indexOf(".")));
+			glVersionMajor = Integer.parseInt(glVersion.substring(0, glVersion.indexOf(".")));
 
 //			log.info("glVersion:"+glVersion);
 //			log.info("shaderVersion:"+shaderVersion);
 //			log.info("glExtensions:"+glExtensions);
-			log.info("glVersionMajor:"+glVersionMajor);
-			log.info("Shader version: "+glGetString(GL_SHADING_LANGUAGE_VERSION));
+			log.info("glVersionMajor:" + glVersionMajor);
+			log.info("Shader version: " + glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-			log.info("hasARBShadingLanguage100 (GLSL 1.00):"+hasARBShadingLanguage100);
-			log.info("hasARBFragmentShader (GLSL 1.00):"+hasARBFragmentShader);
-			log.info("hasARBVertexShader (GLSL 1.00):"+hasARBVertexShader);
-			log.info("hasARBShaderObjects (GLSL 1.00):"+hasARBShaderObjects);
-			log.info("shadingVersionExists (GLSL 1.051):"+(glGetString(GL_SHADING_LANGUAGE_VERSION).equals("0")==false));
+			log.info("hasARBShadingLanguage100 (GLSL 1.00):" + hasARBShadingLanguage100);
+			log.info("hasARBFragmentShader (GLSL 1.00):" + hasARBFragmentShader);
+			log.info("hasARBVertexShader (GLSL 1.00):" + hasARBVertexShader);
+			log.info("hasARBShaderObjects (GLSL 1.00):" + hasARBShaderObjects);
+			log.info("shadingVersionExists (GLSL 1.051):" + (glGetString(GL_SHADING_LANGUAGE_VERSION).equals("0") == false));
 
-			log.info("hasARBFragmentProgram (SM 2):"+hasARBFragmentProgram);
-			log.info("hasNVVertexProgram3 (SM 3):"+hasNVVertexProgram3);
-			log.info("hasNVGPUProgram4 (SM 4):"+hasNVGPUProgram4);
+			log.info("hasARBFragmentProgram (SM 2):" + hasARBFragmentProgram);
+			log.info("hasNVVertexProgram3 (SM 3):" + hasNVVertexProgram3);
+			log.info("hasNVGPUProgram4 (SM 4):" + hasNVGPUProgram4);
 //			log.info("extensionsStringHasARBShadingLanguage:"+extensionsStringHasARBShadingLanguage);
 //			log.info("extensionsStringHasARBFragmentShader:"+extensionsStringHasARBFragmentShader);
 //			log.info("extensionsStringHasARBVertexShader:"+extensionsStringHasARBVertexShader);
@@ -594,45 +469,34 @@ public class LWJGLUtils
 //			log.info("extensionsStringHasNVVertexProgram3:"+extensionsStringHasNVVertexProgram3);
 //			log.info("extensionsStringHasNVGPUProgram4:"+extensionsStringHasNVGPUProgram4);
 
+			if (glVersionMajor < 2) useShader = false;
 
-			if(glVersionMajor<2)
-			{
-				useShader=false;
-			}
-
-			if(useShader)
-			{
+			if (useShader) {
 				lightShader = LWJGLUtils.createProgramObject();
 				colorShader = LWJGLUtils.createProgramObject();
 				gaussianShader = LWJGLUtils.createProgramObject();
 				maskShader = LWJGLUtils.createProgramObject();
 				bloomShader = LWJGLUtils.createProgramObject();
 
-				if(LWJGLUtils.makeShader("lightShader",lightShader,"res/shaders/texCoord.vert","res/shaders/lightBlend.frag")==false)useShader=false;
-				if(LWJGLUtils.makeShader("colorShader",colorShader,"res/shaders/texCoord.vert","res/shaders/colorAdjust.frag")==false)useShader=false;
-				if(LWJGLUtils.makeShader("gaussianShader",gaussianShader,"res/shaders/bloom_blurspace.vert","res/shaders/bloom_alpha_gaussian.frag")==false)useShader=false;
-				if(LWJGLUtils.makeShader("maskShader",maskShader,"res/shaders/bloom_screenspace.vert","res/shaders/bloom_alpha_threshold.frag")==false)useShader=false;
-				if(LWJGLUtils.makeShader("bloomShader",bloomShader,"res/shaders/bloom_screenspace.vert","res/shaders/bloom_alpha_bloom.frag")==false)useShader=false;
+				if (LWJGLUtils.makeShader("lightShader", lightShader, "res/shaders/texCoord.vert", "res/shaders/lightBlend.frag") == false) useShader = false;
+				if (LWJGLUtils.makeShader("colorShader", colorShader, "res/shaders/texCoord.vert", "res/shaders/colorAdjust.frag") == false) useShader = false;
+				if (LWJGLUtils.makeShader("gaussianShader", gaussianShader, "res/shaders/bloom_blurspace.vert", "res/shaders/bloom_alpha_gaussian.frag") == false) useShader = false;
+				if (LWJGLUtils.makeShader("maskShader", maskShader, "res/shaders/bloom_screenspace.vert", "res/shaders/bloom_alpha_threshold.frag") == false) useShader = false;
+				if (LWJGLUtils.makeShader("bloomShader", bloomShader, "res/shaders/bloom_screenspace.vert", "res/shaders/bloom_alpha_bloom.frag") == false) useShader = false;
 
-
-				if(useShader)
-				{
-
-					for(int i=0;i<bgShaderCount;i++)
-					{
+				if (useShader) {
+					for (int i = 0; i < bgShaderCount; i++) {
 						int p = LWJGLUtils.createProgramObject();
 						bgShaders.add(new Integer(p));
 					}
 
 					int count = 0;
 
-					for(int i=0;i<bgShaderCount;i++)
-					{
-						String name = count+".frag";
-						if(count<10)name = "0"+name;
+					for (int i = 0; i < bgShaderCount; i++) {
+						String name = count + ".frag";
+						if (count < 10) name = "0" + name;
 
-						if(LWJGLUtils.makeShader(name,bgShaders.get(i).intValue(),"res/shaders/texCoord.vert","res/shaders/bg/"+name)==false)
-						{
+						if (LWJGLUtils.makeShader(name, bgShaders.get(i).intValue(), "res/shaders/texCoord.vert", "res/shaders/bg/" + name) == false) {
 							bgShaderCount--;
 							bgShaders.remove(i);
 							i--;
@@ -640,104 +504,73 @@ public class LWJGLUtils
 
 						count++;
 					}
-
 				}
-
-			}
-			else
-			{
-				useShader=false;
+			} else {
+				useShader = false;
 			}
 
-
-			if(useShader==false)log.warn("Shaders not supported.");
-
-
-		}
-		catch (LWJGLException e)
-		{
+			if (useShader == false) {
+				log.warn("Shaders not supported.");
+			}
+		} catch (LWJGLException e) {
 			e.printStackTrace();
 			ClientMain.exit();
 		}
 
 		log.info("GL Complete.");
-
 	}
 
-
-
-
-	//=========================================================================================================================
-	private static void attachTextureToFBO(int attachment, int textureID)
-	{//=========================================================================================================================
-
-		if(ARBFBO)
-		{
-			if(attachment==0)glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D, textureID, 0);
-			else glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT1,GL_TEXTURE_2D, textureID, 0);
-		}
-		else
-		{
-			if(attachment==0)glFramebufferTexture2DEXT(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0_EXT,GL_TEXTURE_2D, textureID, 0);
-			glFramebufferTexture2DEXT(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT1_EXT,GL_TEXTURE_2D, textureID, 0);
+	private static void attachTextureToFBO(int attachment, int textureID) {
+		if (ARBFBO) {
+			if (attachment == 0) {
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureID, 0);
+			} else {
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, textureID, 0);
+			}
+		} else {
+			if (attachment == 0) {
+				glFramebufferTexture2DEXT(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, textureID, 0);
+			}
+			glFramebufferTexture2DEXT(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1_EXT, GL_TEXTURE_2D, textureID, 0);
 		}
 	}
-
-
 
 	public static boolean ARBFBO = false;
 
-	//=========================================================================================================================
-	public static void bindFBO(int fboID)
-	{//=========================================================================================================================
-
-		if(ARBFBO)
-		{
+	public static void bindFBO(int fboID) {
+		if (ARBFBO) {
 			glBindFramebuffer(GL_FRAMEBUFFER, fboID);
-		}
-		else
-		{
+		} else {
 			glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fboID);
 		}
-
 	}
 
-
-	//=========================================================================================================================
-	public static void drawIntoFBOAttachment(int i)
-	{//=========================================================================================================================
-		if(ARBFBO)
-		{
-			if(i==0)glDrawBuffer(GL_COLOR_ATTACHMENT0);
-			else glDrawBuffer(GL_COLOR_ATTACHMENT1);
+	public static void drawIntoFBOAttachment(int i) {
+		if (ARBFBO) {
+			if (i == 0) {
+				glDrawBuffer(GL_COLOR_ATTACHMENT0);
+			} else {
+				glDrawBuffer(GL_COLOR_ATTACHMENT1);
+			}
+		} else {
+			if (i == 0) {
+				glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
+			} else {
+				glDrawBuffer(GL_COLOR_ATTACHMENT1_EXT);
+			}
 		}
-		else
-		{
-			if(i==0)glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
-			else glDrawBuffer(GL_COLOR_ATTACHMENT1_EXT);
-		}
-
 	}
 
-
-	//=========================================================================================================================
-	public static int genFBO()
-	{//=========================================================================================================================
-		if(ARBFBO)
-		{
+	public static int genFBO() {
+		if (ARBFBO) {
 			return glGenFramebuffers();
-		}
-		else
-		{
+		} else {
 			return glGenFramebuffersEXT();
 		}
 	}
 
-	//=========================================================================================================================
-	public static int setupFBOTexture(int tex, int width, int height)
-	{//=========================================================================================================================
-
-		//init FBO texture
+	public static int setupFBOTexture(int tex, int width, int height) {
+		// init FBO texture
 		glBindTexture(GL_TEXTURE_2D, tex);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -745,298 +578,230 @@ public class LWJGLUtils
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (java.nio.ByteBuffer) null);
-
 		return tex;
 	}
 
-
-
 	public static boolean ARBShader = false;
 
-	//=========================================================================================================================
-	public static int createProgramObject()
-	{//=========================================================================================================================
+	public static int createProgramObject() {
 		int i = 0;
-
-		if(useShader==true)
-		{
-
-			if(ARBShader==false)
-			{
-				i = glCreateProgram();e();
-				if(i==0)
-				{
-					ARBShader=true;
+		if (useShader == true) {
+			if (ARBShader == false) {
+				i = glCreateProgram();
+				checkForGLError();
+				if (i == 0) {
+					ARBShader = true;
 					log.error("Core shaders failed. Trying ARB shaders.");
 				}
-
 			}
-
-			if(ARBShader==true)
-			{
-				i = glCreateProgramObjectARB();e();
-				if(i==0)
-				{
-					useShader=false;
+			if (ARBShader == true) {
+				i = glCreateProgramObjectARB();
+				checkForGLError();
+				if (i == 0) {
+					useShader = false;
 					log.error("ARB shaders failed. Using no shaders.");
 				}
 			}
-
-
-
 		}
-
-
 		return i;
-
 	}
 
+	public static final int FRAG = 0;
+	public static final int VERT = 1;
 
-	public static final int FRAG=0;
-	public static final int VERT=1;
-
-	//=========================================================================================================================
-	private static int compileShaderObject(String filename, int type)
-	{//=========================================================================================================================
-		//will be non zero if successfully created
+	private static int compileShaderObject(String filename, int type) {
+		// will be non zero if successfully created
 		int shader = 0;
 
-
-		if(type==FRAG)
-		{
-			if(ARBShader)shader=glCreateShaderObjectARB(GL_FRAGMENT_SHADER_ARB);
-			else shader = glCreateShader(GL_FRAGMENT_SHADER);
+		if (type == FRAG) {
+			if (ARBShader) {
+				shader = glCreateShaderObjectARB(GL_FRAGMENT_SHADER_ARB);
+			} else {
+				shader = glCreateShader(GL_FRAGMENT_SHADER);
+			}
+		} else {
+			if (ARBShader) {
+				shader = glCreateShaderObjectARB(GL_VERTEX_SHADER_ARB);
+			} else {
+				shader = glCreateShader(GL_VERTEX_SHADER);
+			}
 		}
-		else
-		{
-			if(ARBShader)shader=glCreateShaderObjectARB(GL_VERTEX_SHADER_ARB);
-			else shader = glCreateShader(GL_VERTEX_SHADER);
 
-		}
+		checkForGLError();
 
-		e();
+		// if created, convert the shader code to a String
+		if (shader == 0) return 0;
 
-		//if created, convert the shader code to a String
-		if(shader==0){return 0;}
-
-		String code="";
+		String code = "";
 		String line;
-		try
-		{
+
+		try {
 			BufferedInputStream inputStream = new BufferedInputStream(Utils.getResourceAsStream(filename));
 			//InputStream inputStream = Utils.getResourceAsStream(filename);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 
 			//BufferedReader reader=new BufferedReader(new FileReader(filename));
-			while((line=reader.readLine())!=null)
-			{
-				code+=line + "\n";
+			while ((line=reader.readLine()) != null) {
+				code += line + "\n";
 			}
 			reader.close();
-		}
-		catch(Exception e)
-		{
-			log.error("Could not read code: "+filename);
+		} catch (Exception e) {
+			log.error("Could not read code: " + filename);
 			return 0;
 		}
 
-
-
-		if(ARBShader)
-		{
-			glShaderSourceARB(shader, code);e();
-			glCompileShaderARB(shader);e();
+		if (ARBShader) {
+			glShaderSourceARB(shader, code);
+			checkForGLError();
+			glCompileShaderARB(shader);
+			checkForGLError();
 
 			//if there was a problem compiling, reset to zero
-			if(glGetObjectParameteriARB(shader, GL_OBJECT_COMPILE_STATUS_ARB) == GL_FALSE)
-			{
-				e();
-
-				int logLength = glGetObjectParameteriARB(shader,GL_OBJECT_INFO_LOG_LENGTH_ARB);e();
-				if(logLength > 0)
-				{
-					String out = glGetInfoLogARB(shader, 1024);e();
-					if(out.length()>0)out = out.substring(0,out.length()-1);//remove extra newline
+			if (glGetObjectParameteriARB(shader, GL_OBJECT_COMPILE_STATUS_ARB) == GL_FALSE) {
+				checkForGLError();
+				int logLength = glGetObjectParameteriARB(shader,GL_OBJECT_INFO_LOG_LENGTH_ARB);
+				checkForGLError();
+				if (logLength > 0) {
+					String out = glGetInfoLogARB(shader, 1024);
+					checkForGLError();
+					if (out.length() > 0) {
+						out = out.substring(0, out.length() - 1); // remove extra newline
+					}
 					log.error("ShaderInfoLogARB: "+out);
 				}
-
-				shader=0;
+				shader = 0;
 			}
-		}
-		else
-		{
-			glShaderSource(shader, code);e();
-			glCompileShader(shader);e();
+		} else {
+			glShaderSource(shader, code);
+			checkForGLError();
+			glCompileShader(shader);
+			checkForGLError();
 
 			//if there was a problem compiling, reset to zero
-			if(glGetShaderi(shader, GL_COMPILE_STATUS) == GL_FALSE)
-			{
-				e();
+			if (glGetShaderi(shader, GL_COMPILE_STATUS) == GL_FALSE) {
+				checkForGLError();
 
-				int logLength = glGetShaderi(shader, GL_INFO_LOG_LENGTH);e();
-				if(logLength > 0)
-				{
-					String out = glGetShaderInfoLog(shader, 1024);e();
-					if(out.length()>0)out = out.substring(0,out.length()-1);//remove extra newline
-					log.error("ShaderInfoLog: "+out);
-
+				int logLength = glGetShaderi(shader, GL_INFO_LOG_LENGTH);
+				checkForGLError();
+				if (logLength > 0) {
+					String out = glGetShaderInfoLog(shader, 1024);
+					checkForGLError();
+					if (out.length() > 0) out = out.substring(0, out.length() - 1); // remove extra newline
+					log.error("ShaderInfoLog: " + out);
 				}
-
-				shader=0;
+				shader = 0;
 			}
 		}
 
-
-
-		//if zero we won't be using the shader
+		// if zero we won't be using the shader
 		return shader;
 	}
 
-
-
-
-	//=========================================================================================================================
-	public static boolean makeShader(String name, int shaderProgram, String vertPath, String fragPath)
-	{//=========================================================================================================================
-
+	public static boolean makeShader(String name, int shaderProgram, String vertPath, String fragPath) {
 		int vertShader = 0;
 		int fragShader = 0;
 
-		vertShader=LWJGLUtils.compileShaderObject(vertPath,VERT);
-		fragShader=LWJGLUtils.compileShaderObject(fragPath,FRAG);
+		vertShader = LWJGLUtils.compileShaderObject(vertPath, VERT);
+		fragShader = LWJGLUtils.compileShaderObject(fragPath, FRAG);
 
-		if(vertShader != 0 && fragShader != 0)
-		{
-			if(ARBShader)
-			{
-				glAttachObjectARB(shaderProgram, vertShader);e();
-				glAttachObjectARB(shaderProgram, fragShader);e();
-				glLinkProgramARB(shaderProgram);e();
-				glValidateProgramARB(shaderProgram);e();
+		if (vertShader != 0 && fragShader != 0) {
+			if (ARBShader) {
+				glAttachObjectARB(shaderProgram, vertShader);
+				checkForGLError();
+				glAttachObjectARB(shaderProgram, fragShader);
+				checkForGLError();
+				glLinkProgramARB(shaderProgram);
+				checkForGLError();
+				glValidateProgramARB(shaderProgram);
+				checkForGLError();
+			} else {
+				glAttachShader(shaderProgram, vertShader);
+				checkForGLError();
+				glAttachShader(shaderProgram, fragShader);
+				checkForGLError();
+				glLinkProgram(shaderProgram);
+				checkForGLError();
+				glValidateProgram(shaderProgram);
+				checkForGLError();
 			}
-			else
-			{
-
-				glAttachShader(shaderProgram, vertShader);e();
-				glAttachShader(shaderProgram, fragShader);e();
-				glLinkProgram(shaderProgram);e();
-				glValidateProgram(shaderProgram);e();
-			}
-
-
 
 			String out = "";
 
-			if(ARBShader)
-			{
-				int logLength = glGetObjectParameteriARB(shaderProgram, GL_OBJECT_INFO_LOG_LENGTH_ARB);e();
-				if(logLength > 0)
-				{
-					out = glGetInfoLogARB(shaderProgram, 1024);e();
-					if(out.length()>0)out = out.substring(0,out.length()-1);//remove extra newline
-					out = ("ProgramInfoLog: "+out);
+			if (ARBShader) {
+				int logLength = glGetObjectParameteriARB(shaderProgram, GL_OBJECT_INFO_LOG_LENGTH_ARB);
+				checkForGLError();
+				if (logLength > 0) {
+					out = glGetInfoLogARB(shaderProgram, 1024);
+					checkForGLError();
+					if (out.length() > 0) out = out.substring(0, out.length() - 1);//remove extra newline
+					out = ("ProgramInfoLog: " + out);
 				}
-			}
-			else
-			{
-				int logLength = glGetProgrami(shaderProgram, GL_INFO_LOG_LENGTH);e();
-				if(logLength > 0)
-				{
-					out = glGetProgramInfoLog(shaderProgram, 1024);e();
-					if(out.length()>0)out = out.substring(0,out.length()-1);//remove extra newline
+			} else {
+				int logLength = glGetProgrami(shaderProgram, GL_INFO_LOG_LENGTH);
+				checkForGLError();
+				if (logLength > 0) {
+					out = glGetProgramInfoLog(shaderProgram, 1024);
+					checkForGLError();
+					if (out.length() > 0) out = out.substring(0, out.length() - 1);//remove extra newline
 					out = ("ProgramInfoLog: "+out);
 				}
 			}
 
-			if(out.toLowerCase().contains("error"))//startsWith("Validation successful")==false && status.startsWith("Validation warning! - Sampler")==false)
-			{
-				log.warn(name+" status: "+out);
+			if (out.toLowerCase().contains("error")) {
+				log.warn(name + " status: " + out);
 				return false;
+			} else {
+				return true;
 			}
-			else
-			return true;
-
-
-		}
-		else
-		{
-			log.error(name+" did not compile!");
+		} else {
+			log.error(name + " did not compile!");
 			return false;
 		}
-
 	}
 
-	public static void e()
-	{
-		try{Util.checkGLError();}catch(OpenGLException e){e.printStackTrace();}
-	}
-
-	//=========================================================================================================================
-	public static void useShader(int shader)
-	{//=========================================================================================================================
-
-		//if(useShader==false)return;
-
-		if(ARBShader)
-		{
-			glUseProgramObjectARB(shader);
+	public static void checkForGLError() {
+		try {
+			Util.checkGLError();
+		} catch (OpenGLException e) {
+			e.printStackTrace();
 		}
-		else
-		{
+	}
+
+	public static void useShader(int shader) {
+		//if(useShader==false)return;
+		if (ARBShader) {
+			glUseProgramObjectARB(shader);
+		} else {
 			glUseProgram(shader);
 		}
-
 	}
 
-	//=========================================================================================================================
-	static public LWJGLRenderer TWLrenderer = null;
-	static public ThemeManager TWLthemeManager = null;
-	//=========================================================================================================================
-	public static void initTWL()
-	{//=========================================================================================================================
+	public static LWJGLRenderer TWLrenderer = null;
+	public static ThemeManager TWLthemeManager = null;
 
+	public static void initTWL() {
 		log.info("Init TWL...");
-
-		try
-		{
-
+		try {
 			Mouse.destroy();
-
 			TWLrenderer = new LWJGLRenderer();
-
 			Mouse.create();
-
+		} catch (LWJGLException e) {
+			e.printStackTrace();
 		}
-		catch (LWJGLException e1)
-		{
-			e1.printStackTrace();
-		}
-
 
 		log.info("Load Theme...");
-		try
-		{
+		try {
 			TWLthemeManager = ThemeManager.createThemeManager(Utils.getResource("res/theme/themetest.xml"), TWLrenderer);
-		}
-		catch (IOException e1)
-		{
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		log.info("Theme Loaded.");
-
 	}
 
+	public static int numControllers = 0;
+	public static String controllerNames = "";
 
-
-
-	//=========================================================================================================================
-	static public int numControllers = 0;
-	static public String controllerNames = "";
-
-	//=========================================================================================================================
-	public static void initControllers()
-	{//=========================================================================================================================
-
+	public static void initControllers() {
 		log.info("Init Controllers...");
 		try
 		{
@@ -1072,14 +837,9 @@ public class LWJGLUtils
 		log.info("Controllers Loaded.");
 	}
 
-
-	//=========================================================================================================================
-	public static void doResize()
-	{//=========================================================================================================================
-
+	public static void doResize() {
 		SCREEN_SIZE_X = Display.getWidth();
 		SCREEN_SIZE_Y = Display.getHeight();
-
 
 		//SCREEN_SIZE_X = getWidth();
 		//SCREEN_SIZE_Y = getHeight();
@@ -1093,8 +853,6 @@ public class LWJGLUtils
 		glOrtho(0, SCREEN_SIZE_X, SCREEN_SIZE_Y, 0, -1, 1);
 
 		glViewport(0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y);//order doesn't matter
-
-
 
 		//glMatrixMode(GL_MODELVIEW);
 		//glPushMatrix();
@@ -1115,20 +873,10 @@ public class LWJGLUtils
 		//switch back to normal framebuffer
 		LWJGLUtils.bindFBO(0);
 
-
-
 		TWLrenderer.syncViewportSize();
-
-
 	}
 
-
-
-
-	//=========================================================================================================================
-	public static void setBlendMode(int src,int dst)
-	{//=========================================================================================================================
-
+	public static void setBlendMode(int src,int dst) {
 		//if(Keyboard.isKeyDown(Keyboard.KEY_COMMA))glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		//else
 		//if(Keyboard.isKeyDown(Keyboard.KEY_PERIOD))glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
@@ -1136,41 +884,20 @@ public class LWJGLUtils
 		glBlendFunc(src,dst);
 	}
 
-
-
-
-	//=========================================================================================================================
-	public static void setShaderVar1i(int shader,String string,int i)
-	{//=========================================================================================================================
+	public static void setShaderVar1i(int shader,String string,int i) {
 		if(ARBShader)glUniform1iARB(glGetUniformLocationARB(shader, new StringBuffer(string)), i);
 		else glUniform1i(glGetUniformLocation(shader, new StringBuffer(string)), i);
-
 	}
 
-	//=========================================================================================================================
-	public static void setShaderVar1f(int shader,String string,float f)
-	{//=========================================================================================================================
+	public static void setShaderVar1f(int shader,String string,float f) {
 		if(ARBShader)glUniform1fARB(glGetUniformLocationARB(shader, new StringBuffer(string)), f);
 		else glUniform1f(glGetUniformLocation(shader, new StringBuffer(string)), f);
 
 	}
 
-
-
-
-	//=========================================================================================================================
-	public static void setShaderVar2f(int shader,String string,float f1,float f2)
-	{//=========================================================================================================================
+	public static void setShaderVar2f(int shader,String string,float f1,float f2) {
 		if(ARBShader)glUniform2fARB(glGetUniformLocationARB(shader, new StringBuffer(string)), f1,f2);
 		else glUniform2f(glGetUniformLocation(shader, new StringBuffer(string)), f1,f2);
 
 	}
-
-
-
-
-
-
-
-
 }

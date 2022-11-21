@@ -17,36 +17,19 @@ import de.matthiasmann.twl.Label;
 import de.matthiasmann.twl.ScrollPane;
 import easing.Easing;
 
-
-//=========================================================================================================================
-public class LegalScreen extends MenuPanel
-{//=========================================================================================================================
-
-
+public class LegalScreen extends MenuPanel {
 	public static Logger log = (Logger) LoggerFactory.getLogger(LegalScreen.class);
-
 
 	DialogLayout legalPanel;
 
 	Button noButton;
 	Button okButton;
 
-
-
-
-
-	//=========================================================================================================================
-	public LegalScreen()
-	{//=========================================================================================================================
-
+	public LegalScreen() {
 		super();
-
-
-
 
 		legalPanel = new DialogLayout();
 		legalPanel.setTheme("legalpanel");
-
 
 		Label legalPanelLabel = new Label("LEGAL");
 		legalPanelLabel.setCanAcceptKeyboardFocus(false);
@@ -59,8 +42,7 @@ public class LegalScreen extends MenuPanel
 		legalTextLabel.setTheme("fontTahoma11White");
 		//legalTextLabel.setFont(new Font());
 		//legalTextLabel.setAlignment(Alignment.CENTER);
-		legalTextLabel.setText
-		(
+		legalTextLabel.setText(
 			(
 			"NO WARRANTY"+"\n"
 			+"\n"
@@ -131,118 +113,69 @@ public class LegalScreen extends MenuPanel
 			)//.toUpperCase()
 		);
 
-
-
-
-
-
-
-
-
 		okButton = new Button("I Agree");
 		okButton.setCanAcceptKeyboardFocus(false);
-		okButton.addCallback(new Runnable()
-		{
-			public void run()
-			{
+		okButton.addCallback(new Runnable() {
+			@Override
+			public void run() {
 				doAgree();
 			}
 		});
 
-
 		noButton = new Button("I Disagree");
 		noButton.setCanAcceptKeyboardFocus(false);
-		noButton.addCallback(new Runnable()
-		{
-			public void run()
-			{
+		noButton.addCallback(new Runnable() {
+			@Override
+			public void run() {
 				doDisagree();
 			}
 		});
 
-
-
-
 		legalPanel.setHorizontalGroup(
-
-											legalPanel.createParallelGroup
-											(
-													legalPanel.createParallelGroup().addMinGap(400)
-													,
-													legalPanel.createSequentialGroup
-													(
-														legalPanel.createParallelGroup().addMinGap(50)
-														,
-														legalPanel.createParallelGroup
-														(
-
-															legalPanel.createSequentialGroup().addGap().addWidget(legalPanelLabel).addGap()
-															,
-															legalPanel.createSequentialGroup().addGap().addWidget(legalTextLabel).addGap()
-															,
-
-															legalPanel.createSequentialGroup().addGap().addWidget(noButton).addGap().addWidget(okButton).addGap()
-														)
-														,
-														legalPanel.createParallelGroup().addMinGap(50)
-													)
-											)
-										);
-
+				legalPanel.createParallelGroup(
+					legalPanel.createParallelGroup().addMinGap(400),
+					legalPanel.createSequentialGroup(
+						legalPanel.createParallelGroup().addMinGap(50),
+						legalPanel.createParallelGroup(
+							legalPanel.createSequentialGroup().addGap().addWidget(legalPanelLabel).addGap(),
+							legalPanel.createSequentialGroup().addGap().addWidget(legalTextLabel).addGap(),
+							legalPanel.createSequentialGroup().addGap().addWidget(noButton).addGap().addWidget(okButton).addGap()
+						),
+						legalPanel.createParallelGroup().addMinGap(50)
+					)
+				)
+		);
 
 		legalPanel.setVerticalGroup(
-											legalPanel.createSequentialGroup
-											(
-												legalPanel.createSequentialGroup().addMinGap(20),
-
-												legalPanel.createParallelGroup(legalPanelLabel)
-												,
-												legalPanel.createSequentialGroup().addMinGap(20)
-												,
-												legalPanel.createParallelGroup(legalTextLabel)
-												,
-												legalPanel.createSequentialGroup().addMinGap(20)
-												,
-												legalPanel.createParallelGroup(okButton, noButton)
-												,
-												legalPanel.createSequentialGroup().addMinGap(50)
-											)
-									);
-
-
-
-
-		//---------------------------------------------------------
-		//layout
-		//---------------------------------------------------------
-
-		insideScrollPaneLayout.setHorizontalGroup
-		(
-				insideScrollPaneLayout.createParallelGroup
-				(
-						insideScrollPaneLayout.createSequentialGroup().addGap().addWidget(legalPanel).addGap()
-				)
+			legalPanel.createSequentialGroup(
+				legalPanel.createSequentialGroup().addMinGap(20),
+				legalPanel.createParallelGroup(legalPanelLabel),
+				legalPanel.createSequentialGroup().addMinGap(20),
+				legalPanel.createParallelGroup(legalTextLabel),
+				legalPanel.createSequentialGroup().addMinGap(20),
+				legalPanel.createParallelGroup(okButton, noButton),
+				legalPanel.createSequentialGroup().addMinGap(50)
+			)
 		);
 
-		insideScrollPaneLayout.setVerticalGroup
-		(
-				insideScrollPaneLayout.createSequentialGroup
-				(
-						insideScrollPaneLayout.createSequentialGroup().addGap()
-						,
-						insideScrollPaneLayout.createParallelGroup().addWidget(legalPanel)
-						,
-						insideScrollPaneLayout.createSequentialGroup().addGap()
-				)
+		// layout
+
+		insideScrollPaneLayout.setHorizontalGroup(
+			insideScrollPaneLayout.createParallelGroup(
+				insideScrollPaneLayout.createSequentialGroup().addGap().addWidget(legalPanel).addGap()
+			)
+		);
+
+		insideScrollPaneLayout.setVerticalGroup(
+			insideScrollPaneLayout.createSequentialGroup(
+				insideScrollPaneLayout.createSequentialGroup().addGap(),
+				insideScrollPaneLayout.createParallelGroup().addWidget(legalPanel),
+				insideScrollPaneLayout.createSequentialGroup().addGap()
+			)
 		);
 
 
-
-
-
-		//---------------------
-		//scrollpane
-		//----------------------
+		// scrollpane
 
 		scrollPane = new ScrollPane(insideScrollPaneLayout);
 
@@ -251,244 +184,158 @@ public class LegalScreen extends MenuPanel
 		scrollPane.setExpandContentSize(true);
 
 
-		//---------------------
 		//add scrollpane to outside panel
-		//----------------------
 
 		//mainPanelLayout.add(scrollPane);
 
-
 		mainPanelLayout.setCanAcceptKeyboardFocus(false);
-		mainPanelLayout.setHorizontalGroup
-		(
-				mainPanelLayout.createParallelGroup(scrollPane)
+		mainPanelLayout.setHorizontalGroup(
+			mainPanelLayout.createParallelGroup(scrollPane)
 		);
 
-		mainPanelLayout.setVerticalGroup
-		(
-				mainPanelLayout.createSequentialGroup(scrollPane)
+		mainPanelLayout.setVerticalGroup(
+			mainPanelLayout.createSequentialGroup(scrollPane)
 		);
-
 
 		add(mainPanelLayout);
 
-
-
-
 		legalPanel.adjustSize();
 
-
 		setActivated(true);
-
-
-
-
 	}
 
 	boolean _clickedOK = false;
 	boolean _clickedCancel = false;
 
-	public synchronized boolean clickedOK_S(){return _clickedOK;}
-	public synchronized boolean clickedCancel_S(){return _clickedCancel;}
+	public synchronized boolean clickedOK_S() {
+		return _clickedOK;
+	}
 
-	public synchronized void setClickedOK_S(boolean b){_clickedOK = b;}
-	public synchronized void setClickedCancel_S(boolean b){_clickedCancel = b;}
+	public synchronized boolean clickedCancel_S() {
+		return _clickedCancel;
+	}
 
+	public synchronized void setClickedOK_S(boolean b) {
+		_clickedOK = b;
+	}
 
+	public synchronized void setClickedCancel_S(boolean b) {
+		_clickedCancel = b;
+	}
 
-	//=========================================================================================================================
-	public void update()
-	{//=========================================================================================================================
-		if(isActivated==true)
-		{
-
-			if(isScrollingDown==false)
-			{
-				ticksSinceTurnedOff=0;
-				ticksSinceTurnedOn+=32;
-
+	public void update() {
+		if (isActivated == true) {
+			if (isScrollingDown == false) {
+				ticksSinceTurnedOff = 0;
+				ticksSinceTurnedOn += 32;
 				scrollUp();
-			}
-			else
-			if(isScrollingDown==true)
-			{
-				ticksSinceTurnedOn=0;
-				ticksSinceTurnedOff+=32;
-
+			} else if (isScrollingDown == true) {
+				ticksSinceTurnedOn = 0;
+				ticksSinceTurnedOff += 32;
 				scrollDown();
 			}
-
 		}
-
 	}
 
-
-	//=========================================================================================================================
-	public void onScrolledUp()
-	{//=========================================================================================================================
-
+	public void onScrolledUp() {
 		getGUI().setTooltipDelay(1);
-
 	}
 
-
-
-	//=========================================================================================================================
 	@Override
-	protected void layout()
-	{//=========================================================================================================================
-
-		//login panel is centered
-
+	protected void layout() {
+		// login panel is centered
 		legalPanel.adjustSize();
 		legalPanel.setPosition(
-				insideScrollPaneLayout.getInnerX() + (insideScrollPaneLayout.getInnerWidth() - legalPanel.getWidth()) / 2,
-				insideScrollPaneLayout.getInnerY() + (insideScrollPaneLayout.getInnerHeight() - legalPanel.getHeight()) / 2);
+			insideScrollPaneLayout.getInnerX() + (insideScrollPaneLayout.getInnerWidth() - legalPanel.getWidth()) / 2,
+			insideScrollPaneLayout.getInnerY() + (insideScrollPaneLayout.getInnerHeight() - legalPanel.getHeight()) / 2
+		);
 
 		super.layout();
 	}
 
-	//=========================================================================================================================
-	public void setButtonsVisible(boolean b)
-	{//=========================================================================================================================
-
-
+	public void setButtonsVisible(boolean b) {
 		noButton.setVisible(b);
 		okButton.setVisible(b);
-
-
 	}
 
-
-	//=========================================================================================================================
-	public void scrollDown()
-	{//=========================================================================================================================
-		if(ticksSinceTurnedOff<=fadeOutTime)
-		{
+	public void scrollDown() {
+		if (ticksSinceTurnedOff <= fadeOutTime) {
 			screenY = (float) (Easing.easeOutCubic(ticksSinceTurnedOff, 0, Display.getHeight(), fadeOutTime));
 			layout();
-		}
-		else
-		{
-			isActivated=false;
-			isScrollingDown=false;
+		} else {
+			isActivated = false;
+			isScrollingDown = false;
 			super.setVisible(false);
 		}
 	}
 
-
-	//=========================================================================================================================
-	void doDisagree()
-	{//=========================================================================================================================
+	void doDisagree() {
 		GUI gui = getGUI();
-		if(gui != null)
-		{
+		if (gui != null) {
+			setButtonsVisible(false);
+			// create thread, this needs to be a thread because Button.doCallback(Runnable) only calls Runnable.run() which does NOT create a thread.
+			new Thread(new Runnable() {
+				public void run() {
+					try {
+						Thread.currentThread().setName("Legal_doDisagree");
+					} catch (SecurityException e) {
+						e.printStackTrace();
+					}
+
+					setActivated(false);
+
+					while (isScrollingDown()) {
+						try {
+							Thread.sleep(500);
+						} catch (Exception e){
+						}
+					}
+
+					setClickedCancel_S(true);
+				}
+			}).start();
+		}
+	}
+
+	void doAgree() {
+		GUI gui = getGUI();
+		if (gui != null) {
 			setButtonsVisible(false);
 
-			//create thread, this needs to be a thread because Button.doCallback(Runnable) only calls Runnable.run() which does NOT create a thread.
-			new Thread
-			(
-				new Runnable()
-				{
-					public void run()
-					{
-						try{Thread.currentThread().setName("Legal_doDisagree");}catch(SecurityException e){e.printStackTrace();}
-
-						setActivated(false);
-
-						while(isScrollingDown()){try{Thread.sleep(500);}catch(Exception e){}}
-
-						setClickedCancel_S(true);
-
-
+			// create thread, this needs to be a thread because Button.doCallback(Runnable) only calls Runnable.run() which does NOT create a thread.
+			new Thread(new Runnable() {
+				public void run() {
+					try {
+						Thread.currentThread().setName("Legal_doOK");
+					} catch (SecurityException e) {
+						e.printStackTrace();
 					}
+
+					setActivated(false);
+
+					while (isScrollingDown()) {
+						try {
+							Thread.sleep(500);
+						} catch (Exception e) {
+						}
+					}
+
+					setClickedOK_S(true);
 				}
+			}
 			).start();
 		}
 	}
 
-
-
-	//=========================================================================================================================
-	void doAgree()
-	{//=========================================================================================================================
-
-		GUI gui = getGUI();
-		if(gui != null)
-		{
-			setButtonsVisible(false);
-
-			//create thread, this needs to be a thread because Button.doCallback(Runnable) only calls Runnable.run() which does NOT create a thread.
-			new Thread
-			(
-				new Runnable()
-				{
-					public void run()
-					{
-
-						try{Thread.currentThread().setName("Legal_doOK");}catch(SecurityException e){e.printStackTrace();}
-
-						setActivated(false);
-
-						while(isScrollingDown()){try{Thread.sleep(500);}catch(Exception e){}}
-
-						setClickedOK_S(true);
-
-
-					}
-				}
-			).start();
-		}
+	public void renderBefore() {
+		if (isScrollingDown() == true) return;
+		if (isActivated() == false) return;
+		// additional rendering calls go here (after gui is drawn)
 	}
 
-
-
-	//=========================================================================================================================
-	public void renderBefore()
-	{//=========================================================================================================================
-
-
-		if(isScrollingDown()==true)return;
-		if(isActivated()==false)return;
-		//additional rendering calls go here (after gui is drawn)
-
-
-
+	public void render() {
+		if (isScrollingDown() == true) return;
+		if (isActivated() == false) return;
+		// additional rendering calls go here (after gui is drawn)
 	}
-
-
-	//=========================================================================================================================
-	public void render()
-	{//=========================================================================================================================
-
-
-		if(isScrollingDown()==true)return;
-		if(isActivated()==false)return;
-
-		//additional rendering calls go here (after gui is drawn)
-
-
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

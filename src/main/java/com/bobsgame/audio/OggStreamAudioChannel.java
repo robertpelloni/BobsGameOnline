@@ -12,87 +12,51 @@ import org.lwjgl.openal.OpenALException;
 
 import com.bobsgame.shared.Utils;
 
-
-
-
-//=========================================================================================================================
-public class OggStreamAudioChannel extends AudioChannel
-{//=========================================================================================================================
-
-
+public class OggStreamAudioChannel extends AudioChannel {
 	URL fileURL;
 	String fileName;
 
-	//=========================================================================================================================
-	public OggStreamAudioChannel(URL fileURL)
-	{//=========================================================================================================================
+	public OggStreamAudioChannel(URL fileURL) {
 		this.fileURL = fileURL;
 	}
 
-	//=========================================================================================================================
-	public OggStreamAudioChannel(String fileName)
-	{//=========================================================================================================================
+	public OggStreamAudioChannel(String fileName) {
 		this.fileName = fileName;
 	}
 
 
-	//=========================================================================================================================
-	public void init()
-	{//=========================================================================================================================
-
-
-		if(audio!=null)
-		{
-			try
-			{
+	public void init() {
+		if (audio != null) {
+			try {
 				audio.close();
-			}
-			catch(IOException e)
-			{
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
-		if(fileName!=null)
-		{
-			try
-			{
-				audio=new OggInputStream(Utils.getResourceAsStream(fileName));
-			}
-			catch(IOException e)
-			{
+		if (fileName != null) {
+			try {
+				audio = new OggInputStream(Utils.getResourceAsStream(fileName));
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
-
-		if(fileURL!=null)
-		{
-			try
-			{
-				audio=new OggInputStream(fileURL.openStream());
-			}
-			catch(IOException e)
-			{
+		if (fileURL != null) {
+			try {
+				audio = new OggInputStream(fileURL.openStream());
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
-
-		positionOffset=0;
+		positionOffset = 0;
 	}
 
-	//=========================================================================================================================
-	public void play(float pitch, float gain, boolean loop)
-	{//=========================================================================================================================
-
-
-		if(channelIndex!=-1 && isPaused()==true)
-		{
+	public void play(float pitch, float gain, boolean loop) {
+		if(channelIndex!=-1 && isPaused()==true) {
 			unPause();
-		}
-		else
-		{
+		} else {
 			closeChannelAndFlushBuffers();
 
 			channelIndex = AudioUtils.getOpenChannelIndex();
@@ -102,8 +66,7 @@ public class OggStreamAudioChannel extends AudioChannel
 			bufferNames=BufferUtils.createIntBuffer(BUFFER_COUNT);
 			AL10.alGenBuffers(bufferNames);
 
-			try
-			{
+			try {
 				this.loop=loop;
 				this.pitch=pitch;
 				this.gain=gain;
@@ -116,28 +79,15 @@ public class OggStreamAudioChannel extends AudioChannel
 				//removeBuffers();
 
 				startPlayback();
-			}
-			catch(Exception e)
-			{
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
-
 	}
-
-
-
-
-
-
-
-
 
 	public static final int BUFFER_COUNT=3;
 
 	private static final int sectionSize=4096*20;// The size of the sections to stream from the stream
-
 
 	private byte[] buffer=new byte[sectionSize];// The buffer read from the data stream
 
@@ -182,46 +132,28 @@ public class OggStreamAudioChannel extends AudioChannel
 //	}
 
 
-	//=========================================================================================================================
-	public boolean isDone()
-	{//=========================================================================================================================
+	public boolean isDone() {
 		return done;
 	}
 
-	//=========================================================================================================================
-	public void updateBufferAndPlay()
-	{//=========================================================================================================================
-
-		if(channelIndex!=-1)
-		{
-
-			if(isPaused())
-			{
-
-			}
-			else
-			{
-
-
-				if(done)
-				{
+	public void updateBufferAndPlay() {
+		if(channelIndex!=-1) {
+			if(isPaused()) {
+			} else {
+				if(done) {
 					return;
 				}
 
 				float sampleRate=audio.getRate();
 				float sampleSize;
-				if(audio.getChannels()>1)
-				{
+				if(audio.getChannels()>1) {
 					sampleSize=4; // AL10.AL_FORMAT_STEREO16
-				}
-				else
-				{
+				} else {
 					sampleSize=2; // AL10.AL_FORMAT_MONO16
 				}
 
 				int processed=AL10.alGetSourcei(channel,AL10.AL_BUFFERS_PROCESSED);
-				while(processed>0)
-				{
+				while(processed>0) {
 					unqueued.clear();
 					AL10.alSourceUnqueueBuffers(channel,unqueued);
 
@@ -230,12 +162,9 @@ public class OggStreamAudioChannel extends AudioChannel
 					float bufferLength=(AL10.alGetBufferi(bufferIndex,AL10.AL_SIZE)/sampleSize)/sampleRate;
 					positionOffset+=bufferLength;
 
-					if(stream(bufferIndex))
-					{
+					if(stream(bufferIndex)) {
 						AL10.alSourceQueueBuffers(channel,unqueued);
-					}
-					else
-					{
+					} else {
 						remainingBufferCount--;
 						if(remainingBufferCount==0)
 						{
@@ -247,99 +176,71 @@ public class OggStreamAudioChannel extends AudioChannel
 
 				int state=AL10.alGetSourcei(channel,AL10.AL_SOURCE_STATE);
 
-				if(state!=AL10.AL_PLAYING)
-				{
+				if(state!=AL10.AL_PLAYING) {
 					AL10.alSourcePlay(channel);
 				}
 			}
 		}
 	}
 
-	//=========================================================================================================================
-	public boolean stream(int bufferId)
-	{//=========================================================================================================================
-		try
-		{
-			int count=audio.read(buffer);
+	public boolean stream(int bufferId) {
+		try {
+			int count = audio.read(buffer);
 
-			if(count!=-1)
-			{
+			if (count != -1) {
 				bufferData.clear();
-				bufferData.put(buffer,0,count);
+				bufferData.put(buffer, 0, count);
 				bufferData.flip();
 
-				int format=audio.getChannels()>1?AL10.AL_FORMAT_STEREO16:AL10.AL_FORMAT_MONO16;
-				try
-				{
-					AL10.alBufferData(bufferId,format,bufferData,audio.getRate());
-				}
-				catch(OpenALException e)
-				{
-					System.err.println("Failed to loop buffer: "+bufferId+" "+format+" "+count+" "+audio.getRate()+" "+e);
+				int format = audio.getChannels() > 1 ? AL10.AL_FORMAT_STEREO16 : AL10.AL_FORMAT_MONO16;
+				try {
+					AL10.alBufferData(bufferId, format, bufferData, audio.getRate());
+				} catch (OpenALException e) {
+					System.err.println("Failed to loop buffer: " + bufferId + " " + format + " " + count + " " + audio.getRate() + " " + e);
 					return false;
 				}
-			}
-			else
-			{
-				if(loop)
-				{
+			} else {
+				if (loop) {
 					init();
 					stream(bufferId);
-				}
-				else
-				{
-					done=true;
+				} else {
+					done = true;
 					return false;
 				}
 			}
 
 			return true;
-		}
-		catch(IOException e)
-		{
+		} catch (IOException e) {
 			System.err.println(e);
 			return false;
 		}
 	}
 
-	//=========================================================================================================================
-	public boolean setPosition(float position)
-	{//=========================================================================================================================
-		try
-		{
-			if(getPosition()>position)
-			{
+	public boolean setPosition(float position) {
+		try {
+			if (getPosition() > position) {
 				init();
 			}
 
-			float sampleRate=audio.getRate();
+			float sampleRate =a udio.getRate();
 			float sampleSize;
-			if(audio.getChannels()>1)
-			{
+			if (audio.getChannels() > 1) {
 				sampleSize=4; // AL10.AL_FORMAT_STEREO16
-			}
-			else
-			{
-				sampleSize=2; // AL10.AL_FORMAT_MONO16
+			} else {
+				sampleSize = 2; // AL10.AL_FORMAT_MONO16
 			}
 
 			while(positionOffset<position)
 			{
-				int count=audio.read(buffer);
-				if(count!=-1)
-				{
-					float bufferLength=(count/sampleSize)/sampleRate;
-					positionOffset+=bufferLength;
-				}
-				else
-				{
-					if(loop)
-					{
+				int count = audio.read(buffer);
+				if (count != -1) {
+					float bufferLength = (count / sampleSize) / sampleRate;
+					positionOffset += bufferLength;
+				} else {
+					if (loop) {
 						init();
-					}
-					else
-					{
-						done=true;
+					} else {
+						done = true;
 					}
 					return false;
 				}
@@ -348,26 +249,20 @@ public class OggStreamAudioChannel extends AudioChannel
 			startPlayback();
 
 			return true;
-		}
-		catch(IOException e)
-		{
+		} catch (IOException e) {
 			System.err.println(e);
 			return false;
 		}
 	}
 
-	//=========================================================================================================================
-	private void startPlayback()
-	{//=========================================================================================================================
+	private void startPlayback() {
+		AL10.alSourcei(channel, AL10.AL_LOOPING, AL10.AL_FALSE);
+		AL10.alSourcef(channel, AL10.AL_PITCH, pitch);
+		AL10.alSourcef(channel, AL10.AL_GAIN, gain);
 
-		AL10.alSourcei(channel,AL10.AL_LOOPING,AL10.AL_FALSE);
-		AL10.alSourcef(channel,AL10.AL_PITCH,(float)pitch);
-		AL10.alSourcef(channel,AL10.AL_GAIN,(float)gain);
+		remainingBufferCount = BUFFER_COUNT;
 
-		remainingBufferCount=BUFFER_COUNT;
-
-		for(int i=0;i<BUFFER_COUNT;i++)
-		{
+		for (int i = 0; i < BUFFER_COUNT; i++) {
 			stream(bufferNames.get(i));
 		}
 
@@ -375,9 +270,7 @@ public class OggStreamAudioChannel extends AudioChannel
 		AL10.alSourcePlay(channel);
 	}
 
-	//=========================================================================================================================
-	public float getPosition()
-	{//=========================================================================================================================
-		return positionOffset+AL10.alGetSourcef(channel,AL11.AL_SEC_OFFSET);
+	public float getPosition() {
+		return positionOffset + AL10.alGetSourcef(channel, AL11.AL_SEC_OFFSET);
 	}
 }

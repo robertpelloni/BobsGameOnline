@@ -1005,7 +1005,7 @@ public class ClientMain extends Applet {
 			}
 			doScreenShotCheck();
 			doResizeCheck();
-			LWJGLUtils.e();
+			LWJGLUtils.checkForGLError();
 		}
 	}
 
