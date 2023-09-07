@@ -11,3 +11,5 @@ Open project in IntelliJ or Eclipse.
 Run STUN Server, Index Server, Server, and then Client.
 
 Or, run Editor, then open bobsgame_v8830.zip. Export data to create local cache server. (to be detailed further)
+
+discussion here: <https://discord.gg/FfDxFc4JuS>
