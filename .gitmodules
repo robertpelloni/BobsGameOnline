@@ -1,0 +1,30 @@
+[submodule "libs/GeoIP2-java"]
+	path = libs/GeoIP2-java
+	url = https://github.com/maxmind/GeoIP2-java
+[submodule "libs/lwjgl3"]
+	path = libs/lwjgl3
+	url = https://github.com/LWJGL/lwjgl3
+[submodule "libs/lz4-java"]
+	path = libs/lz4-java
+	url = https://github.com/lz4/lz4-java
+[submodule "libs/jinput"]
+	path = libs/jinput
+	url = https://github.com/jinput/jinput
+[submodule "libs/micromod"]
+	path = libs/micromod
+	url = https://github.com/martincameron/micromod
+[submodule "libs/twl-lwjgl3"]
+	path = libs/twl-lwjgl3
+	url = https://github.com/ThemableWidgetLibrary/twl-lwjgl3
+[submodule "libs/mysql-connector-j"]
+	path = libs/mysql-connector-j
+	url = https://github.com/mysql/mysql-connector-j
+[submodule "libs/xpp3"]
+	path = libs/xpp3
+	url = https://github.com/codelibs/xpp3
+[submodule "libs/xz-java"]
+	path = libs/xz-java
+	url = https://github.com/tukaani-project/xz-java
+[submodule "libs/commons-lang"]
+	path = libs/commons-lang
+	url = https://github.com/apache/commons-lang
